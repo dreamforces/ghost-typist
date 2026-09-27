@@ -3,7 +3,7 @@
 What Ghost Typist searches and installs from, plus the feed its updates come from.
 
 - **Phrases** (in the app: Phrases → Library): packs of text you write often. Type the start, Tab fills in the rest.
-- **Extensions** (in the app: Extensions → Library): change how suggestions are written, mark things in your writing, or add ⌘K rewrites.
+- **Extensions** (in the app: Extensions → Library): change how suggestions are written, mark things in your writing, or add selection actions (rewrites on ⌘K, or whichever shortcut you set).
 
 ```
 phrases/*.json          phrase packs (schema 1)
@@ -30,7 +30,7 @@ Up to 500 phrases; triggers 2–160 characters, completions 1–160. See `phrase
 ## Extensions
 
 Schema 2 with any of `prompt` (a style added to every suggestion request, optionally only in some apps),
-`checks` (literal phrases to mark, with a message and optional replacement) and `actions` (⌘K rewrites).
+`checks` (literal phrases to mark, with a message and optional replacement) and `actions` (selection rewrites, ⌘K by default).
 See `extensions/plain-english.json`. Extensions never contain phrases.
 
 ## Adding or updating a package
