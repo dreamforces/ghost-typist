@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 2,
+  "id": "community.repetition",
+  "name": "Repetition Detector",
+  "version": "1.0.0",
+  "author": "Ghost Typist",
+  "description": "Marks a word repeated close to itself.",
+  "tags": ["writing"],
+  "detector": "repetition"
+}

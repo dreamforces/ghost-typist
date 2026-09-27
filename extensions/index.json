@@ -17,6 +17,21 @@
       ]
     },
     {
+      "id": "community.passive",
+      "name": "Passive Voice Detector",
+      "description": "Marks passive constructions like ‘was written’.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/passive.json",
+      "sha256": "59a12a5b5fa20c90e68a947b7504f0de83ef45c5be0dca92aad8d000c031a8e4",
+      "capabilities": [
+        "passive voice"
+      ],
+      "tags": [
+        "writing"
+      ]
+    },
+    {
       "id": "community.plain-english",
       "name": "Plain English",
       "description": "Nudges suggestions toward plain words, flags jargon, and adds a ⌘K action to simplify.",
@@ -48,6 +63,21 @@
       "tags": [
         "writing",
         "style"
+      ]
+    },
+    {
+      "id": "community.repetition",
+      "name": "Repetition Detector",
+      "description": "Marks a word repeated close to itself.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/repetition.json",
+      "sha256": "89547280ac421cc01372cbac980debc6e87342f22cbcdb892d4e2ad4f6168105",
+      "capabilities": [
+        "repetition"
+      ],
+      "tags": [
+        "writing"
       ]
     },
     {

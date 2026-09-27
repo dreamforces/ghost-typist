@@ -21,8 +21,12 @@ for shelf, schema in (("extensions", 2), ("phrases", 1)):
         assert package.get("schemaVersion") == schema, f"{path}: {shelf}/ holds schemaVersion {schema} packages"
         assert package["id"] not in {e["id"] for e in entries}, f"{path}: duplicate id {package['id']}"
         # The same summary the app shows for an installed package.
+        detectors = {"repetition": "repetition", "passive": "passive voice"}
+        if "detector" in package:
+            assert package["detector"] in detectors, f"{path}: unknown detector"
         capabilities = [count(len(package.get("phrases", [])), "phrase"), "prompt style" if package.get("prompt") else None,
-                        count(len(package.get("checks", [])), "check"), count(len(package.get("actions", [])), "action")]
+                        count(len(package.get("checks", [])), "check"), count(len(package.get("actions", [])), "action"),
+                        detectors.get(package.get("detector"))]
         entry = {key: package[key] for key in ("id", "name", "description", "author", "version")}
         entry.update(path=path.as_posix(), sha256=hashlib.sha256(data).hexdigest(), capabilities=[c for c in capabilities if c])
         if package.get("tags"):
