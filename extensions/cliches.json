@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "id": "community.cliches",
+  "name": "Cliché Detector",
+  "version": "1.0.0",
+  "author": "Ghost Typist",
+  "description": "Flags common clichés and overused phrases.",
+  "tags": ["writing"],
+  "checks": [
+    { "phrase": "at the end of the day", "message": "‘at the end of the day’ is a cliché." },
+    { "phrase": "think outside the box", "message": "‘think outside the box’ is a cliché." },
+    { "phrase": "low-hanging fruit", "message": "‘low-hanging fruit’ is a cliché." },
+    { "phrase": "move the needle", "message": "‘move the needle’ is a cliché." },
+    { "phrase": "circle back", "message": "‘circle back’ is a cliché." },
+    { "phrase": "touch base", "message": "‘touch base’ is a cliché." },
+    { "phrase": "boil the ocean", "message": "‘boil the ocean’ is a cliché." },
+    { "phrase": "best of breed", "message": "‘best of breed’ is a cliché." },
+    { "phrase": "synergy", "message": "‘synergy’ is a cliché." },
+    { "phrase": "paradigm shift", "message": "‘paradigm shift’ is a cliché." },
+    { "phrase": "game changer", "message": "‘game changer’ is a cliché." },
+    { "phrase": "hit the ground running", "message": "‘hit the ground running’ is a cliché." },
+    { "phrase": "on the same page", "message": "‘on the same page’ is a cliché." },
+    { "phrase": "win-win", "message": "‘win-win’ is a cliché." },
+    { "phrase": "going forward", "message": "‘going forward’ is a cliché." },
+    { "phrase": "needle in a haystack", "message": "‘needle in a haystack’ is a cliché." }
+  ]
+}

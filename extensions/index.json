@@ -2,6 +2,21 @@
   "schemaVersion": 1,
   "packages": [
     {
+      "id": "community.cliches",
+      "name": "Cliché Detector",
+      "description": "Flags common clichés and overused phrases.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/cliches.json",
+      "sha256": "37a11c5a2dc4cab294f1a3baac85ee4c47a6d069d06dc7ad9e4147397a1dc6e4",
+      "capabilities": [
+        "16 checks"
+      ],
+      "tags": [
+        "writing"
+      ]
+    },
+    {
       "id": "community.plain-english",
       "name": "Plain English",
       "description": "Nudges suggestions toward plain words, flags jargon, and adds a ⌘K action to simplify.",
@@ -17,6 +32,37 @@
       "tags": [
         "writing",
         "style"
+      ]
+    },
+    {
+      "id": "community.professional",
+      "name": "Professional Mode",
+      "description": "Steers completions toward a concise, professional register.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/professional.json",
+      "sha256": "fd8a9df795dd45e3ac68e7688ec6de5d9611a35e5c3d42772e1de20462bdec3e",
+      "capabilities": [
+        "prompt style"
+      ],
+      "tags": [
+        "writing",
+        "style"
+      ]
+    },
+    {
+      "id": "community.rewrite",
+      "name": "Rewrite Actions",
+      "description": "Rewrite, shorten, expand, change tone, simplify, translate, fix grammar, or remove filler in a selection.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/rewrite.json",
+      "sha256": "18a361b7eb6525fdae9a5e21e2ef8c24ad59f718b8db57c28bbfb58c82769a0a",
+      "capabilities": [
+        "8 actions"
+      ],
+      "tags": [
+        "writing"
       ]
     }
   ]
