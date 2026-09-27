@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "community.friendly-writing",
+  "name": "Friendly writing",
+  "version": "1.0.0",
+  "author": "Ghost Typist examples",
+  "description": "Small, friendly continuations for everyday correspondence.",
+  "phrases": [
+    { "trigger": "Thank you", "completion": " for your time." },
+    { "trigger": "Please let me know", "completion": " if you have any questions." },
+    { "trigger": "Looking forward", "completion": " to hearing from you." }
+  ]
+}

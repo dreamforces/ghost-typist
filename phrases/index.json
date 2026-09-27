@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "packages": [
+    {
+      "id": "community.engineering",
+      "name": "Engineering vocabulary",
+      "description": "Common continuations for project notes and reviews.",
+      "author": "Ghost Typist examples",
+      "version": "1.0.0",
+      "path": "phrases/engineering.json",
+      "sha256": "43c9030b99064ac76e069af68c53982dd38af3db2ab5518947cb7809fbf2cc3c",
+      "capabilities": [
+        "3 phrases"
+      ]
+    },
+    {
+      "id": "community.friendly-writing",
+      "name": "Friendly writing",
+      "description": "Small, friendly continuations for everyday correspondence.",
+      "author": "Ghost Typist examples",
+      "version": "1.0.0",
+      "path": "phrases/friendly-writing.json",
+      "sha256": "6cd21cd6e044cddce7438475f130f2a8c78ad4c68145b89abc2593b732c04b45",
+      "capabilities": [
+        "3 phrases"
+      ]
+    }
+  ]
+}

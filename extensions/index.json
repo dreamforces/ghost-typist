@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "packages": [
+    {
+      "id": "community.plain-english",
+      "name": "Plain English",
+      "description": "Nudges suggestions toward plain words, flags jargon, and adds a ⌘K action to simplify.",
+      "author": "Ghost Typist examples",
+      "version": "1.0.0",
+      "path": "extensions/plain-english.json",
+      "sha256": "627329c554ab11958bd71668d67f474b8f7a405349c4f5df2c30e3ccb971e9c6",
+      "capabilities": [
+        "prompt style",
+        "3 checks",
+        "1 action"
+      ],
+      "tags": [
+        "writing",
+        "style"
+      ]
+    }
+  ]
+}

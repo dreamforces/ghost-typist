@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "community.engineering",
+  "name": "Engineering vocabulary",
+  "version": "1.0.0",
+  "author": "Ghost Typist examples",
+  "description": "Common continuations for project notes and reviews.",
+  "phrases": [
+    { "trigger": "backward", "completion": " compatibility" },
+    { "trigger": "acceptance", "completion": " criteria" },
+    { "trigger": "The tests", "completion": " are passing." }
+  ]
+}
