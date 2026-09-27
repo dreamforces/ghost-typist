@@ -83,11 +83,11 @@
     {
       "id": "community.rewrite",
       "name": "Rewrite Actions",
-      "description": "Rewrite, shorten, expand, change tone, simplify, translate, fix grammar, or remove filler in a selection.",
+      "description": "Rewrite, shorten, enrich, change tone, summarise, translate, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "extensions/rewrite.json",
-      "sha256": "18a361b7eb6525fdae9a5e21e2ef8c24ad59f718b8db57c28bbfb58c82769a0a",
+      "sha256": "ae899fb9cb83a2e77594f2d1ce33a16810f477146b4a28e5144b3d5a485e0a59",
       "capabilities": [
         "8 actions"
       ],
