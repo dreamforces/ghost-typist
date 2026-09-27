@@ -83,16 +83,33 @@
     {
       "id": "community.rewrite",
       "name": "Rewrite Actions",
-      "description": "Rewrite, shorten, enrich, change tone, summarise, translate, fix grammar, or remove filler in a selection.",
+      "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "path": "extensions/rewrite.json",
-      "sha256": "ae899fb9cb83a2e77594f2d1ce33a16810f477146b4a28e5144b3d5a485e0a59",
+      "sha256": "5158bdb4d2efcc7e067b080d9970e1ea31e4d7d71dd613ccc663dcf2bac26d4a",
       "capabilities": [
-        "8 actions"
+        "7 actions"
       ],
       "tags": [
         "writing"
+      ]
+    },
+    {
+      "id": "community.translate",
+      "name": "Translate",
+      "description": "Translates a selection with Hy-MT2, in the same ⌘K menu as your other actions.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/translate.json",
+      "sha256": "0683b435ac5969b25258b3ea2f0ea3916920cebc4030a59277219b33f2d60e6c",
+      "capabilities": [
+        "1 action",
+        "translation model"
+      ],
+      "tags": [
+        "writing",
+        "translation"
       ]
     }
   ]

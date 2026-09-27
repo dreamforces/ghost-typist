@@ -26,7 +26,7 @@ for shelf, schema in (("extensions", 2), ("phrases", 1)):
             assert package["detector"] in detectors, f"{path}: unknown detector"
         capabilities = [count(len(package.get("phrases", [])), "phrase"), "prompt style" if package.get("prompt") else None,
                         count(len(package.get("checks", [])), "check"), count(len(package.get("actions", [])), "action"),
-                        detectors.get(package.get("detector"))]
+                        detectors.get(package.get("detector")), "translation model" if package.get("model") else None]
         entry = {key: package[key] for key in ("id", "name", "description", "author", "version")}
         entry.update(path=path.as_posix(), sha256=hashlib.sha256(data).hexdigest(), capabilities=[c for c in capabilities if c])
         if package.get("tags"):

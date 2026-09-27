@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "id": "community.translate",
+  "name": "Translate",
+  "version": "1.0.0",
+  "author": "Ghost Typist",
+  "description": "Translates a selection with Hy-MT2, in the same ⌘K menu as your other actions.",
+  "tags": ["writing", "translation"],
+  "model": "hy-mt2-30b-a3b-q4",
+  "actions": [
+    { "id": "translate", "title": "Translate", "instruction": "Translate the following text into {argument}. Note that you should only output the translated result without any additional explanation:", "arguments": ["English", "Chinese", "Spanish", "French", "German", "Turkish", "Italian", "Portuguese", "Japanese", "Arabic"], "symbol": "character.book.closed" }
+  ]
+}
