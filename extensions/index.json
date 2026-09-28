@@ -4,13 +4,13 @@
     {
       "id": "community.commands",
       "name": "Slash Commands",
-      "description": "Tab inserts the date with /date and your signature with /signature. Tab on a // line writes that paragraph.",
+      "description": "Tab on /date inserts the date. Add your own commands on the installed row. Tab on a // line expands that note.",
       "author": "Ghost Typist",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "extensions/commands.js",
-      "sha256": "bf9a7a64aea4e2e067bb7da44357e5cd3fe73015439a6232092023188899bf35",
+      "sha256": "6a894c84b6d401521cb6f565846bf62a9c7cf7b460f3f019c71cd03ddedde2a4",
       "capabilities": [
-        "2 commands"
+        "1 command"
       ],
       "tags": [
         "writing"
@@ -19,11 +19,11 @@
     {
       "id": "community.expander",
       "name": "Text Expander",
-      "description": "Fills in a few chat abbreviations, such as ttys.",
+      "description": "Fills in abbreviations you edit on the installed row, such as ttys.",
       "author": "Ghost Typist",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "extensions/expander.js",
-      "sha256": "de2b80d1ef475a7f0291677bc0e7253b071f645610da8c44f64e599161f883f0",
+      "sha256": "9ae3fe2e81e2bb5b12f30edb4a6c43771700c0827247b8408cfd0715624e28ec",
       "capabilities": [
         "3 expansions"
       ],

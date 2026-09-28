@@ -32,7 +32,7 @@ ghost.define({
 ## What you may declare
 
 - **settings** — `options` and `default` are checkboxes. `number` is a stepper. `text` is one line, such as a signature. The script reads them with `ghost.number`, `ghost.choices`, and the stored text is what a command inserts.
-- **commands** — Tab on a line that is only `/name`. Use `datetime: true` for the clock, `setting` for a text preference, or `text` for fixed words. One of those three.
+- **commands** — Tab on a line that is only `/name`. Use `datetime: true` for the clock, and `formatFrom` to name a single-choice date format. `setting` inserts a text preference, or `text` is fixed words. One of those three. People add their own text commands on the installed row. A `tone` setting (Friendly or Formal) is how `//` expands a note.
 - **expansions** — `{ trigger, completion }`. Tab fills the completion when the trigger is at the cursor, the same way a phrase pack does.
 - **model** — a pinned Hugging Face GGUF: `{ name, repository, revision, file, bytes, sha256 }`. `repository` is `owner/name`, `revision` is the 40-character commit, `file` ends in `.gguf`. The app downloads it from Hugging Face. A script cannot name a URL. Without a model, the writing model edits the selection.
 - **actions** — `{ id, title, instruction }`. `{argument}` comes from `arguments` or from `argumentsFrom`, which names a checkbox setting. `model` on an action is a catalog id. Without a model, the writing model edits the selection as a fragment and keeps its language.
