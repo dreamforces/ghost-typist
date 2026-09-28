@@ -1,11 +1,12 @@
-// ghost {"id":"community.commands","name":"Slash Commands","version":"2.1.0","author":"Ghost Typist","description":"Type /date and press Tab for today's date. Write your own commands in JavaScript in Options.","tags":["writing"],"capabilities":["1 command","your commands"]}
+// ghost {"id":"community.commands","name":"Slash Commands","version":"2.2.0","author":"Ghost Typist","description":"Type /date and press Tab for today's date. Write your own commands in JavaScript in Options.","tags":["writing"],"capabilities":["1 command","your commands"]}
 //
-// How a command works: Tab on a line that is only /name calls run(ctx), and the text it returns
-// replaces that line. ctx holds:
-//   ctx.text      everything typed in the field, without the /name line
-//   ctx.before    the text before the /name line
+// How a command works: Tab after /name, alone on a line or as its last word, calls run(ctx), and the
+// text it returns replaces /name. ctx holds:
+//   ctx.text      everything typed in the field, without /name
+//   ctx.before    the text before /name
 //   ctx.after     the text after it
-//   ctx.settings  the options: the extension's own, plus those the command declares itself
+//   ctx.settings  the options the user chose in Options: those this script declares in `settings`, plus
+//                 those a command declares in its own `settings` (like date-format below)
 // A command's own `settings` appear under its name in Options. ghost.words(text) and
 // ghost.sentences(text) help with counting. There is no network, file or clipboard access.
 
@@ -15,22 +16,23 @@ const two = (n) => String(n).padStart(2, "0");
 
 const example = [
   "// JavaScript: the body of run(ctx). Return the text that replaces /name.",
-  "// ctx.text is everything typed, ctx.before and ctx.after surround this line,",
-  "// ctx.settings holds this extension's options.",
-  "const words = ghost.words(ctx.before).length;",
-  "return words + \" words so far\";"
+  "// ctx.before is the text before /name, ctx.after the text after it.",
+  "// Your command's options are constants you set here:",
+  "const unit = \"words\"; // or \"sentences\"",
+  "const count = unit === \"words\" ? ghost.words(ctx.before).length : ghost.sentences(ctx.before).length;",
+  "return count + \" \" + unit;"
 ].join("\n");
 
 ghost.define({
   id: "community.commands",
   name: "Slash Commands",
-  version: "2.1.0",
+  version: "2.2.0",
   author: "Ghost Typist",
   description: "Type /date and press Tab for today's date. Write your own commands in JavaScript in Options.",
   settings: [
     {
       id: "commands", title: "Your commands", type: "list",
-      help: "Name a command, then write the JavaScript it runs. Tab on /name inserts what it returns.",
+      help: "Name a command, then write the JavaScript it runs. Tab after /name inserts what it returns.",
       columns: [{ id: "name", title: "Command", placeholder: "wc" }, { id: "run", title: "JavaScript", code: true, placeholder: example }],
       value: []
     }

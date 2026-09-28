@@ -6,9 +6,9 @@
       "name": "Slash Commands",
       "description": "Type /date and press Tab for today's date. Write your own commands in JavaScript in Options.",
       "author": "Ghost Typist",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "path": "extensions/commands.js",
-      "sha256": "bf3d8651b8abf5c92e24c29452fe31b84f128cfc9aad8442fdc4071b71048a4a",
+      "sha256": "d4de55be1fa33ef6b06aa5237cfd3cbe8de652201c3c08d04b29f2ebf10a21e2",
       "capabilities": [
         "1 command",
         "your commands"
@@ -20,11 +20,11 @@
     {
       "id": "community.compose",
       "name": "Compose",
-      "description": "Type // and a short note, then press Tab: the writing model turns it into a message in your tone.",
+      "description": "Type // and a short note, then press Tab: the writing model turns it into a message in your tone, a few sentences unless the note asks for a length.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "path": "extensions/compose.js",
-      "sha256": "ba2ca802b5922cfa3ac2088e95c6e215dcce9cbf9233b2a581d00fde87eb4535",
+      "sha256": "ff565bb900c0153743f4740c73786bde9394119de71663781b9f2e1c832577bd",
       "capabilities": [
         "compose"
       ],
@@ -67,9 +67,9 @@
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "3.0.0",
+      "version": "3.1.0",
       "path": "extensions/rewrite.js",
-      "sha256": "e82f5f24cd9b462ee368715bbd4639140682868c6839b13ec4a2d3124e3f4cd2",
+      "sha256": "db5d4739071303e14afa932827543bc3cc74ed06903c8c2cb13298a133e7550f",
       "capabilities": [
         "7 actions"
       ],
@@ -82,9 +82,9 @@
       "name": "Translate",
       "description": "Translates a selection with Hy-MT2 7B, in the same menu as your other actions.",
       "author": "Ghost Typist",
-      "version": "3.1.0",
+      "version": "3.2.0",
       "path": "extensions/translate.js",
-      "sha256": "c53b9a69f3c6847b3ad3f61ba206e74adcdbce26bca3c2bd09b66336a3e34661",
+      "sha256": "064aa59b35c06cb897947876d0327cac771444712e49ae6c6aa42dfb4dcc6e23",
       "capabilities": [
         "1 action",
         "translation model"

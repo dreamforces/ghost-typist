@@ -40,16 +40,17 @@ falls back to the default. Ids are lowercase letters, digits and `-`.
 | `number` | integer 0–100000 | a stepper |
 | `toggle` | `true` / `false` | a checkbox |
 | `choice` | one of `options` | a pop-up menu |
-| `choices` | a subset of `options`; with `custom: true` also up to 20 names the user types | checkboxes |
+| `choices` | a subset of `options`; with `custom: true` also up to 20 names the user types, comma-separated | checkboxes |
 | `list` | rows `{ columnId: string }` | a table; a column with `code: true` is a JavaScript editor; `placeholder` shows while a cell is empty |
 
-Hooks receive the current values as `settings` (or `ctx.settings`), keyed by id.
+Hooks receive the current values as `settings` (or `ctx.settings`), keyed by id. `help` may hold Markdown
+links; only `https` links are clickable.
 
 ### What an extension can do
 
-- `commands: { name: { title, run(ctx) } }`: Tab on a line that is only `/name` replaces that line with
-  what `run` returns (a string or number). `ctx.text` is everything else typed, `ctx.before` and `ctx.after`
-  surround the line. A command may declare its own `settings`; Options lists them under the command, and
+- `commands: { name: { title, run(ctx) } }`: Tab after `/name`, alone on a line or as its last word, replaces
+  `/name` with what `run` returns (a string or number). `ctx.text` is everything else typed, `ctx.before` and
+  `ctx.after` surround `/name`. A command may declare its own `settings`; Options lists them under the command, and
   its `ctx.settings` holds those plus the extension's top-level settings.
 
   ```js
@@ -62,12 +63,14 @@ Hooks receive the current values as `settings` (or `ctx.settings`), keyed by id.
   }
   ```
 - `commandsFrom: "<list setting>"`: the user writes more commands in Options. The list has a `name` column
-  and a `run` code column holding a function body, e.g. `return ctx.text.length + " characters"`.
+  and a `run` code column holding a function body, e.g. `return ctx.text.length + " characters"`. These
+  commands have no Options of their own; their choices are constants at the top of the code.
 - `expansionsFrom: "<list setting>"`: a list with `trigger` and `text` columns. When the whole word before
   the caret is a trigger, its text is offered, and Tab replaces the trigger with it.
 - `compose: { instruction }`: Tab on `//note` asks the writing model to turn the note into a message.
   `{setting-id}` in the instruction is replaced with that setting's value. The note is framed as something
-  to write, never a question to answer.
+  to write, never a question to answer. It is a few sentences long unless the note asks for a length
+  ("in a few paragraphs", "one sentence"); the app takes that phrase out of the note and passes it on.
 - `analyze(text, settings)`: marks spans with `ghost.mark(span, message, { replacement?, action?, kind? })`.
   `kind` is `spelling` or `grammar` for those colours. It runs per paragraph, in the background, after you
   pause; unchanged paragraphs are not analyzed again.
