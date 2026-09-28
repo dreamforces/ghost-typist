@@ -4,13 +4,29 @@
     {
       "id": "community.commands",
       "name": "Slash Commands",
-      "description": "Tab on /date inserts the date. Add your own commands on the installed row. Tab on a // line expands that note.",
+      "description": "Type /date and press Tab for today's date. Write your own commands in JavaScript in Options.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "path": "extensions/commands.js",
-      "sha256": "6a894c84b6d401521cb6f565846bf62a9c7cf7b460f3f019c71cd03ddedde2a4",
+      "sha256": "026c8f992b0fa49195c64dd4a0360686c939ca2cc7f15b648a58452190da2f2c",
       "capabilities": [
-        "1 command"
+        "1 command",
+        "your commands"
+      ],
+      "tags": [
+        "writing"
+      ]
+    },
+    {
+      "id": "community.compose",
+      "name": "Compose",
+      "description": "Type // and a short note, then press Tab: the writing model turns it into a message in your tone.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/compose.js",
+      "sha256": "8dbead0d2084bf1a683437d2dd768571fc7a5d2014d23eaa552853d8880406ec",
+      "capabilities": [
+        "compose"
       ],
       "tags": [
         "writing"
@@ -19,28 +35,27 @@
     {
       "id": "community.expander",
       "name": "Text Expander",
-      "description": "Fills in abbreviations you edit on the installed row, such as ttys.",
+      "description": "Type an abbreviation and press Tab: it is replaced with the text you set in Options.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "path": "extensions/expander.js",
-      "sha256": "9ae3fe2e81e2bb5b12f30edb4a6c43771700c0827247b8408cfd0715624e28ec",
+      "sha256": "2a6684b42eb9abb02777daff668593183a6fb8965cdbba6d58935e09c9387da5",
       "capabilities": [
-        "3 expansions"
+        "abbreviations"
       ],
       "tags": [
         "writing"
       ]
     },
     {
-      "id": "community.grammar",
-      "name": "Grammar",
-      "description": "Marks grammar the system checker finds, and can ask your model to fix a selection.",
+      "id": "community.proofread",
+      "name": "Spelling & Grammar",
+      "description": "Underlines misspellings and grammar slips with the macOS checker. Click an underline for a fix.",
       "author": "Ghost Typist",
       "version": "1.0.0",
-      "path": "extensions/grammar.js",
-      "sha256": "1a5a424206cde797aaf52f19c92258d76248f25bfeefc32cc3ee4e2093774eb2",
+      "path": "extensions/proofread.js",
+      "sha256": "d79ad4db5df89a1ba27b5068873daf7a480a564456246b16fb892c5be483369c",
       "capabilities": [
-        "1 action",
         "marks writing"
       ],
       "tags": [
@@ -52,9 +67,9 @@
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "2.0.0",
+      "version": "3.0.0",
       "path": "extensions/rewrite.js",
-      "sha256": "098751f5a4b17fdfdab523c2c7879fc09ebbdcb884a492c61d73e9526caf4680",
+      "sha256": "e82f5f24cd9b462ee368715bbd4639140682868c6839b13ec4a2d3124e3f4cd2",
       "capabilities": [
         "7 actions"
       ],
@@ -67,9 +82,9 @@
       "name": "Translate",
       "description": "Translates a selection with Hy-MT2 7B, in the same menu as your other actions.",
       "author": "Ghost Typist",
-      "version": "2.0.0",
+      "version": "3.0.0",
       "path": "extensions/translate.js",
-      "sha256": "74e15dba3e5dbd368c84ca67d3f9617130941c820a6529b62707a362c7f5ba0c",
+      "sha256": "18626155fc61cc3aac1aa88ee3da83c86a928ce842519eec81a221261ddc0b80",
       "capabilities": [
         "1 action",
         "translation model"
@@ -77,21 +92,6 @@
       "tags": [
         "writing",
         "translation"
-      ]
-    },
-    {
-      "id": "community.typos",
-      "name": "Typos",
-      "description": "Marks misspellings and offers the system guess.",
-      "author": "Ghost Typist",
-      "version": "1.0.0",
-      "path": "extensions/typos.js",
-      "sha256": "8107f091c308036c88374e50380d0f59decb42cf8ea0f5858f91ccc9c60d6225",
-      "capabilities": [
-        "marks writing"
-      ],
-      "tags": [
-        "writing"
       ]
     }
   ]

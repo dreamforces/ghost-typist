@@ -3,26 +3,94 @@
   "packages": [
     {
       "id": "community.engineering",
-      "name": "Engineering vocabulary",
-      "description": "Common continuations for project notes and reviews.",
-      "author": "Ghost Typist examples",
-      "version": "1.0.0",
+      "name": "Engineering",
+      "description": "Terms for design docs, code reviews, incidents and release notes.",
+      "author": "Ghost Typist",
+      "version": "2.0.0",
       "path": "phrases/engineering.json",
-      "sha256": "43c9030b99064ac76e069af68c53982dd38af3db2ab5518947cb7809fbf2cc3c",
+      "sha256": "43987a3021ae20430bdc680a2b85548e2b7064eb17fa166be4390d6ded514dbb",
       "capabilities": [
-        "3 phrases"
+        "49 terms"
+      ],
+      "tags": [
+        "technical",
+        "software"
       ]
     },
     {
-      "id": "community.friendly-writing",
-      "name": "Friendly writing",
-      "description": "Small, friendly continuations for everyday correspondence.",
-      "author": "Ghost Typist examples",
-      "version": "1.0.0",
-      "path": "phrases/friendly-writing.json",
-      "sha256": "6cd21cd6e044cddce7438475f130f2a8c78ad4c68145b89abc2593b732c04b45",
+      "id": "community.geospatial",
+      "name": "Geospatial & GPS",
+      "description": "Positioning, mapping and GIS terms for specs and field reports.",
+      "author": "Ghost Typist",
+      "version": "2.0.0",
+      "path": "phrases/geospatial.json",
+      "sha256": "6d2fc4c8238f01a4dbbee33985c5f76021362b87a5049f483e1af2955f891e71",
       "capabilities": [
-        "3 phrases"
+        "50 terms"
+      ],
+      "tags": [
+        "technical"
+      ]
+    },
+    {
+      "id": "community.medical",
+      "name": "Medical",
+      "description": "Clinical terms for notes, referrals and patient letters.",
+      "author": "Ghost Typist",
+      "version": "2.0.0",
+      "path": "phrases/medical.json",
+      "sha256": "39fefbcd623f6d50096db1e5428238867df6be7b546929e6a7feac0b4fde2b9f",
+      "capabilities": [
+        "49 terms"
+      ],
+      "tags": [
+        "health"
+      ]
+    },
+    {
+      "id": "community.payments",
+      "name": "Payments",
+      "description": "Card, bank and wallet payment terms for product specs, ops notes and support.",
+      "author": "Ghost Typist",
+      "version": "2.0.0",
+      "path": "phrases/payments.json",
+      "sha256": "5727654b71fb2609478550f56fddfab1bb93c803d2c9b83410a09a62647d038f",
+      "capabilities": [
+        "49 terms"
+      ],
+      "tags": [
+        "technical",
+        "finance"
+      ]
+    },
+    {
+      "id": "community.supply-chain",
+      "name": "Supply chain & logistics",
+      "description": "Forward and reverse logistics terms for operations, planning and vendor emails.",
+      "author": "Ghost Typist",
+      "version": "2.0.0",
+      "path": "phrases/supply-chain.json",
+      "sha256": "6293e08a00a19b4bbe18a5949a5fb6fc7288d69aa6f0c1c3dfbd21ed0d04cd88",
+      "capabilities": [
+        "47 terms"
+      ],
+      "tags": [
+        "operations"
+      ]
+    },
+    {
+      "id": "community.travel",
+      "name": "Travel & airlines",
+      "description": "Airline, airport and booking terms for travel ops, support and itineraries.",
+      "author": "Ghost Typist",
+      "version": "2.0.0",
+      "path": "phrases/travel.json",
+      "sha256": "9e11d97433395050e507d9a54a69d31ddc5678e2ee6a1ecf1357ffcd120d7766",
+      "capabilities": [
+        "48 terms"
+      ],
+      "tags": [
+        "travel"
       ]
     }
   ]

@@ -2,34 +2,20 @@
 
 What Ghost Typist searches and installs from, plus the feed its updates come from.
 
-- **Phrases** (in the app: Phrases → Library): packs of text you write often. Type the start, Tab fills in the rest.
-- **Extensions** (in the app: Extensions → Library): change how suggestions are written, mark things in your writing, or add selection actions (rewrites on ⌘K, or whichever shortcut you set).
+- **Phrasebooks** (in the app: Phrasebooks → Library): a field and its terms, given to the writing model so suggestions use that field's words.
+- **Extensions** (in the app: Extensions → Library): `/commands`, abbreviations, `//note` compose, spelling and grammar marks, and ⌘K actions. Each declares its own options.
 
 ```
-phrases/*.json          phrase packs (schema 1)
+phrases/*.json          phrasebooks (schema 3)
 phrases/index.json      generated
-extensions/*.json       extensions (schema 2)
+extensions/*.js         extensions, one JavaScript file each
 extensions/index.json   generated
 appcast.xml             app updates (written by the release script)
 scripts/                index builder
 ```
 
-Packages are data only: no code, network or storage access. Every install shows a review sheet first,
-including any prompt text word for word.
-
-## Phrase packs
-
-```json
-{ "schemaVersion": 1, "id": "you.team-replies", "name": "Team replies", "version": "1.0.0",
-  "author": "You", "description": "Replies we send every day.",
-  "phrases": [ { "trigger": "Thanks for", "completion": " the quick turnaround!" } ] }
-```
-
-Up to 500 phrases; triggers 2–160 characters, completions 1–160. See `phrases/`.
-
-## Extensions
-
-Each extension is a JavaScript file. It can declare settings, `/commands`, expansions, selection actions, and an `analyze` function that calls host hooks (sentences, repetitions, passive voice, typos, grammar). The guide is [EXTENSIONS.md](EXTENSIONS.md). A line that starts with `//` asks the writing model to compose that paragraph. Phrase packs stay JSON.
+The app ships none of these. Every install shows a review sheet first, including any prompt text word for
+word. Scripts run in a sandbox with no files, network or keys. The guide is [EXTENSIONS.md](EXTENSIONS.md).
 
 ## Adding or updating a package
 

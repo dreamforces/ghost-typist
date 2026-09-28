@@ -17,11 +17,11 @@ for path in sorted(phrases.glob("*.json")):
         continue
     data = path.read_bytes()
     package = json.loads(data)
-    assert package.get("schemaVersion") == 1, f"{path}: phrases/ holds phrase packs"
+    assert package.get("schemaVersion") == 3, f"{path}: phrases/ holds phrasebooks (schema 3)"
     assert package["id"] not in {e["id"] for e in entries}, f"{path}: duplicate id"
     entry = {key: package[key] for key in ("id", "name", "description", "author", "version")}
     entry.update(path=path.as_posix(), sha256=hashlib.sha256(data).hexdigest(),
-                 capabilities=[c for c in [count(len(package.get("phrases", [])), "phrase")] if c])
+                 capabilities=[c for c in [count(len(package.get("terms", [])), "term")] if c])
     if package.get("tags"):
         entry["tags"] = package["tags"]
     entries.append(entry)
@@ -38,7 +38,7 @@ for path in sorted(extensions.glob("*.js")):
     assert first.startswith("// ghost "), f"{path}: missing // ghost header"
     header = json.loads(first[len("// ghost "):])
     source = data.decode()
-    assert "detector" not in source and '"checks"' not in source, f"{path}: checks and detectors are host functions, not package fields"
+    assert "ghost.define(" in source, f"{path}: an extension calls ghost.define"
     assert header["id"] not in {e["id"] for e in entries}, f"{path}: duplicate id"
     entry = {key: header[key] for key in ("id", "name", "description", "author", "version")}
     entry.update(path=path.as_posix(), sha256=hashlib.sha256(data).hexdigest(), capabilities=header.get("capabilities") or [])

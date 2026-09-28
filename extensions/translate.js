@@ -1,8 +1,8 @@
-// ghost {"id":"community.translate","name":"Translate","version":"2.0.0","author":"Ghost Typist","description":"Translates a selection with Hy-MT2 7B, in the same menu as your other actions.","tags":["writing","translation"],"capabilities":["1 action","translation model"]}
+// ghost {"id":"community.translate","name":"Translate","version":"3.0.0","author":"Ghost Typist","description":"Translates a selection with Hy-MT2 7B, in the same menu as your other actions.","tags":["writing","translation"],"capabilities":["1 action","translation model"]}
 ghost.define({
   id: "community.translate",
   name: "Translate",
-  version: "2.0.0",
+  version: "3.0.0",
   author: "Ghost Typist",
   description: "Translates a selection with Hy-MT2 7B, in the same menu as your other actions.",
   model: {
@@ -13,6 +13,10 @@ ghost.define({
     bytes: 4624648896,
     sha256: "9f96256500f3fc1ab4d64336b58f52a949a95ad7516b0c229476eef782f9f77b"
   },
-  settings: [{ id: "languages", title: "Languages", options: ["English", "Chinese", "Spanish", "French", "German", "Turkish", "Italian", "Portuguese", "Japanese", "Arabic"], default: ["English", "French", "Turkish"] }],
-  actions: [{ id: "translate", title: "Translate", instruction: "Translate the following text into {argument}. Note that you should only output the translated result without any additional explanation:", argumentsFrom: "languages", symbol: "character.book.closed" }]
+  settings: [
+    { id: "languages", title: "Languages", type: "choices", options: ["English", "Chinese", "Spanish", "French", "German", "Turkish", "Italian", "Portuguese", "Japanese", "Arabic"], value: ["English", "French", "Turkish"] }
+  ],
+  actions: [
+    { id: "translate", title: "Translate", instruction: "Translate the following text into {argument}. Note that you should only output the translated result without any additional explanation:", argumentsFrom: "languages", symbol: "character.book.closed" }
+  ]
 })

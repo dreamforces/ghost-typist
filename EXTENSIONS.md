@@ -1,64 +1,95 @@
-# Writing an extension
+# Writing extensions and phrasebooks
 
-An extension is one JavaScript file. The app runs it with a frozen `ghost` object: no files, no network, and no API keys. A model call is an action you declare. The app sends it to the writing model, or to a tool model it already knows, such as `hy-mt2-7b-q4`.
+Ghost Typist ships no extensions. Everything comes from the library at
+[dreamforces/ghost-typist](https://github.com/dreamforces/ghost-typist), or from a file, and every install
+shows a review sheet first.
 
-Open a pull request here. The review is what makes the package available to everyone. After it is merged, run `python3 scripts/build-extension-index.py` and commit `extensions/index.json` with the script.
+- **Extensions** are one JavaScript file each: `/commands`, abbreviations, `//note` compose, proofreading
+  marks, a prompt style, and ⌘K actions. Each one declares its own options; the app draws them in
+  **Extensions → Options…**.
+- **Phrasebooks** are JSON: a field (“Payment systems”) and its terms. They tell the writing model what the
+  writer works on, so a plain sentence is continued in that field's words.
 
-## File
+## Extensions
 
-The first line is a header. `ghost.define` must repeat the same id, name, version, author and description.
+The first line is a header the library index reads. The rest calls `ghost.define` once, with the same
+identity.
 
-```javascript
-// ghost {"id":"you.example","name":"Example","version":"1.0.0","author":"You","description":"What it does.","tags":["writing"],"capabilities":["1 action","marks writing"]}
+```js
+// ghost {"id":"you.commands","name":"My Commands","version":"1.0.0","author":"You","description":"Word count.","capabilities":["1 command"]}
 ghost.define({
-  id: "you.example",
-  name: "Example",
-  version: "1.0.0",
-  author: "You",
-  description: "What it does.",
-  settings: [{ id: "max-words", title: "Maximum words", number: 25 }],
-  actions: [{ id: "shorten", title: "Shorten", instruction: "Split this into shorter sentences. Keep the original language. Return only the edit." }],
-  analyze: function (text) {
-    var max = ghost.number("max-words")
-    ghost.sentences(text).forEach(function (sentence) {
-      if (sentence.words > max) ghost.mark(sentence, "This sentence is long.", { action: "shorten" })
-    })
+  id: "you.commands", name: "My Commands", version: "1.0.0", author: "You", description: "Word count.",
+  settings: [
+    { id: "unit", title: "Say", type: "choice", options: ["words", "Wörter"], value: "words" }
+  ],
+  commands: {
+    wc: { title: "Word count", run(ctx) { return ghost.words(ctx.text).length + " " + ctx.settings.unit } }
   }
 })
 ```
 
-`examples/long-sentence.js` is that pattern and is not installed. Copy it into `extensions/` to contribute it.
+### Settings
 
-## What you may declare
+Every option lives in the script. `settings` is a list of `{ id, title, type, value, help?, options?, columns? }`.
+`value` is the default; what the user sets in Options replaces it, and a saved value that no longer fits
+falls back to the default. Ids are lowercase letters, digits and `-`.
 
-- **settings** — `options` and `default` are checkboxes. `number` is a stepper. `text` is one line, such as a signature. The script reads them with `ghost.number`, `ghost.choices`, and the stored text is what a command inserts.
-- **commands** — Tab on a line that is only `/name`. Use `datetime: true` for the clock, and `formatFrom` to name a single-choice date format. `setting` inserts a text preference, or `text` is fixed words. One of those three. People add their own text commands on the installed row. A `tone` setting (Friendly or Formal) is how `//` expands a note.
-- **expansions** — `{ trigger, completion }`. Tab fills the completion when the trigger is at the cursor, the same way a phrase pack does.
-- **model** — a pinned Hugging Face GGUF: `{ name, repository, revision, file, bytes, sha256 }`. `repository` is `owner/name`, `revision` is the 40-character commit, `file` ends in `.gguf`. The app downloads it from Hugging Face. A script cannot name a URL. Without a model, the writing model edits the selection.
-- **actions** — `{ id, title, instruction }`. `{argument}` comes from `arguments` or from `argumentsFrom`, which names a checkbox setting. `model` on an action is a catalog id. Without a model, the writing model edits the selection as a fragment and keeps its language.
-- **style** — `{ instruction, vocabulary, apps }` folded into suggestions.
-- **analyze(text)** — mark the scratchpad. Call only the host functions below, then `ghost.mark(span, message, { replacement, action })`. A replacement can be accepted from the underline. An action runs on that span.
+| type | value | Options shows |
+|---|---|---|
+| `text` | string, up to 500 characters | a text field |
+| `number` | integer 0–100000 | a stepper |
+| `toggle` | `true` / `false` | a checkbox |
+| `choice` | one of `options` | a pop-up menu |
+| `choices` | a subset of `options` | checkboxes |
+| `list` | rows `{ columnId: string }` | a table; a column with `code: true` is a JavaScript editor |
 
-`//instruction` is not a package. Tab on a line that is `//` plus the request asks the writing model to write that paragraph and replaces the line. It works in the scratchpad.
+Hooks receive the current values as `settings` (or `ctx.settings`), keyed by id.
 
-## Host functions
+### What an extension can do
 
-Each returns `{ text, start, end, words, message, guesses }`. `start` and `end` are UTF-16 offsets into the string you passed.
+- `commands: { name: { title, run(ctx) } }`: Tab on a line that is only `/name` replaces that line with
+  what `run` returns (a string or number). `ctx.text` is everything else typed, `ctx.before` and `ctx.after`
+  surround the line.
+- `commandsFrom: "<list setting>"`: the user writes more commands in Options. The list has a `name` column
+  and a `run` code column holding a function body, e.g. `return ctx.text.length + " characters"`.
+- `expansionsFrom: "<list setting>"`: a list with `trigger` and `text` columns. When the whole word before
+  the caret is a trigger, its text is offered, and Tab replaces the trigger with it.
+- `compose: { instruction }`: Tab on `//note` asks the writing model to turn the note into a message.
+  `{setting-id}` in the instruction is replaced with that setting's value. The note is framed as something
+  to write, never a question to answer.
+- `analyze(text, settings)`: marks spans with `ghost.mark(span, message, { replacement?, action?, kind? })`.
+  `kind` is `spelling` or `grammar` for those colours. It runs per paragraph, in the background, after you
+  pause; unchanged paragraphs are not analyzed again.
+- `style: { instruction, vocabulary?, apps? }`: added to every suggestion request (or those in `apps`).
+- `actions: [{ id, title, instruction, arguments? | argumentsFrom?, symbol? }]`: ⌘K rewrites.
+  `{argument}` is the submenu choice; `argumentsFrom` names a `choices` setting.
+- `model: { name, repository, revision, file, bytes, sha256 }`: a pinned Hugging Face GGUF the actions run
+  on. The app downloads it into the Hugging Face cache; the script never names a URL.
 
-- `ghost.sentences(text)`, `ghost.words(text)`
-- `ghost.repetitions(text)` — a content word repeated within the last six content words
-- `ghost.passive(text)` — a form of “to be” followed by a past participle
-- `ghost.typos(text)` — system misspellings and guesses. Read only
-- `ghost.grammar(text)` — system grammar hits, descriptions, and corrections
-- `ghost.mark(span, message, options)`
+### What `ghost` offers
 
-A script that loops can stall analysis until Ghost Typist quits. Keep `analyze` to a single pass over the host’s spans.
+`ghost.words(text)`, `ghost.sentences(text)`, `ghost.repetitions(text)`, `ghost.passive(text)` and
+`ghost.proofread(text)` return spans `{ text, start, end, words, kind, message, guesses }`. Offsets are
+UTF-16, as in JavaScript strings. `ghost.proofread` is the macOS spelling and grammar checker, in the
+language it detects.
 
-## Packages here
+There is nothing else: no files, network, clipboard, timers or keys. Each extension runs in its own
+JavaScript context on its own background queue. A command that does not answer within a second, or an
+analysis over 250 ms per paragraph, is dropped. A script that loops forever keeps only its own queue busy.
 
-- **Slash Commands** — `/date`, `/signature` (edit the signature on the installed row)
-- **Text Expander** — `ttys`, `brb`, `omw`
-- **Typos** — underline a misspelling, accept the guess
-- **Grammar** — underline a grammar hit, and Fix Grammar on the selection
-- **Rewrite Actions** — the selection menu
-- **Translate** — the same menu, using Hy-MT2
+## Phrasebooks
+
+```json
+{ "schemaVersion": 3, "id": "you.payments", "name": "Payments", "version": "1.0.0", "author": "You",
+  "description": "Card and bank payment terms.", "domain": "Payment systems",
+  "terms": ["chargeback", "settlement", "interchange fee", "3-D Secure"] }
+```
+
+Up to 500 terms of up to 60 characters. For each suggestion the model is told the field and given up to
+40 terms, those sharing a word with the last few sentences first.
+
+## Publishing
+
+1. Add or edit the file in `extensions/` (`.js`) or `phrases/` (`.json`) in the library, and bump its version.
+2. Run `python3 scripts/build-extension-index.py` at the library root.
+3. Commit the file with the shelf's `index.json`. The app installs a package only if its SHA-256 matches.
