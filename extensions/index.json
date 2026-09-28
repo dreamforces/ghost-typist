@@ -6,9 +6,9 @@
       "name": "Slash Commands",
       "description": "Type /date and press Tab for today's date. Write your own commands in JavaScript in Options.",
       "author": "Ghost Typist",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "path": "extensions/commands.js",
-      "sha256": "d4de55be1fa33ef6b06aa5237cfd3cbe8de652201c3c08d04b29f2ebf10a21e2",
+      "sha256": "65d10526df272c013b6dbbaf3454626891dc09b975d4065d2779499c6e927a7c",
       "capabilities": [
         "1 command",
         "your commands"

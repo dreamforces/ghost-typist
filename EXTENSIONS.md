@@ -48,9 +48,10 @@ links; only `https` links are clickable.
 
 ### What an extension can do
 
-- `commands: { name: { title, run(ctx) } }`: Tab after `/name`, alone on a line or as its last word, replaces
-  `/name` with what `run` returns (a string or number). `ctx.text` is everything else typed, `ctx.before` and
-  `ctx.after` surround `/name`. A command may declare its own `settings`; Options lists them under the command, and
+- `commands: { name: { title, run(ctx) } }`: Tab after `/name` and any words after it, at the start of a line
+  or after a space, replaces them with what `run` returns (a string or number). `ctx.args` is those words
+  (`/wc sentences` gives `"sentences"`), `ctx.text` is everything else typed, `ctx.before` and `ctx.after`
+  surround the command. A command may declare its own `settings`; Options lists them under the command, and
   its `ctx.settings` holds those plus the extension's top-level settings.
 
   ```js
@@ -64,7 +65,7 @@ links; only `https` links are clickable.
   ```
 - `commandsFrom: "<list setting>"`: the user writes more commands in Options. The list has a `name` column
   and a `run` code column holding a function body, e.g. `return ctx.text.length + " characters"`. These
-  commands have no Options of their own; their choices are constants at the top of the code.
+  commands have no Options of their own; they read their choices from `ctx.args`.
 - `expansionsFrom: "<list setting>"`: a list with `trigger` and `text` columns. When the whole word before
   the caret is a trigger, its text is offered, and Tab replaces the trigger with it.
 - `compose: { instruction }`: Tab on `//note` asks the writing model to turn the note into a message.
