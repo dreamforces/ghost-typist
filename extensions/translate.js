@@ -1,8 +1,8 @@
-// ghost {"id":"community.translate","name":"Translate","version":"3.0.0","author":"Ghost Typist","description":"Translates a selection with Hy-MT2 7B, in the same menu as your other actions.","tags":["writing","translation"],"capabilities":["1 action","translation model"]}
+// ghost {"id":"community.translate","name":"Translate","version":"3.1.0","author":"Ghost Typist","description":"Translates a selection with Hy-MT2 7B, in the same menu as your other actions.","tags":["writing","translation"],"capabilities":["1 action","translation model"]}
 ghost.define({
   id: "community.translate",
   name: "Translate",
-  version: "3.0.0",
+  version: "3.1.0",
   author: "Ghost Typist",
   description: "Translates a selection with Hy-MT2 7B, in the same menu as your other actions.",
   model: {
@@ -14,7 +14,7 @@ ghost.define({
     sha256: "9f96256500f3fc1ab4d64336b58f52a949a95ad7516b0c229476eef782f9f77b"
   },
   settings: [
-    { id: "languages", title: "Languages", type: "choices", options: ["English", "Chinese", "Spanish", "French", "German", "Turkish", "Italian", "Portuguese", "Japanese", "Arabic"], value: ["English", "French", "Turkish"] }
+    { id: "languages", title: "Languages", type: "choices", custom: true, help: "Hy-MT2 translates these 38 languages. Add another by name; quality outside this list varies.", options: ["English", "Chinese", "Traditional Chinese", "Cantonese", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Czech", "Russian", "Ukrainian", "Turkish", "Arabic", "Hebrew", "Persian", "Urdu", "Hindi", "Bengali", "Gujarati", "Marathi", "Tamil", "Telugu", "Japanese", "Korean", "Thai", "Vietnamese", "Malay", "Indonesian", "Filipino", "Khmer", "Burmese", "Tibetan", "Kazakh", "Mongolian", "Uyghur"], value: ["English", "French", "Turkish"] }
   ],
   actions: [
     { id: "translate", title: "Translate", instruction: "Translate the following text into {argument}. Note that you should only output the translated result without any additional explanation:", argumentsFrom: "languages", symbol: "character.book.closed" }

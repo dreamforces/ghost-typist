@@ -6,9 +6,9 @@
       "name": "Slash Commands",
       "description": "Type /date and press Tab for today's date. Write your own commands in JavaScript in Options.",
       "author": "Ghost Typist",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "path": "extensions/commands.js",
-      "sha256": "026c8f992b0fa49195c64dd4a0360686c939ca2cc7f15b648a58452190da2f2c",
+      "sha256": "bf3d8651b8abf5c92e24c29452fe31b84f128cfc9aad8442fdc4071b71048a4a",
       "capabilities": [
         "1 command",
         "your commands"
@@ -22,9 +22,9 @@
       "name": "Compose",
       "description": "Type // and a short note, then press Tab: the writing model turns it into a message in your tone.",
       "author": "Ghost Typist",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "extensions/compose.js",
-      "sha256": "8dbead0d2084bf1a683437d2dd768571fc7a5d2014d23eaa552853d8880406ec",
+      "sha256": "ba2ca802b5922cfa3ac2088e95c6e215dcce9cbf9233b2a581d00fde87eb4535",
       "capabilities": [
         "compose"
       ],
@@ -37,9 +37,9 @@
       "name": "Text Expander",
       "description": "Type an abbreviation and press Tab: it is replaced with the text you set in Options.",
       "author": "Ghost Typist",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "path": "extensions/expander.js",
-      "sha256": "2a6684b42eb9abb02777daff668593183a6fb8965cdbba6d58935e09c9387da5",
+      "sha256": "e2754638226a6496477fc16df822e2152eedf800643fe14b46e8922e52136435",
       "capabilities": [
         "abbreviations"
       ],
@@ -82,9 +82,9 @@
       "name": "Translate",
       "description": "Translates a selection with Hy-MT2 7B, in the same menu as your other actions.",
       "author": "Ghost Typist",
-      "version": "3.0.0",
+      "version": "3.1.0",
       "path": "extensions/translate.js",
-      "sha256": "18626155fc61cc3aac1aa88ee3da83c86a928ce842519eec81a221261ddc0b80",
+      "sha256": "c53b9a69f3c6847b3ad3f61ba206e74adcdbce26bca3c2bd09b66336a3e34661",
       "capabilities": [
         "1 action",
         "translation model"
