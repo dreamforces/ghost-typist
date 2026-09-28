@@ -2,6 +2,21 @@
   "schemaVersion": 1,
   "packages": [
     {
+      "id": "community.adverb",
+      "name": "Adverb Detector",
+      "description": "Marks -ly adverbs such as ‘quickly’. Words such as ‘early’ and ‘family’ are left alone.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/adverb.json",
+      "sha256": "d5ec011658b0e990918d236fa9256455a84423c484ad836e01b2a8a10c09818d",
+      "capabilities": [
+        "adverbs"
+      ],
+      "tags": [
+        "writing"
+      ]
+    },
+    {
       "id": "community.cliches",
       "name": "Cliché Detector",
       "description": "Flags common clichés and overused phrases.",
@@ -11,6 +26,21 @@
       "sha256": "37a11c5a2dc4cab294f1a3baac85ee4c47a6d069d06dc7ad9e4147397a1dc6e4",
       "capabilities": [
         "16 checks"
+      ],
+      "tags": [
+        "writing"
+      ]
+    },
+    {
+      "id": "community.long-sentence",
+      "name": "Long Sentences",
+      "description": "Marks a sentence of more than 25 words.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/long-sentence.json",
+      "sha256": "2579df16b04cdf092a75675fcfc89a459b50f3a1727c5208ec19b521a25ec7a7",
+      "capabilities": [
+        "long sentences"
       ],
       "tags": [
         "writing"
@@ -110,6 +140,21 @@
       "tags": [
         "writing",
         "translation"
+      ]
+    },
+    {
+      "id": "community.wordiness",
+      "name": "Wordiness",
+      "description": "Marks wordy phrases and offers a shorter replacement.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/wordiness.json",
+      "sha256": "e8e76b79937e81d1deab0c9c6da07ef54141f439b86af87b10f4676dccd3d164",
+      "capabilities": [
+        "12 checks"
+      ],
+      "tags": [
+        "writing"
       ]
     }
   ]

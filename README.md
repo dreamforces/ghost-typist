@@ -30,7 +30,9 @@ Up to 500 phrases; triggers 2–160 characters, completions 1–160. See `phrase
 ## Extensions
 
 Schema 2 with any of `prompt` (a style added to every suggestion request, optionally only in some apps),
-`checks` (literal phrases to mark, with a message and optional replacement) and `actions` (selection rewrites, ⌘K by default).
+`checks` (literal phrases to mark, with a message and optional replacement), `detector` (one analyzer
+the app implements: `repetition`, `passive`, `long-sentence`, or `adverb`) and `actions` (selection rewrites, ⌘K by default).
+Checks and detectors, including every phrase and rule available today, are listed in [CHECKS-AND-DETECTORS.md](CHECKS-AND-DETECTORS.md).
 See `extensions/plain-english.json`. Extensions never contain phrases.
 
 ## Adding or updating a package

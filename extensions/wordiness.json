@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 2,
+  "id": "community.wordiness",
+  "name": "Wordiness",
+  "version": "1.0.0",
+  "author": "Ghost Typist",
+  "description": "Marks wordy phrases and offers a shorter replacement.",
+  "tags": ["writing"],
+  "checks": [
+    { "phrase": "due to the fact that", "message": "‘due to the fact that’ is wordy.", "replacement": "because" },
+    { "phrase": "in the event that", "message": "‘in the event that’ is wordy.", "replacement": "if" },
+    { "phrase": "a large number of", "message": "‘a large number of’ is wordy.", "replacement": "many" },
+    { "phrase": "in spite of the fact that", "message": "‘in spite of the fact that’ is wordy.", "replacement": "although" },
+    { "phrase": "at this point in time", "message": "‘at this point in time’ is wordy.", "replacement": "now" },
+    { "phrase": "has the ability to", "message": "‘has the ability to’ is wordy.", "replacement": "can" },
+    { "phrase": "in close proximity to", "message": "‘in close proximity to’ is wordy.", "replacement": "near" },
+    { "phrase": "in the near future", "message": "‘in the near future’ is wordy.", "replacement": "soon" },
+    { "phrase": "each and every", "message": "‘each and every’ is wordy.", "replacement": "every" },
+    { "phrase": "first and foremost", "message": "‘first and foremost’ is wordy.", "replacement": "first" },
+    { "phrase": "for the purpose of", "message": "‘for the purpose of’ is wordy.", "replacement": "to" },
+    { "phrase": "with regard to", "message": "‘with regard to’ is wordy.", "replacement": "about" }
+  ]
+}
