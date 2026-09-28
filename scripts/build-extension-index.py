@@ -9,29 +9,42 @@ import hashlib, json, pathlib
 def count(n, noun):
     return f"{n} {noun}{'' if n == 1 else 's'}" if n else None
 
-# Each shelf holds one kind: phrase packs are schema 1, extensions schema 2.
-for shelf, schema in (("extensions", 2), ("phrases", 1)):
-    entries, folder = [], pathlib.Path(shelf)
-    folder.mkdir(exist_ok=True)
-    for path in sorted(folder.glob("*.json")):
-        if path.name == "index.json":
-            continue
-        data = path.read_bytes()
-        package = json.loads(data)
-        assert package.get("schemaVersion") == schema, f"{path}: {shelf}/ holds schemaVersion {schema} packages"
-        assert package["id"] not in {e["id"] for e in entries}, f"{path}: duplicate id {package['id']}"
-        # The same summary the app shows for an installed package.
-        detectors = {"repetition": "repetition", "passive": "passive voice", "long-sentence": "long sentences", "adverb": "adverbs"}
-        if "detector" in package:
-            assert package["detector"] in detectors, f"{path}: unknown detector"
-        capabilities = [count(len(package.get("phrases", [])), "phrase"), "prompt style" if package.get("prompt") else None,
-                        count(len(package.get("checks", [])), "check"), count(len(package.get("actions", [])), "action"),
-                        detectors.get(package.get("detector")), "translation model" if package.get("model") else None]
-        entry = {key: package[key] for key in ("id", "name", "description", "author", "version")}
-        entry.update(path=path.as_posix(), sha256=hashlib.sha256(data).hexdigest(), capabilities=[c for c in capabilities if c])
-        if package.get("tags"):
-            entry["tags"] = package["tags"]
-        entries.append(entry)
-    entries.sort(key=lambda entry: entry["id"])
-    (folder / "index.json").write_text(json.dumps({"schemaVersion": 1, "packages": entries}, indent=2, ensure_ascii=False) + "\n")
-    print(f"{shelf}/index.json: {len(entries)} package(s)")
+phrases = pathlib.Path("phrases")
+phrases.mkdir(exist_ok=True)
+entries = []
+for path in sorted(phrases.glob("*.json")):
+    if path.name == "index.json":
+        continue
+    data = path.read_bytes()
+    package = json.loads(data)
+    assert package.get("schemaVersion") == 1, f"{path}: phrases/ holds phrase packs"
+    assert package["id"] not in {e["id"] for e in entries}, f"{path}: duplicate id"
+    entry = {key: package[key] for key in ("id", "name", "description", "author", "version")}
+    entry.update(path=path.as_posix(), sha256=hashlib.sha256(data).hexdigest(),
+                 capabilities=[c for c in [count(len(package.get("phrases", [])), "phrase")] if c])
+    if package.get("tags"):
+        entry["tags"] = package["tags"]
+    entries.append(entry)
+entries.sort(key=lambda entry: entry["id"])
+(phrases / "index.json").write_text(json.dumps({"schemaVersion": 1, "packages": entries}, indent=2, ensure_ascii=False) + "\n")
+print(f"phrases/index.json: {len(entries)} package(s)")
+
+extensions = pathlib.Path("extensions")
+extensions.mkdir(exist_ok=True)
+entries = []
+for path in sorted(extensions.glob("*.js")):
+    data = path.read_bytes()
+    first = data.splitlines()[0].decode()
+    assert first.startswith("// ghost "), f"{path}: missing // ghost header"
+    header = json.loads(first[len("// ghost "):])
+    source = data.decode()
+    assert "detector" not in source and '"checks"' not in source, f"{path}: checks and detectors are host functions, not package fields"
+    assert header["id"] not in {e["id"] for e in entries}, f"{path}: duplicate id"
+    entry = {key: header[key] for key in ("id", "name", "description", "author", "version")}
+    entry.update(path=path.as_posix(), sha256=hashlib.sha256(data).hexdigest(), capabilities=header.get("capabilities") or [])
+    if header.get("tags"):
+        entry["tags"] = header["tags"]
+    entries.append(entry)
+entries.sort(key=lambda entry: entry["id"])
+(extensions / "index.json").write_text(json.dumps({"schemaVersion": 1, "packages": entries}, indent=2, ensure_ascii=False) + "\n")
+print(f"extensions/index.json: {len(entries)} package(s)")

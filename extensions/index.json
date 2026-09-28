@@ -2,109 +2,46 @@
   "schemaVersion": 1,
   "packages": [
     {
-      "id": "community.adverb",
-      "name": "Adverb Detector",
-      "description": "Marks -ly adverbs such as ‘quickly’. Words such as ‘early’ and ‘family’ are left alone.",
+      "id": "community.commands",
+      "name": "Slash Commands",
+      "description": "Tab inserts the date with /date and your signature with /signature. Tab on a // line writes that paragraph.",
       "author": "Ghost Typist",
       "version": "1.0.0",
-      "path": "extensions/adverb.json",
-      "sha256": "d5ec011658b0e990918d236fa9256455a84423c484ad836e01b2a8a10c09818d",
+      "path": "extensions/commands.js",
+      "sha256": "bf9a7a64aea4e2e067bb7da44357e5cd3fe73015439a6232092023188899bf35",
       "capabilities": [
-        "adverbs"
+        "2 commands"
       ],
       "tags": [
         "writing"
       ]
     },
     {
-      "id": "community.cliches",
-      "name": "Cliché Detector",
-      "description": "Flags common clichés and overused phrases.",
+      "id": "community.expander",
+      "name": "Text Expander",
+      "description": "Fills in a few chat abbreviations, such as ttys.",
       "author": "Ghost Typist",
       "version": "1.0.0",
-      "path": "extensions/cliches.json",
-      "sha256": "37a11c5a2dc4cab294f1a3baac85ee4c47a6d069d06dc7ad9e4147397a1dc6e4",
+      "path": "extensions/expander.js",
+      "sha256": "de2b80d1ef475a7f0291677bc0e7253b071f645610da8c44f64e599161f883f0",
       "capabilities": [
-        "16 checks"
+        "3 expansions"
       ],
       "tags": [
         "writing"
       ]
     },
     {
-      "id": "community.long-sentence",
-      "name": "Long Sentences",
-      "description": "Marks a sentence of more than 25 words.",
+      "id": "community.grammar",
+      "name": "Grammar",
+      "description": "Marks grammar the system checker finds, and can ask your model to fix a selection.",
       "author": "Ghost Typist",
       "version": "1.0.0",
-      "path": "extensions/long-sentence.json",
-      "sha256": "2579df16b04cdf092a75675fcfc89a459b50f3a1727c5208ec19b521a25ec7a7",
+      "path": "extensions/grammar.js",
+      "sha256": "1a5a424206cde797aaf52f19c92258d76248f25bfeefc32cc3ee4e2093774eb2",
       "capabilities": [
-        "long sentences"
-      ],
-      "tags": [
-        "writing"
-      ]
-    },
-    {
-      "id": "community.passive",
-      "name": "Passive Voice Detector",
-      "description": "Marks passive constructions like ‘was written’.",
-      "author": "Ghost Typist",
-      "version": "1.0.0",
-      "path": "extensions/passive.json",
-      "sha256": "59a12a5b5fa20c90e68a947b7504f0de83ef45c5be0dca92aad8d000c031a8e4",
-      "capabilities": [
-        "passive voice"
-      ],
-      "tags": [
-        "writing"
-      ]
-    },
-    {
-      "id": "community.plain-english",
-      "name": "Plain English",
-      "description": "Nudges suggestions toward plain words, flags jargon, and adds a ⌘K action to simplify.",
-      "author": "Ghost Typist examples",
-      "version": "1.0.0",
-      "path": "extensions/plain-english.json",
-      "sha256": "627329c554ab11958bd71668d67f474b8f7a405349c4f5df2c30e3ccb971e9c6",
-      "capabilities": [
-        "prompt style",
-        "3 checks",
-        "1 action"
-      ],
-      "tags": [
-        "writing",
-        "style"
-      ]
-    },
-    {
-      "id": "community.professional",
-      "name": "Professional Mode",
-      "description": "Steers completions toward a concise, professional register.",
-      "author": "Ghost Typist",
-      "version": "1.0.0",
-      "path": "extensions/professional.json",
-      "sha256": "fd8a9df795dd45e3ac68e7688ec6de5d9611a35e5c3d42772e1de20462bdec3e",
-      "capabilities": [
-        "prompt style"
-      ],
-      "tags": [
-        "writing",
-        "style"
-      ]
-    },
-    {
-      "id": "community.repetition",
-      "name": "Repetition Detector",
-      "description": "Marks a word repeated close to itself.",
-      "author": "Ghost Typist",
-      "version": "1.0.0",
-      "path": "extensions/repetition.json",
-      "sha256": "89547280ac421cc01372cbac980debc6e87342f22cbcdb892d4e2ad4f6168105",
-      "capabilities": [
-        "repetition"
+        "1 action",
+        "marks writing"
       ],
       "tags": [
         "writing"
@@ -115,9 +52,9 @@
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "1.2.0",
-      "path": "extensions/rewrite.json",
-      "sha256": "5158bdb4d2efcc7e067b080d9970e1ea31e4d7d71dd613ccc663dcf2bac26d4a",
+      "version": "2.0.0",
+      "path": "extensions/rewrite.js",
+      "sha256": "098751f5a4b17fdfdab523c2c7879fc09ebbdcb884a492c61d73e9526caf4680",
       "capabilities": [
         "7 actions"
       ],
@@ -128,11 +65,11 @@
     {
       "id": "community.translate",
       "name": "Translate",
-      "description": "Translates a selection with Hy-MT2 7B, in the same ⌘K menu as your other actions.",
+      "description": "Translates a selection with Hy-MT2 7B, in the same menu as your other actions.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
-      "path": "extensions/translate.json",
-      "sha256": "16523a79677b83718eb808fb273c5a0f46ce88b03d5b0fa5ab69eb019a44717c",
+      "version": "2.0.0",
+      "path": "extensions/translate.js",
+      "sha256": "74e15dba3e5dbd368c84ca67d3f9617130941c820a6529b62707a362c7f5ba0c",
       "capabilities": [
         "1 action",
         "translation model"
@@ -143,15 +80,15 @@
       ]
     },
     {
-      "id": "community.wordiness",
-      "name": "Wordiness",
-      "description": "Marks wordy phrases and offers a shorter replacement.",
+      "id": "community.typos",
+      "name": "Typos",
+      "description": "Marks misspellings and offers the system guess.",
       "author": "Ghost Typist",
       "version": "1.0.0",
-      "path": "extensions/wordiness.json",
-      "sha256": "e8e76b79937e81d1deab0c9c6da07ef54141f439b86af87b10f4676dccd3d164",
+      "path": "extensions/typos.js",
+      "sha256": "8107f091c308036c88374e50380d0f59decb42cf8ea0f5858f91ccc9c60d6225",
       "capabilities": [
-        "12 checks"
+        "marks writing"
       ],
       "tags": [
         "writing"
