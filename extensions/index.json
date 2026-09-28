@@ -100,9 +100,9 @@
       "name": "Translate",
       "description": "Translates a selection with Hy-MT2 7B, in the same ⌘K menu as your other actions.",
       "author": "Ghost Typist",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "path": "extensions/translate.json",
-      "sha256": "3f40c5cf9824a3fdac0983239506ba0448c178f9a7572ae54b402c0b208caf6d",
+      "sha256": "16523a79677b83718eb808fb273c5a0f46ce88b03d5b0fa5ab69eb019a44717c",
       "capabilities": [
         "1 action",
         "translation model"
