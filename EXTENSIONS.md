@@ -30,7 +30,7 @@ ghost.define({
 
 ### Settings
 
-Every option lives in the script. `settings` is a list of `{ id, title, type, value, help?, options?, columns? }`.
+Every option lives in the script. `settings` is a list of `{ id, title, type, value, help?, options?, custom?, columns? }`.
 `value` is the default; what the user sets in Options replaces it, and a saved value that no longer fits
 falls back to the default. Ids are lowercase letters, digits and `-`.
 
@@ -40,8 +40,8 @@ falls back to the default. Ids are lowercase letters, digits and `-`.
 | `number` | integer 0–100000 | a stepper |
 | `toggle` | `true` / `false` | a checkbox |
 | `choice` | one of `options` | a pop-up menu |
-| `choices` | a subset of `options` | checkboxes |
-| `list` | rows `{ columnId: string }` | a table; a column with `code: true` is a JavaScript editor |
+| `choices` | a subset of `options`; with `custom: true` also up to 20 names the user types | checkboxes |
+| `list` | rows `{ columnId: string }` | a table; a column with `code: true` is a JavaScript editor; `placeholder` shows while a cell is empty |
 
 Hooks receive the current values as `settings` (or `ctx.settings`), keyed by id.
 
@@ -49,7 +49,18 @@ Hooks receive the current values as `settings` (or `ctx.settings`), keyed by id.
 
 - `commands: { name: { title, run(ctx) } }`: Tab on a line that is only `/name` replaces that line with
   what `run` returns (a string or number). `ctx.text` is everything else typed, `ctx.before` and `ctx.after`
-  surround the line.
+  surround the line. A command may declare its own `settings`; Options lists them under the command, and
+  its `ctx.settings` holds those plus the extension's top-level settings.
+
+  ```js
+  commands: {
+    date: {
+      title: "Today's date",
+      settings: [{ id: "date-format", title: "Format", type: "choice", value: "long", options: ["long", "iso"] }],
+      run(ctx) { return ctx.settings["date-format"] === "iso" ? new Date().toISOString().slice(0, 10) : new Date().toDateString() }
+    }
+  }
+  ```
 - `commandsFrom: "<list setting>"`: the user writes more commands in Options. The list has a `name` column
   and a `run` code column holding a function body, e.g. `return ctx.text.length + " characters"`.
 - `expansionsFrom: "<list setting>"`: a list with `trigger` and `text` columns. When the whole word before
@@ -86,7 +97,8 @@ analysis over 250 ms per paragraph, is dropped. A script that loops forever keep
 ```
 
 Up to 500 terms of up to 60 characters. For each suggestion the model is told the field and given up to
-40 terms, those sharing a word with the last few sentences first.
+40 terms, those sharing a word with the last few sentences first. When the unfinished word (3 letters or more)
+starts a word of a term, the rest of that term is offered directly: `dia` offers `gnosis`.
 
 ## Publishing
 
