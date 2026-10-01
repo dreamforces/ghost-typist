@@ -2,19 +2,33 @@
   "schemaVersion": 1,
   "packages": [
     {
-      "id": "community.commands",
-      "name": "Slash Commands",
-      "description": "Type /date and press Tab for today's date. Write your own commands in JavaScript in Options.",
+      "id": "community.base64",
+      "name": "Base64",
+      "description": "Type /base64 and some text, then Tab, to encode it. /base64 -d and Base64 text decodes it. Options choose which way a plain /base64 goes.",
       "author": "Ghost Typist",
-      "version": "2.3.0",
-      "path": "extensions/commands.js",
-      "sha256": "65d10526df272c013b6dbbaf3454626891dc09b975d4065d2779499c6e927a7c",
+      "version": "1.0.0",
+      "path": "extensions/base64.js",
+      "sha256": "cc523e5b7d788c1a6e51f80ba21981ac9729839b37e71dd3f211d5551bd149ee",
       "capabilities": [
-        "1 command",
-        "your commands"
+        "1 command"
       ],
       "tags": [
-        "writing"
+        "commands"
+      ]
+    },
+    {
+      "id": "community.coin",
+      "name": "Coin Flip",
+      "description": "Type /coin, then Tab, to flip a coin. Options choose what it says: heads or tails, yes or no, or 1 or 0.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/coin.js",
+      "sha256": "58cb6f79a86a6ba10957040c3de2298e9f07cdb973bea5b0a860b568f06660db",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
       ]
     },
     {
@@ -33,6 +47,66 @@
       ]
     },
     {
+      "id": "community.date",
+      "name": "Date",
+      "description": "Type /date, then Tab, for today's date. Options set the format and what you type after the slash.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/date.js",
+      "sha256": "15d7d319ee990d0511d5131adc5d8d9614ec85250698e7127387d7478c8e3aff",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.decode",
+      "name": "HTML Decode",
+      "description": "Type /decode and some text, then Tab, to turn HTML entities such as &lt; and &#39; back into characters.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/decode.js",
+      "sha256": "57d7d898be5a1d906884c3a7e216a505b487287ac3989db5beac5130b2d24f22",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.dice",
+      "name": "Dice",
+      "description": "Type /dice, then Tab, to roll a die. /dice 20 rolls a 20-sided one. Options set the sides of a plain /dice.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/dice.js",
+      "sha256": "633c74a99b95d4226941580e3888594c530e4e48a309242b9063a90a3305360a",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.encode",
+      "name": "HTML Encode",
+      "description": "Type /encode and some text, then Tab, to turn &, < and > into HTML entities. Options choose whether quotes are encoded too.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/encode.js",
+      "sha256": "4471e2a196d66d88e4fd45afb100bcbb7fcd9589d87195ece12ebe4c7ab72b03",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
       "id": "community.expander",
       "name": "Text Expander",
       "description": "Type an abbreviation and press Tab: it is replaced with the text you set in Options.",
@@ -45,6 +119,66 @@
       ],
       "tags": [
         "writing"
+      ]
+    },
+    {
+      "id": "community.latin",
+      "name": "Latin Letters",
+      "description": "Type /latin and some text, then Tab, to write it in plain Latin letters: Café becomes Cafe and İzmir becomes Izmir.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/latin.js",
+      "sha256": "27c1823d8571b27714a048e52b1010a8389a3e798e08cd02cf0a77b6744f8245",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.lower-case",
+      "name": "lower case",
+      "description": "Type /lower and some text, then Tab, for small letters.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/lower-case.js",
+      "sha256": "4f0b9b0988eb16806260fbbd5855ce81fd40dd2976561aaa721f752b4ef84bac",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.pascal-case",
+      "name": "PascalCase",
+      "description": "Type /pascal and some text, then Tab, to join its words with a capital letter on each.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/pascal-case.js",
+      "sha256": "f2d44c39f67088504344342c108ec189ebfd1f57ac85a20e5a6bae25396e3ec6",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.password",
+      "name": "Password",
+      "description": "Type /password, then Tab, for a random password. Options set the length, the characters and whether it is memorable; /password 24 special changes one use.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/password.js",
+      "sha256": "272aa7b2812732d546ff102e8102c45523f530b4400a1ed18816c98b3fb71056",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
       ]
     },
     {
@@ -63,6 +197,21 @@
       ]
     },
     {
+      "id": "community.random",
+      "name": "Random Number",
+      "description": "Type /random, then Tab, for a random whole number. /random 6 picks 1 to 6 and /random 3-9 picks 3 to 9. Options set the range for plain /random.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/random.js",
+      "sha256": "c458cd3c2d63059cc0fd9ee81895e4b0495c74dee19022acfc48db1fea7d9f8b",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
       "id": "community.rewrite",
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
@@ -75,6 +224,51 @@
       ],
       "tags": [
         "writing"
+      ]
+    },
+    {
+      "id": "community.snake-case",
+      "name": "snake_case",
+      "description": "Type /snake and some text, then Tab, to join its words in lower case with underscores.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/snake-case.js",
+      "sha256": "68f6f81ce2635254b266aa8add1bfbc2a87f2e49b2cac4433a09c76f975f3afa",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.time",
+      "name": "Time",
+      "description": "Type /time, then Tab, for the time now. Options set 12 or 24 hours and seconds; /time 24 or /time seconds changes one use.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/time.js",
+      "sha256": "239b82dfbb0a8f6545d2da10ae9517976dd159a74422488345fc768fcddef693",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.title-case",
+      "name": "Title Case",
+      "description": "Type /title and some text, then Tab, to capitalise each word. Options can keep small words such as of and the in lower case.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/title-case.js",
+      "sha256": "d308e3cebf9ef14477598ceb705370b8713002795d7a2ebd03dab705dcc67964",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
       ]
     },
     {
@@ -92,6 +286,36 @@
       "tags": [
         "writing",
         "translation"
+      ]
+    },
+    {
+      "id": "community.upper-case",
+      "name": "ALL CAPS",
+      "description": "Type /caps and some text, then Tab, for capital letters.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/upper-case.js",
+      "sha256": "72a39b7c5e74d0cb014cf011144891c85a7d08f347126709dfc85856720a42be",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.uuid",
+      "name": "UUID",
+      "description": "Type /uuid, then Tab, for a random version 4 UUID. Options set the letter case and whether it has hyphens.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/uuid.js",
+      "sha256": "4007465f97e65ad43b7b2d80a237820c9645d840d97886e727278060ee81c6b2",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
       ]
     }
   ]

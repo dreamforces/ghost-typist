@@ -55,14 +55,27 @@ links; only `https` links are clickable.
   its `ctx.settings` holds those plus the extension's top-level settings.
 
   ```js
+  settings: [
+    { id: "command", title: "Command", type: "text", value: "date", help: "What you type after the /. Several names: date, d." },
+    { id: "format", title: "Format", type: "choice", value: "long", options: ["long", "iso"] }
+  ],
   commands: {
     date: {
       title: "Today's date",
-      settings: [{ id: "date-format", title: "Format", type: "choice", value: "long", options: ["long", "iso"] }],
-      run(ctx) { return ctx.settings["date-format"] === "iso" ? new Date().toISOString().slice(0, 10) : new Date().toDateString() }
+      nameFrom: "command",
+      usage: "[format]",
+      run(ctx) { return ctx.settings.format === "iso" ? new Date().toISOString().slice(0, 10) : new Date().toDateString() }
     }
   }
   ```
+
+  The app has no commands of its own; this is how an extension registers one. `nameFrom` names a `text` setting
+  whose value is what the user types after the `/`, so the user names the command in the extension's Options
+  (`date`, or `d`, or `date, d` for both). Lowercase letters, digits and hyphens only; an empty or invalid value
+  falls back to the key the command is declared under (`date` here). `usage` is shown beside the name in the
+  `/` menu: `<text>` says the command needs words after its name, `[format]` that it may take some. Typing `/` opens
+  that menu, ↑↓ browse it, and Tab completes the name; on a whole name Tab runs a command that needs no words,
+  and only closes the menu for one whose usage starts with `<`.
 - `commandsFrom: "<list setting>"`: the user writes more commands in Options. The list has a `name` column
   and a `run` code column holding a function body, e.g. `return ctx.text.length + " characters"`. These
   commands have no Options of their own; they read their choices from `ctx.args`.
@@ -87,6 +100,10 @@ links; only `https` links are clickable.
 `ghost.proofread(text)` return spans `{ text, start, end, words, kind, message, guesses }`. Offsets are
 UTF-16, as in JavaScript strings. `ghost.proofread` is the macOS spelling and grammar checker, in the
 language it detects.
+
+`ghost.random(n)` is a whole number from 0 up to n (exclusive), from the system's random source;
+`ghost.latin(text)` writes text in plain Latin letters (`İzmir` becomes `Izmir`); `ghost.base64Encode(text)`
+and `ghost.base64Decode(text)` (a string, or null when it is not Base64 of UTF-8 text).
 
 There is nothing else: no files, network, clipboard, timers or keys. Each extension runs in its own
 JavaScript context on its own background queue. A command that does not answer within a second, or an
