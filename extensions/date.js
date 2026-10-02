@@ -1,9 +1,9 @@
-// ghost {"id":"community.date","name":"Date","version":"1.1.0","author":"Ghost Typist","description":"Type /date, then Tab, for today's date. /date tomorrow or /date +7 gives another day. Options set the format, the language and what you type after the slash.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.date","name":"Date","version":"1.2.0","author":"Ghost Typist","description":"Type /date, then Tab, for today's date. /date tomorrow or /date +7 gives another day. Options set the format, the language and what you type after the slash.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /date and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "date, d"), so the command is named where you can change it.
 
-const LANGUAGES = { System: undefined, English: "en", Turkish: "tr", German: "de", French: "fr", Spanish: "es", Italian: "it", Portuguese: "pt", Dutch: "nl" };
+const LANGUAGES = { English: "en", Turkish: "tr", German: "de", French: "fr", Spanish: "es", Italian: "it", Portuguese: "pt", Dutch: "nl" };
 
 // yyyy yy | MMMM MMM MM M | dd d | EEEE EEE | HH H hh h | mm | ss | a. Text in [brackets] is kept as it is.
 const format = (d, pattern, locale, utc) => {
@@ -42,7 +42,7 @@ const format = (d, pattern, locale, utc) => {
 ghost.define({
   id: "community.date",
   name: "Date",
-  version: "1.1.0",
+  version: "1.2.0",
   author: "Ghost Typist",
   description: "Type /date, then Tab, for today's date. /date tomorrow or /date +7 gives another day. Options set the format, the language and what you type after the slash.",
   settings: [
@@ -53,7 +53,7 @@ ghost.define({
     { id: "pattern", title: "Custom pattern", type: "text", value: "EEEE d MMMM yyyy",
       when: { setting: "format", equals: "Custom" }, help: "Letters: yyyy year, MMMM month name, MM month, dd day, EEEE weekday, HH or hh hours, mm minutes, ss seconds, a AM/PM. Put text in [brackets]." },
     { id: "language", title: "Language", type: "choice", value: "System", options: ["System", "English", "Turkish", "German", "French", "Spanish", "Italian", "Portuguese", "Dutch"],
-      help: "The language of month and weekday names." }
+      help: "The language of month and weekday names. System follows the language you are writing." }
   ],
   commands: {
     date: {
@@ -73,7 +73,9 @@ ghost.define({
           "Long": "d MMMM yyyy", "American": "MMMM d, yyyy", "Day/Month/Year": "dd/MM/yyyy", "Month/Day/Year": "MM/dd/yyyy",
           "Year-Month-Day": "yyyy-MM-dd", "With weekday": "EEEE, d MMMM yyyy", "Custom": ctx.settings.pattern
         };
-        return format(d, patterns[ctx.settings.format] || patterns.Long, LANGUAGES[ctx.settings.language], false);
+        const chosen = ctx.settings.language;
+        const locale = !chosen || chosen === "System" ? ctx.language : LANGUAGES[chosen];
+        return format(d, patterns[ctx.settings.format] || patterns.Long, locale, false);
       }
     }
   }

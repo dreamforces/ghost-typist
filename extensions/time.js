@@ -1,14 +1,11 @@
-// ghost {"id":"community.time","name":"Time","version":"1.3.0","author":"Ghost Typist","description":"Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and the time zone.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.time","name":"Time","version":"1.4.0","author":"Ghost Typist","description":"Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and the time zone. Words follow your language.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /time and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "time, t"), so the command is named where you can change it.
 
-const LANGUAGES = { System: undefined, English: "en", Turkish: "tr", German: "de", French: "fr", Spanish: "es", Italian: "it", Portuguese: "pt", Dutch: "nl" };
-
-
-const zoneName = (d, timeZone) => {
+const zoneName = (d, timeZone, locale) => {
   try {
-    const parts = new Intl.DateTimeFormat(undefined, { timeZone, timeZoneName: "short" }).formatToParts(d);
+    const parts = new Intl.DateTimeFormat(locale, { timeZone, timeZoneName: "short" }).formatToParts(d);
     return (parts.find((part) => part.type === "timeZoneName") || {}).value || "";
   } catch (e) { return ""; }
 };
@@ -49,8 +46,11 @@ const format = (d, pattern, locale, timeZone) => {
       case "m": return String(f.i);
       case "ss": return two(f.s);
       case "s": return String(f.s);
-      case "z": return zoneName(d, timeZone);
-      default: return f.h < 12 ? "AM" : "PM";
+      case "z": return zoneName(d, timeZone, locale);
+      default: {
+        const period = new Intl.DateTimeFormat(locale, { timeZone, hour: "numeric", hourCycle: "h12" }).formatToParts(d);
+        return (period.find((part) => part.type === "dayPeriod") || {}).value || (f.h < 12 ? "AM" : "PM");
+      }
     }
   });
 };
@@ -64,9 +64,9 @@ const timeZones = () => {
 ghost.define({
   id: "community.time",
   name: "Time",
-  version: "1.3.0",
+  version: "1.4.0",
   author: "Ghost Typist",
-  description: "Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and the time zone.",
+  description: "Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and the time zone. Words follow your language.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "time",
       help: "What you type after the /. Several names work: time, t." },
@@ -95,7 +95,7 @@ ghost.define({
         const pattern = custom && !flags.length ? ctx.settings.pattern
           : (twentyFour ? "HH:mm" : "h:mm a") + (zone ? " z" : "");
         const chosen = ctx.settings.zone && ctx.settings.zone !== "My time zone" ? ctx.settings.zone : undefined;
-        return format(new Date(), pattern, undefined, chosen).trim();
+        return format(new Date(), pattern, ctx.language, chosen).trim();
       }
     }
   }

@@ -1,4 +1,4 @@
-// ghost {"id":"community.pascal-case","name":"PascalCase","version":"1.1.0","author":"Ghost Typist","description":"Type /pascal and some text, then Tab, to join its words with a capital letter on each. An option starts with a small letter instead, for camelCase.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.pascal-case","name":"PascalCase","version":"1.2.0","author":"Ghost Typist","description":"Type /pascal and some text, then Tab, to join its words with a capital letter on each. An option starts with a small letter instead, for camelCase.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /pascal and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "pascal, p"), so the command is named where you can change it.
@@ -13,12 +13,12 @@ const words = (s) => s
   .replace(/([\p{Ll}\d])(\p{Lu})/gu, "$1 $2")
   .replace(/(\p{Lu}+)(\p{Lu}\p{Ll})/gu, "$1 $2")
   .split(/[\s_-]+/).filter(Boolean);
-const capital = (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+const capital = (w, locale) => w.charAt(0).toLocaleUpperCase(locale) + w.slice(1).toLocaleLowerCase(locale);
 
 ghost.define({
   id: "community.pascal-case",
   name: "PascalCase",
-  version: "1.1.0",
+  version: "1.2.0",
   author: "Ghost Typist",
   description: "Type /pascal and some text, then Tab, to join its words with a capital letter on each. An option starts with a small letter instead, for camelCase.",
   settings: [
@@ -33,8 +33,9 @@ ghost.define({
       usage: "<text>",
       examples: ["hello world again", "user_account_id"],
       run(ctx) {
-        const list = words(text(ctx)).map(capital);
-        if (ctx.settings.camel && list.length) list[0] = list[0].toLowerCase();
+        const locale = ctx.language || "en";
+        const list = words(text(ctx)).map((w) => capital(w, locale));
+        if (ctx.settings.camel && list.length) list[0] = list[0].charAt(0).toLocaleLowerCase(locale) + list[0].slice(1);
         return list.join("");
       }
     }
