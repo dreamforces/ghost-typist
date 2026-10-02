@@ -1,11 +1,13 @@
-// ghost {"id":"community.proofread","name":"Spelling & Grammar","version":"1.1.0","author":"Ghost Typist","description":"Underlines misspellings and grammar slips with the macOS checker. Click an underline for a fix.","tags":["writing"],"capabilities":["marks writing"]}
+// ghost {"id":"community.proofread","name":"Spelling & Grammar","version":"1.2.0","author":"Ghost Typist","description":"Underlines misspellings and grammar slips with the macOS checker, or fixes a typo when you turn that on.","tags":["writing"],"capabilities":["marks writing"]}
 ghost.define({
   id: "community.proofread",
   name: "Spelling & Grammar",
-  version: "1.1.0",
+  version: "1.2.0",
   author: "Ghost Typist",
-  description: "Underlines misspellings and grammar slips with the macOS checker. Click an underline for a fix.",
+  description: "Underlines misspellings and grammar slips with the macOS checker, or fixes a typo when you turn that on.",
   settings: [
+    { id: "fix", title: "Fix typos", type: "toggle", value: false,
+      help: "On, a misspelling in the scratchpad is replaced with the suggestion when you pause. Off, it is only underlined." },
     { id: "spelling", title: "Mark spelling", type: "toggle", value: true },
     { id: "grammar", title: "Mark grammar", type: "toggle", value: true },
     { id: "ignore-caps", title: "Ignore ALL-CAPS words", type: "toggle", value: false, help: "Acronyms such as NASA and API." },
@@ -35,7 +37,8 @@ ghost.define({
         if (settings["ignore-numbers"] && /\d/.test(token(text, hit))) continue;
         if (settings["ignore-links"] && /@|:\/\/|^www\.|\.(com|org|net|io|dev|app)\b/i.test(token(text, hit))) continue;
       }
-      ghost.mark(hit, hit.message, { kind: hit.kind, replacement: hit.guesses[0] });
+      const guess = hit.guesses[0];
+      ghost.mark(hit, hit.message, { kind: hit.kind, replacement: guess, apply: !!settings.fix && hit.kind === "spelling" && !!guess });
     }
   }
 })

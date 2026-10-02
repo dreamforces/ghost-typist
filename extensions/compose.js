@@ -1,10 +1,10 @@
-// ghost {"id":"community.compose","name":"Compose","version":"2.0.0","author":"Ghost Typist","description":"Type // and a short note, then press Tab: the writing model turns it into a message in your tone. The second slash is the command, so you can rename it in Options.","tags":["writing","commands"],"capabilities":["compose"]}
+// ghost {"id":"community.compose","name":"Compose","version":"2.0.1","author":"Ghost Typist","description":"Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.","tags":["writing","commands"],"capabilities":["compose"]}
 ghost.define({
   id: "community.compose",
   name: "Compose",
-  version: "2.0.0",
+  version: "2.0.1",
   author: "Ghost Typist",
-  description: "Type // and a short note, then press Tab: the writing model turns it into a message in your tone. The second slash is the command, so you can rename it in Options.",
+  description: "Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "/",
       help: "What you type after the first /. The default, a second /, reads //note. Try write for /write thank Rachel. Several names work: /, write." },

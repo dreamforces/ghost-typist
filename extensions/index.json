@@ -4,11 +4,11 @@
     {
       "id": "community.base64",
       "name": "Base64",
-      "description": "Type /base64 and some text, then Tab, to encode it. /base64 -d and Base64 text decodes it. Options choose which way a plain /base64 goes and whether the result is URL-safe.",
+      "description": "Type /base64 and some text, then Tab, to encode it. /base64 -d decodes. Options set the direction and whether the result is URL-safe.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "extensions/base64.js",
-      "sha256": "829d390e60c023c6c64756dd9ce9d23e317fbc86e6d78a080105a2e0e204b128",
+      "sha256": "8756dd09658f7bcc846c8e841dbb3428cc24839230d73d32cd70519f4dcd874d",
       "capabilities": [
         "1 command"
       ],
@@ -34,11 +34,11 @@
     {
       "id": "community.compose",
       "name": "Compose",
-      "description": "Type // and a short note, then press Tab: the writing model turns it into a message in your tone. The second slash is the command, so you can rename it in Options.",
+      "description": "Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.",
       "author": "Ghost Typist",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "path": "extensions/compose.js",
-      "sha256": "e06750d5f55842e75fce97e4d71a8909cc410cbd88f7edca62a895a34f0d08f1",
+      "sha256": "c9593eae97e8a899591c0987369512d8315bf2d4edb45ec349fc00f5021ce12a",
       "capabilities": [
         "compose"
       ],
@@ -170,11 +170,11 @@
     {
       "id": "community.password",
       "name": "Password",
-      "description": "Type /password, then Tab, for a random password. /password 24 special changes one use. Options set the length, the characters, the symbols and whether it is memorable.",
+      "description": "Type /password, then Tab, for a random password. /password 24 special changes one use. Options set length, characters and whether it is memorable.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "extensions/password.js",
-      "sha256": "095b087b5023f9798c58eb60d53ab8a74cf6b27bd7c61a924aa4d824d583e4c4",
+      "sha256": "27d3907b3a6cb9e52add25e6f76717527951bfd463e453d9a76ad89530ad9da2",
       "capabilities": [
         "1 command"
       ],
@@ -185,11 +185,11 @@
     {
       "id": "community.proofread",
       "name": "Spelling & Grammar",
-      "description": "Underlines misspellings and grammar slips with the macOS checker. Click an underline for a fix.",
+      "description": "Underlines misspellings and grammar slips with the macOS checker, or fixes a typo when you turn that on.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "path": "extensions/proofread.js",
-      "sha256": "222fcaa66b2503e121d41f557db16945b948d1356815f625e5c95f9a8a1d119b",
+      "sha256": "d1643e9b1212f22cae423eb1e2147a316ea0ce8d77a48df78e5c02df1d422575",
       "capabilities": [
         "marks writing"
       ],
@@ -200,11 +200,11 @@
     {
       "id": "community.random",
       "name": "Random Number",
-      "description": "Type /random, then Tab, for a random number. /random 6 picks 1 to 6 and /random 3-9 picks 3 to 9. Options set the range for plain /random and how many decimals it has.",
+      "description": "Type /random, then Tab, for a random number in the default range. /random 200 goes up to 200, and /random 3-9 uses that range.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "path": "extensions/random.js",
-      "sha256": "d67697492a71d56b46b5e9ce283d71a04288cf2ce45e9b7911e1913f77a96400",
+      "sha256": "b379d60f704b4f1b14c1c3d14f9d9d0ee1013cc619b9afbb206c38a45b994aeb",
       "capabilities": [
         "1 command"
       ],
@@ -217,9 +217,9 @@
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "3.2.0",
+      "version": "3.3.0",
       "path": "extensions/rewrite.js",
-      "sha256": "9a6b9e63826a5430ae8704619f48f706c4422e748ffd86822baf3fa9695c4567",
+      "sha256": "da14604705972c1b113f4d14d3f40ac4eb0d5215723514cac7ea2ee91f428511",
       "capabilities": [
         "7 actions"
       ],
@@ -245,11 +245,11 @@
     {
       "id": "community.time",
       "name": "Time",
-      "description": "Type /time, then Tab, for the time now. /time 24 or /time seconds changes one use. Options set the format, the time zone and what you type after the slash.",
+      "description": "Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and whether it is UTC.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "path": "extensions/time.js",
-      "sha256": "e62815d58817a6eb0913d0f0b700162720fbe3ac12d8e376cc4ab4de447d12ad",
+      "sha256": "e6429b5cec781851e63cc11a5c2178f19800020f7358ad90d9f0a4f3d2f6eae2",
       "capabilities": [
         "1 command"
       ],
@@ -262,9 +262,9 @@
       "name": "Title Case",
       "description": "Type /title and some text, then Tab, to capitalise each word. Options keep small words such as of and the in lower case and leave ALL-CAPS words alone.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "path": "extensions/title-case.js",
-      "sha256": "df3f2e1047434b1e22026e369eef616001bf382ff4a6732c715aa6313cd8d074",
+      "sha256": "d8171ac68c9e6d9cd2f841df4fb9ae28b97ef9fd30c14e25e261d6b6d413e21a",
       "capabilities": [
         "1 command"
       ],

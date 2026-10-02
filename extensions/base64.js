@@ -1,4 +1,4 @@
-// ghost {"id":"community.base64","name":"Base64","version":"1.1.0","author":"Ghost Typist","description":"Type /base64 and some text, then Tab, to encode it. /base64 -d and Base64 text decodes it. Options choose which way a plain /base64 goes and whether the result is URL-safe.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.base64","name":"Base64","version":"1.1.1","author":"Ghost Typist","description":"Type /base64 and some text, then Tab, to encode it. /base64 -d decodes. Options set the direction and whether the result is URL-safe.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /base64 and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "base64, b"), so the command is named where you can change it.
@@ -6,9 +6,9 @@
 ghost.define({
   id: "community.base64",
   name: "Base64",
-  version: "1.1.0",
+  version: "1.1.1",
   author: "Ghost Typist",
-  description: "Type /base64 and some text, then Tab, to encode it. /base64 -d and Base64 text decodes it. Options choose which way a plain /base64 goes and whether the result is URL-safe.",
+  description: "Type /base64 and some text, then Tab, to encode it. /base64 -d decodes. Options set the direction and whether the result is URL-safe.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "base64",
       help: "What you type after the /. Several names work: base64, b." },

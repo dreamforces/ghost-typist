@@ -1,4 +1,4 @@
-// ghost {"id":"community.title-case","name":"Title Case","version":"1.1.0","author":"Ghost Typist","description":"Type /title and some text, then Tab, to capitalise each word. Options keep small words such as of and the in lower case and leave ALL-CAPS words alone.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.title-case","name":"Title Case","version":"1.2.0","author":"Ghost Typist","description":"Type /title and some text, then Tab, to capitalise each word. Options keep small words such as of and the in lower case and leave ALL-CAPS words alone.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /title and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "title, t"), so the command is named where you can change it.
@@ -18,13 +18,13 @@ const capital = (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
 ghost.define({
   id: "community.title-case",
   name: "Title Case",
-  version: "1.1.0",
+  version: "1.2.0",
   author: "Ghost Typist",
   description: "Type /title and some text, then Tab, to capitalise each word. Options keep small words such as of and the in lower case and leave ALL-CAPS words alone.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "title",
       help: "What you type after the /. Several names work: title, t." },
-    { id: "small-words", title: "Keep small words lowercase", type: "toggle", value: false,
+    { id: "small-words", title: "Keep small words lowercase", type: "toggle", value: true,
       help: "Leaves a, an, and, of, the and similar words in lower case, except the first and last." },
     { id: "acronyms", title: "Keep ALL-CAPS words", type: "toggle", value: true, help: "NASA stays NASA instead of becoming Nasa." }
   ],

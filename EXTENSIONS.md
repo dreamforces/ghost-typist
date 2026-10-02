@@ -2,11 +2,11 @@
 
 Ghost Typist ships no extensions. Everything comes from the library at
 [dreamforces/ghost-typist](https://github.com/dreamforces/ghost-typist), or from a file. Installing a script
-asks once ("Allow third-party extensions", also a switch in the Library); after that an install is one click
+asks once, from **Allow third-party extensions** at the top of the Extensions page. Until then search, Install from File and Install stay off. After that an install is one click
 with a spinner, and **Details** on any row shows what it adds. Phrasebooks are only terms and never ask.
 
 - **Extensions** are one JavaScript file each: `/commands` (compose is one too: `//note`), abbreviations, proofreading
-  marks, a prompt style, and ⌘K actions. Each one declares its own options; the app draws them in
+  marks, a prompt style, and ⌃⌘/ actions. Each one declares its own options; the app draws them in
   **Extensions → Options…**.
 - **Phrasebooks** are JSON: a field (“Payment systems”) and its terms. They tell the writing model what the
   writer works on, so a plain sentence is continued in that field's words.
@@ -28,6 +28,8 @@ ghost.define({
   }
 })
 ```
+
+A description is at most 160 characters, about two lines. Options and the extensions list show two lines; the rest is on hover.
 
 ### Settings
 
@@ -102,12 +104,12 @@ links; only `https` links are clickable.
   note is the writer's own words, with the grammar fixed. `{setting-id}` in the instruction is replaced with that setting's value; the app
   reads the tone (Friendly, Formal, Direct or Executive) from it. With a remote model, the text before the note
   is sent only from apps the writer allowed.
-- `analyze(text, settings)`: marks spans with `ghost.mark(span, message, { replacement?, action?, kind? })`.
-  `kind` is `spelling` or `grammar` for those colours. It runs per paragraph, in the background, after you
-  pause; unchanged paragraphs are not analyzed again.
+- `analyze(text, settings)`: marks spans with `ghost.mark(span, message, { replacement?, action?, kind?, apply? })`.
+  `kind` is `spelling` or `grammar` for those colours. `apply: true` replaces the span in the scratchpad instead of
+  only underlining it. It runs per paragraph, in the background, after you pause; unchanged paragraphs are not analyzed again.
 - `style: { instruction, vocabulary?, apps? }`: added to every suggestion request (or those in `apps`).
-- `actions: [{ id, title, instruction, arguments? | argumentsFrom?, symbol? }]`: ⌘K rewrites.
-  `{argument}` is the submenu choice; `argumentsFrom` names a `choices` setting.
+- `actions: [{ id, title, instruction, arguments? | argumentsFrom?, symbol? }]`: ⌃⌘/ rewrites.
+  `{argument}` is the submenu choice; `argumentsFrom` names a `choices` setting. `{setting-id}` is replaced with that setting's value.
 - `model: { name, repository, revision, file, bytes, sha256 }`: a pinned Hugging Face GGUF the actions run
   on. The app downloads it into the Hugging Face cache; the script never names a URL.
 

@@ -1,4 +1,4 @@
-// ghost {"id":"community.password","name":"Password","version":"1.1.0","author":"Ghost Typist","description":"Type /password, then Tab, for a random password. /password 24 special changes one use. Options set the length, the characters, the symbols and whether it is memorable.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.password","name":"Password","version":"1.1.1","author":"Ghost Typist","description":"Type /password, then Tab, for a random password. /password 24 special changes one use. Options set length, characters and whether it is memorable.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /password and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "password, p"), so the command is named where you can change it.
@@ -6,9 +6,9 @@
 ghost.define({
   id: "community.password",
   name: "Password",
-  version: "1.1.0",
+  version: "1.1.1",
   author: "Ghost Typist",
-  description: "Type /password, then Tab, for a random password. /password 24 special changes one use. Options set the length, the characters, the symbols and whether it is memorable.",
+  description: "Type /password, then Tab, for a random password. /password 24 special changes one use. Options set length, characters and whether it is memorable.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "password",
       help: "What you type after the /. Several names work: password, p." },
