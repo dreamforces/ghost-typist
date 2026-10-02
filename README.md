@@ -14,8 +14,8 @@ appcast.xml             app updates (written by the release script)
 scripts/                index builder
 ```
 
-The app ships none of these. Every install shows a review sheet first, including any prompt text word for
-word. Scripts run in a sandbox with no files, network or keys. The guide is [EXTENSIONS.md](EXTENSIONS.md).
+The app ships none of these. Installing a script asks once (Allow third-party extensions); after that it is one click, and Details shows what a
+package adds, including any prompt text word for word. Scripts run in a sandbox with no files, network or keys. The guide is [EXTENSIONS.md](EXTENSIONS.md).
 
 ## Using the extensions
 
@@ -27,7 +27,7 @@ word. Scripts run in a sandbox with no files, network or keys. The guide is [EXT
   that needs nothing more and only closes the list for one that needs words after it (`/base64 hello`).
   Words after the name override its options for that one use: `/password 24 special`, `/random 3-9`, `/time 24`.
   A command works at the start of a line or after a space (`twelve apples /wc`).
-- `//note` then Tab: Compose writes the note as a message in the chosen tone (Friendly, Formal, Direct,
+- `//note` then Tab: Compose is a slash command too, and its name is an option (the default is a second `/`; make it `write` for `/write`). It writes the note as a message in the chosen tone (Friendly, Formal, Direct,
   Executive, the same as ⌘K Change Tone). It is a few sentences unless the note asks for a length:
   `//thank Rachel in a few paragraphs for coming yesterday`.
 - Translate lists 11 languages; add any others Hy-MT2 supports by name, comma-separated.

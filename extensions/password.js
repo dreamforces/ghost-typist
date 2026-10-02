@@ -1,4 +1,4 @@
-// ghost {"id":"community.password","name":"Password","version":"1.0.0","author":"Ghost Typist","description":"Type /password, then Tab, for a random password. Options set the length, the characters and whether it is memorable; /password 24 special changes one use.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.password","name":"Password","version":"1.1.0","author":"Ghost Typist","description":"Type /password, then Tab, for a random password. /password 24 special changes one use. Options set the length, the characters, the symbols and whether it is memorable.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /password and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "password, p"), so the command is named where you can change it.
@@ -6,15 +6,18 @@
 ghost.define({
   id: "community.password",
   name: "Password",
-  version: "1.0.0",
+  version: "1.1.0",
   author: "Ghost Typist",
-  description: "Type /password, then Tab, for a random password. Options set the length, the characters and whether it is memorable; /password 24 special changes one use.",
+  description: "Type /password, then Tab, for a random password. /password 24 special changes one use. Options set the length, the characters, the symbols and whether it is memorable.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "password",
-      help: "What you type after the /. Give it several names with commas, such as password, p." },
+      help: "What you type after the /. Several names work: password, p." },
     { id: "length", title: "Length", type: "number", value: 16, help: "4 to 128 characters." },
     { id: "characters", title: "Characters", type: "choice", value: "Letters and digits",
       options: ["Letters and digits", "Letters, digits and symbols", "Letters", "Digits"] },
+    { id: "symbols", title: "Symbols", type: "text", value: "!@#$%^&*_-+=?",
+      when: { setting: "characters", equals: "Letters, digits and symbols" }, help: "The symbols it may use." },
+    { id: "ambiguous", title: "Avoid look-alikes", type: "toggle", value: false, help: "Leaves out 0 O 1 l I." },
     { id: "memorable", title: "Memorable", type: "toggle", value: false,
       help: "Pronounceable syllables, easier to remember and type. It still ends in a digit and a symbol when those are allowed." }
   ],
@@ -23,8 +26,12 @@ ghost.define({
       title: "Random password",
       nameFrom: "command",
       usage: "[length] [kind]",
+      examples: ["", "24 special", "12 memorable"],
       run(ctx) {
-        const classes = { letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", digits: "0123456789", symbols: "!@#$%^&*_-+=?" };
+        const avoid = ctx.settings.ambiguous ? /[0O1lI]/g : null;
+        const clean = (s) => avoid ? s.replace(avoid, "") : s;
+        const symbols = clean(ctx.settings.symbols.replace(/\s/g, "")) || "!@#$%^&*_-+=?";
+        const classes = { letters: clean("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"), digits: clean("0123456789"), symbols };
         const kinds = {
           "Letters and digits": ["letters", "digits"],
           "Letters, digits and symbols": ["letters", "digits", "symbols"],
@@ -45,7 +52,7 @@ ghost.define({
         const pick = (set) => set[ghost.random(set.length)];
         const allowed = kinds[kind];
         if (memorable && allowed.includes("letters")) {
-          const consonants = "bcdfghjklmnpqrstvwxyz", vowels = "aeiou";
+          const consonants = clean("bcdfghjklmnpqrstvwxyz"), vowels = "aeiou";
           const out = Array.from({ length }, (_, i) => pick(i % 2 ? vowels : consonants));
           out[0] = out[0].toUpperCase();
           if (allowed.includes("symbols")) out[length - 1] = pick(classes.symbols);

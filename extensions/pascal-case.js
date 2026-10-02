@@ -1,4 +1,4 @@
-// ghost {"id":"community.pascal-case","name":"PascalCase","version":"1.0.0","author":"Ghost Typist","description":"Type /pascal and some text, then Tab, to join its words with a capital letter on each.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.pascal-case","name":"PascalCase","version":"1.1.0","author":"Ghost Typist","description":"Type /pascal and some text, then Tab, to join its words with a capital letter on each. An option starts with a small letter instead, for camelCase.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /pascal and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "pascal, p"), so the command is named where you can change it.
@@ -18,20 +18,24 @@ const capital = (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
 ghost.define({
   id: "community.pascal-case",
   name: "PascalCase",
-  version: "1.0.0",
+  version: "1.1.0",
   author: "Ghost Typist",
-  description: "Type /pascal and some text, then Tab, to join its words with a capital letter on each.",
+  description: "Type /pascal and some text, then Tab, to join its words with a capital letter on each. An option starts with a small letter instead, for camelCase.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "pascal",
-      help: "What you type after the /. Give it several names with commas, such as pascal, p." }
+      help: "What you type after the /. Several names work: pascal, p." },
+    { id: "camel", title: "Start with a small letter", type: "toggle", value: false, help: "camelCase instead of PascalCase." }
   ],
   commands: {
     pascal: {
       title: "PascalCase",
       nameFrom: "command",
       usage: "<text>",
+      examples: ["hello world again", "user_account_id"],
       run(ctx) {
-        return words(text(ctx)).map(capital).join("");
+        const list = words(text(ctx)).map(capital);
+        if (ctx.settings.camel && list.length) list[0] = list[0].toLowerCase();
+        return list.join("");
       }
     }
   }
