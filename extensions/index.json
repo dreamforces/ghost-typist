@@ -292,11 +292,11 @@
     {
       "id": "community.upper-case",
       "name": "ALL CAPS",
-      "description": "Type /caps and some text, then Tab, for capital letters. An option follows Turkish rules, where i becomes İ.",
+      "description": "Type /caps and some text, then Tab, for English capitals. /caps tr istanbul becomes İSTANBUL. A language code such as fr, de or el works the same way.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "path": "extensions/upper-case.js",
-      "sha256": "5396fbf5dc2eb3c0810bd0e46d0bf18dab9f2c27ccafb0fbb41952ed88fc98da",
+      "sha256": "68dfc6785e20417133908c69015690c5b5dae690caced0a8254cdbf23375ee4f",
       "capabilities": [
         "1 command"
       ],
