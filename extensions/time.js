@@ -1,4 +1,4 @@
-// ghost {"id":"community.time","name":"Time","version":"1.2.0","author":"Ghost Typist","description":"Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and whether it is UTC.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.time","name":"Time","version":"1.3.0","author":"Ghost Typist","description":"Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and the time zone.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /time and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "time, t"), so the command is named where you can change it.
@@ -6,21 +6,28 @@
 const LANGUAGES = { System: undefined, English: "en", Turkish: "tr", German: "de", French: "fr", Spanish: "es", Italian: "it", Portuguese: "pt", Dutch: "nl" };
 
 
-const zoneName = (d, utc) => {
+const zoneName = (d, timeZone) => {
   try {
-    const parts = new Intl.DateTimeFormat(undefined, { timeZone: utc ? "UTC" : undefined, timeZoneName: "short" }).formatToParts(d);
+    const parts = new Intl.DateTimeFormat(undefined, { timeZone, timeZoneName: "short" }).formatToParts(d);
     return (parts.find((part) => part.type === "timeZoneName") || {}).value || "";
-  } catch (e) { return utc ? "UTC" : ""; }
+  } catch (e) { return ""; }
+};
+
+// The clock in a named zone. No zone means this Mac's.
+const clock = (d, timeZone) => {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone, hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric",
+    hour: "numeric", minute: "numeric", second: "numeric",
+  }).formatToParts(d);
+  const n = (type) => Number((parts.find((part) => part.type === type) || {}).value);
+  return { y: n("year"), m: n("month"), d: n("day"), h: n("hour"), i: n("minute"), s: n("second") };
 };
 
 // yyyy yy | MMMM MMM MM M | dd d | EEEE EEE | HH H hh h | mm | ss | a. Text in [brackets] is kept as it is.
-const format = (d, pattern, locale, utc) => {
-  const zone = utc ? "UTC" : undefined;
-  const part = (options) => d.toLocaleString(locale, { ...options, timeZone: zone });
+const format = (d, pattern, locale, timeZone) => {
+  const part = (options) => d.toLocaleString(locale, { ...options, timeZone });
   const two = (n) => String(n).padStart(2, "0");
-  const f = utc
-    ? { y: d.getUTCFullYear(), m: d.getUTCMonth() + 1, d: d.getUTCDate(), h: d.getUTCHours(), i: d.getUTCMinutes(), s: d.getUTCSeconds() }
-    : { y: d.getFullYear(), m: d.getMonth() + 1, d: d.getDate(), h: d.getHours(), i: d.getMinutes(), s: d.getSeconds() };
+  const f = clock(d, timeZone);
   return pattern.replace(/\[([^\]]*)\]|y{4}|y{2}|M{1,4}|d{1,2}|E{3,4}|H{1,2}|h{1,2}|m{1,2}|s{1,2}|a|z/g, (t, literal) => {
     if (literal !== undefined) return literal;
     switch (t) {
@@ -42,18 +49,24 @@ const format = (d, pattern, locale, utc) => {
       case "m": return String(f.i);
       case "ss": return two(f.s);
       case "s": return String(f.s);
-      case "z": return zoneName(d, utc);
+      case "z": return zoneName(d, timeZone);
       default: return f.h < 12 ? "AM" : "PM";
     }
   });
 };
 
+const timeZones = () => {
+  let known = [];
+  try { known = Intl.supportedValuesOf("timeZone"); } catch (e) { known = []; }
+  return ["My time zone", "UTC"].concat(known.filter((zone) => zone !== "UTC"));
+};
+
 ghost.define({
   id: "community.time",
   name: "Time",
-  version: "1.2.0",
+  version: "1.3.0",
   author: "Ghost Typist",
-  description: "Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and whether it is UTC.",
+  description: "Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and the time zone.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "time",
       help: "What you type after the /. Several names work: time, t." },
@@ -61,7 +74,7 @@ ghost.define({
       options: ["12-hour", "12-hour with time zone", "24-hour", "24-hour with time zone", "Custom"] },
     { id: "pattern", title: "Custom pattern", type: "text", value: "HH:mm z",
       when: { setting: "format", equals: "Custom" }, help: "Letters: yyyy year, MMMM month name, MM month, dd day, EEEE weekday, HH or hh hours, mm minutes, ss seconds, a AM/PM, z time zone. Put text in [brackets]." },
-    { id: "zone", title: "Time zone", type: "choice", value: "My time zone", options: ["My time zone", "UTC"] }
+    { id: "zone", title: "Time zone", type: "choice", value: "My time zone", options: timeZones() }
   ],
   commands: {
     time: {
@@ -81,7 +94,8 @@ ghost.define({
         }
         const pattern = custom && !flags.length ? ctx.settings.pattern
           : (twentyFour ? "HH:mm" : "h:mm a") + (zone ? " z" : "");
-        return format(new Date(), pattern, undefined, ctx.settings.zone === "UTC").trim();
+        const chosen = ctx.settings.zone && ctx.settings.zone !== "My time zone" ? ctx.settings.zone : undefined;
+        return format(new Date(), pattern, undefined, chosen).trim();
       }
     }
   }
