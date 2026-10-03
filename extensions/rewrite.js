@@ -1,12 +1,12 @@
-// ghost {"id":"community.rewrite","name":"Rewrite Actions","version":"3.3.0","author":"Ghost Typist","description":"Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.","tags":["writing"],"capabilities":["7 actions"]}
+// ghost {"id":"community.rewrite","name":"Rewrite Actions","version":"3.3.1","author":"Ghost Typist","description":"Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.","tags":["writing"],"capabilities":["7 actions"]}
 ghost.define({
   id: "community.rewrite",
   name: "Rewrite Actions",
-  version: "3.3.0",
+  version: "3.3.1",
   author: "Ghost Typist",
   description: "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
   settings: [
-    { id: "tones", title: "Tones", type: "choices", custom: true, options: ["Friendly", "Formal", "Direct", "Executive", "Warm", "Playful", "Confident", "Diplomatic"],
+    { id: "tones", title: "Tones", type: "choices", custom: true, options: ["Friendly", "Formal", "Direct", "Executive"],
       value: ["Friendly", "Formal", "Direct", "Executive"], help: "The tones Change Tone offers. Add your own, such as Sarcastic." },
     { id: "shorter", title: "Shorten to", type: "choice", options: ["a little shorter", "about half", "one sentence"], value: "about half",
       help: "How much Shorten takes out." },

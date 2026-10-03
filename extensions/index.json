@@ -36,9 +36,9 @@
       "name": "Compose",
       "description": "Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.",
       "author": "Ghost Typist",
-      "version": "2.0.1",
+      "version": "2.0.2",
       "path": "extensions/compose.js",
-      "sha256": "c9593eae97e8a899591c0987369512d8315bf2d4edb45ec349fc00f5021ce12a",
+      "sha256": "d71bb548f3391b5c67aa391782c509414d4823ea6204a24fc66da02eeaaafe42",
       "capabilities": [
         "compose"
       ],
@@ -170,11 +170,11 @@
     {
       "id": "community.password",
       "name": "Password",
-      "description": "Type /password, then Tab, for a random password. /password 24 special changes one use. Options set length, characters and whether it is memorable.",
+      "description": "Type /password, then Tab, for a random password. /password 24 special changes one use. Memorable is three or more English words.",
       "author": "Ghost Typist",
-      "version": "1.1.1",
+      "version": "1.3.0",
       "path": "extensions/password.js",
-      "sha256": "27d3907b3a6cb9e52add25e6f76717527951bfd463e453d9a76ad89530ad9da2",
+      "sha256": "753b628c3c5b5fc59779a1b15193ed4f6e85f916aa4903f8abadf37f8d07223c",
       "capabilities": [
         "1 command"
       ],
@@ -217,9 +217,9 @@
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "3.3.0",
+      "version": "3.3.1",
       "path": "extensions/rewrite.js",
-      "sha256": "da14604705972c1b113f4d14d3f40ac4eb0d5215723514cac7ea2ee91f428511",
+      "sha256": "840b258f6b3e8accda3458bf6ca5420d8188fba6b1b50c6e45166cdf49fcc342",
       "capabilities": [
         "7 actions"
       ],
@@ -275,11 +275,11 @@
     {
       "id": "community.translate",
       "name": "Translate",
-      "description": "Translates a selection with Hy-MT2 7B, in the same menu as your other actions.",
+      "description": "Translates a selection, in the same menu as your other actions.",
       "author": "Ghost Typist",
-      "version": "3.2.0",
+      "version": "3.2.2",
       "path": "extensions/translate.js",
-      "sha256": "064aa59b35c06cb897947876d0327cac771444712e49ae6c6aa42dfb4dcc6e23",
+      "sha256": "8806592c006e8d9342e7486ada994da9f8a11cba8781a3cd49c3eda5df30e01c",
       "capabilities": [
         "1 action",
         "translation model"
