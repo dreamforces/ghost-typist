@@ -50,11 +50,11 @@
     {
       "id": "community.date",
       "name": "Date",
-      "description": "Type /date, then Tab, for today's date. /date tomorrow or /date +7 gives another day. Options set the format, the language and what you type after the slash.",
+      "description": "Type /date, then Tab, for today's date. /date yesterday or /date next Tue gives another day. Options set the format and the language.",
       "author": "Ghost Typist",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "path": "extensions/date.js",
-      "sha256": "5f05b48d6abec229a39939a749beffaf1892a5e701f8c059290c4e10046d7132",
+      "sha256": "8f9c573acd38278970f12798326bd1d79621295a1f042f60857e68aae6099f94",
       "capabilities": [
         "1 command"
       ],
@@ -110,11 +110,11 @@
     {
       "id": "community.expander",
       "name": "Text Expander",
-      "description": "Type an abbreviation and press Tab: it is replaced with the text you set in Options.",
+      "description": "Type /~ and an abbreviation, then press Tab: it is replaced with the text you set in Options.",
       "author": "Ghost Typist",
-      "version": "2.1.0",
+      "version": "2.5.0",
       "path": "extensions/expander.js",
-      "sha256": "e2754638226a6496477fc16df822e2152eedf800643fe14b46e8922e52136435",
+      "sha256": "479dc7faa71b3a7f04093b7d83a9f865d8271b2629bfe0eec9d9ab7e79a9fed5",
       "capabilities": [
         "abbreviations"
       ],
@@ -244,12 +244,12 @@
     },
     {
       "id": "community.time",
-      "name": "Time",
-      "description": "Type /now, then Tab, for the time now with its time zone. /now 24 changes one use. Options set the format and the time zone. Words follow your language.",
+      "name": "Current Time",
+      "description": "Type /now, then Tab, for the time now. /now 24 changes one use. Options set the format, the time zone, and whether that zone is shown.",
       "author": "Ghost Typist",
-      "version": "1.5.0",
+      "version": "1.7.0",
       "path": "extensions/time.js",
-      "sha256": "f3231b16944612d5fba1e1b724627677b346e50af7131a44002aa548d32ae445",
+      "sha256": "b82948aa17ef315bae084d4b7aaee18bee4412fee7ae00429d60c526fb9aa47f",
       "capabilities": [
         "1 command"
       ],

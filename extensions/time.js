@@ -1,4 +1,4 @@
-// ghost {"id":"community.time","name":"Time","version":"1.5.0","author":"Ghost Typist","description":"Type /now, then Tab, for the time now with its time zone. /now 24 changes one use. Options set the format and the time zone. Words follow your language.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.time","name":"Current Time","version":"1.7.0","author":"Ghost Typist","description":"Type /now, then Tab, for the time now. /now 24 changes one use. Options set the format, the time zone, and whether that zone is shown.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /now and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "now, n"), so the command is named where you can change it.
@@ -63,15 +63,17 @@ const timeZones = () => {
 
 ghost.define({
   id: "community.time",
-  name: "Time",
-  version: "1.5.0",
+  name: "Current Time",
+  version: "1.7.0",
   author: "Ghost Typist",
-  description: "Type /now, then Tab, for the time now with its time zone. /now 24 changes one use. Options set the format and the time zone. Words follow your language.",
+  description: "Type /now, then Tab, for the time now. /now 24 changes one use. Options set the format, the time zone, and whether that zone is shown.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "now",
       help: "What you type after the /. Several names work: now, n." },
     { id: "format", title: "Format", type: "choice", value: "12-hour with time zone",
       options: ["12-hour", "12-hour with time zone", "24-hour", "24-hour with time zone", "Custom"] },
+    { id: "show-zone", title: "Show time zone", type: "toggle", value: true,
+      help: "Adds the abbreviation, such as BST. Turn this off for the time alone. tz after the command shows it once." },
     { id: "pattern", title: "Custom pattern", type: "text", value: "HH:mm z",
       when: { setting: "format", equals: "Custom" }, help: "Letters: yyyy year, MMMM month name, MM month, dd day, EEEE weekday, HH or hh hours, mm minutes, ss seconds, a AM/PM, z time zone. Put text in [brackets]." },
     { id: "zone", title: "Time zone", type: "choice", value: "My time zone", options: timeZones() }
@@ -86,14 +88,19 @@ ghost.define({
         const custom = ctx.settings.format === "Custom";
         let twentyFour = ctx.settings.format.startsWith("24"), zone = ctx.settings.format.includes("time zone");
         const flags = ctx.args.toLowerCase().split(/\s+/).filter(Boolean);
+        const asked = flags.includes("tz") || flags.includes("zone");
         for (const word of flags) {
           if (word === "24") twentyFour = true;
           else if (word === "12") twentyFour = false;
           else if (word === "tz" || word === "zone") zone = true;
           else throw new Error("use 12, 24 or tz.");
         }
-        const pattern = custom && !flags.length ? ctx.settings.pattern
+        if (ctx.settings["show-zone"] === false && !asked) zone = false;
+        let pattern = custom && !flags.length ? ctx.settings.pattern
           : (twentyFour ? "HH:mm" : "h:mm a") + (zone ? " z" : "");
+        if (ctx.settings["show-zone"] === false && !asked) {
+          pattern = pattern.replace(/\[([^\]]*)\]|\bz\b/g, (token, literal) => (literal !== undefined ? token : ""));
+        }
         const chosen = ctx.settings.zone && ctx.settings.zone !== "My time zone" ? ctx.settings.zone : undefined;
         return format(new Date(), pattern, ctx.language, chosen).trim();
       }

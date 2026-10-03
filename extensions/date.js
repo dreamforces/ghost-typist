@@ -1,4 +1,4 @@
-// ghost {"id":"community.date","name":"Date","version":"1.2.0","author":"Ghost Typist","description":"Type /date, then Tab, for today's date. /date tomorrow or /date +7 gives another day. Options set the format, the language and what you type after the slash.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.date","name":"Date","version":"1.3.0","author":"Ghost Typist","description":"Type /date, then Tab, for today's date. /date yesterday or /date next Tue gives another day. Options set the format and the language.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /date and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "date, d"), so the command is named where you can change it.
@@ -42,12 +42,12 @@ const format = (d, pattern, locale, utc) => {
 ghost.define({
   id: "community.date",
   name: "Date",
-  version: "1.2.0",
+  version: "1.3.0",
   author: "Ghost Typist",
-  description: "Type /date, then Tab, for today's date. /date tomorrow or /date +7 gives another day. Options set the format, the language and what you type after the slash.",
+  description: "Type /date, then Tab, for today's date. /date yesterday or /date next Tue gives another day. Options set the format and the language.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "date",
-      help: "What you type after the /. Several names work: date, d." },
+      help: "What you type after the /. Several names work: date, d. Try yesterday, next Tue, last Thursday of last month, 6 October 2026, or +7." },
     { id: "format", title: "Format", type: "choice", value: "Long",
       options: ["Long", "American", "Day/Month/Year", "Month/Day/Year", "Year-Month-Day", "With weekday", "Custom"] },
     { id: "pattern", title: "Custom pattern", type: "text", value: "EEEE d MMMM yyyy",
@@ -60,21 +60,21 @@ ghost.define({
       title: "Today's date",
       nameFrom: "command",
       usage: "[tomorrow or +7]",
-      examples: ["", "tomorrow", "+7"],
+      examples: ["", "yesterday", "next Tue", "+7"],
       run(ctx) {
-        const d = new Date();
-        const given = ctx.args.trim().toLowerCase();
-        if (given) {
-          const days = given === "today" ? 0 : given === "tomorrow" ? 1 : given === "yesterday" ? -1 : /^[+-]\d{1,5}$/.test(given) ? Number(given) : null;
-          if (days === null) throw new Error("use tomorrow, yesterday, or a number of days such as +7 or -3.");
-          d.setDate(d.getDate() + days);
-        }
         const patterns = {
           "Long": "d MMMM yyyy", "American": "MMMM d, yyyy", "Day/Month/Year": "dd/MM/yyyy", "Month/Day/Year": "MM/dd/yyyy",
           "Year-Month-Day": "yyyy-MM-dd", "With weekday": "EEEE, d MMMM yyyy", "Custom": ctx.settings.pattern
         };
         const chosen = ctx.settings.language;
         const locale = !chosen || chosen === "System" ? ctx.language : LANGUAGES[chosen];
+        const given = String(ctx.args || "").trim();
+        let d = new Date();
+        if (given) {
+          const iso = ghost.date(given, { language: locale });
+          const parts = iso.split("-");
+          d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+        }
         return format(d, patterns[ctx.settings.format] || patterns.Long, locale, false);
       }
     }

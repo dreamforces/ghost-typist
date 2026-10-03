@@ -1,20 +1,22 @@
-// ghost {"id":"community.expander","name":"Text Expander","version":"2.1.0","author":"Ghost Typist","description":"Type an abbreviation and press Tab: it is replaced with the text you set in Options.","tags":["writing"],"capabilities":["abbreviations"]}
+// ghost {"id":"community.expander","name":"Text Expander","version":"2.5.0","author":"Ghost Typist","description":"Type /~ and an abbreviation, then press Tab: it is replaced with the text you set in Options.","tags":["writing"],"capabilities":["abbreviations"]}
 ghost.define({
   id: "community.expander",
   name: "Text Expander",
-  version: "2.1.0",
+  version: "2.5.0",
   author: "Ghost Typist",
-  description: "Type an abbreviation and press Tab: it is replaced with the text you set in Options.",
+  description: "Type /~ and an abbreviation, then press Tab: it is replaced with the text you set in Options.",
   settings: [
     {
       id: "abbreviations", title: "Abbreviations", type: "list",
-      help: "An abbreviation is one word. It expands only when it is the whole word before the caret.",
-      columns: [{ id: "trigger", title: "Type", placeholder: "ttys" }, { id: "text", title: "Becomes", placeholder: "talk to you soon" }],
+      columns: [{ id: "trigger", title: "Type", placeholder: "brb" }, { id: "text", title: "Becomes", placeholder: "The text to type. Return adds a line.", multiline: true }],
       value: [
         { trigger: "brb", text: "be right back" },
-        { trigger: "omw", text: "on my way" },
-        { trigger: "ttys", text: "talk to you soon" }
+        { trigger: "late", text: "Hi ${1:everyone},\n\nSorry I'm running late and will join the meeting in ${2:10 minutes}. Please start without me." }
       ]
+    },
+    {
+      id: "stops", title: "How Tab moves", type: "info",
+      value: "Type /~ and the word, then Tab. brb is typed as it is. late stops on ${1:everyone}: it is selected, and typing replaces it. Tab moves to ${2:10 minutes}, and Shift-Tab moves back. Tab once more finishes. A click, an arrow key or Esc leaves the stops. Return in Becomes starts a new line."
     }
   ],
   expansionsFrom: "abbreviations"

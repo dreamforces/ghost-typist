@@ -44,7 +44,8 @@ falls back to the default. Ids are lowercase letters, digits and `-`.
 | `toggle` | `true` / `false` | a checkbox |
 | `choice` | one of `options` | a pop-up menu |
 | `choices` | a subset of `options`; with `custom: true` also up to 20 names the user types, comma-separated | checkboxes |
-| `list` | rows `{ columnId: string }` | a table; a column with `code: true` is a JavaScript editor; `placeholder` shows while a cell is empty |
+| `list` | rows `{ columnId: string }` | a table; a column with `code: true` is a JavaScript editor; `multiline: true` is a cell of several lines (up to 500 characters); `placeholder` shows while a cell is empty |
+| `info` | a string | a note, not an option the user edits |
 
 `when: { setting, equals }` shows an option only while another `choice` option has that value (a password's
 symbol list only for "Letters, digits and symbols"). A hidden option still has its value.
@@ -91,10 +92,31 @@ links; only `https` links are clickable.
 - `commandsFrom: "<list setting>"`: the user writes more commands in Options. The list has a `name` column
   and a `run` code column holding a function body, e.g. `return ctx.text.length + " characters"`. These
   commands have no Options of their own; they read their choices from `ctx.args`.
-- `expansionsFrom: "<list setting>"`: a list with `trigger` and `text` columns. When the whole word before
-  the caret is a trigger, its text is offered, and Tab replaces the trigger with it. `{skin}` in the text
+- `expansionsFrom: "<list setting>"`: a list with `trigger` and `text` columns. The writer types `/~` and a
+  trigger (`/~ttys`), then Tab, and the trigger is replaced with its text; a plain word never expands. With
+  `typedExpansions: true` the trigger is instead typed as it is and expands on Tab as the whole word before the
+  caret (for emoticons such as `:)`); those are not listed after `/~`. `{skin}` in the text
   becomes the skin-tone modifier from a choice setting named `skin`, when that choice is an emoji of the tone,
-  and nothing when the emoji has no tone.
+  and nothing when the emoji has no tone. Give the `text` column `multiline: true` and an abbreviation can
+  be several lines with tab stops (below).
+- **Tab stops** in an abbreviation's text, written as TextMate does: `$1`, `$2`… are the places Tab visits in
+  order, `${1:name}` is one with a default that is selected when Tab arrives (type to replace it), and `$0` is
+  where the caret ends (the end of the text if there is none). `\$` is a dollar sign, `\}` a brace inside a default.
+  After the expansion the first stop is selected; Tab goes to the next and Shift-Tab back, and the last Tab
+  leaves the caret at `$0`. A click, an arrow key, Esc, Tab past the last stop or another app ends it. A number
+  used twice is one stop, at its first place. A price is `\$5`, since `$5` is stop 5. Lines are typed as Shift-Return,
+  so they do not send a chat message (Control-Option-Return in an Excel cell, where Shift-Return would commit it). For example, `/~late` then Tab:
+
+  ```
+  Hi ${1:everyone},
+
+  Sorry I'm running late and will join the meeting in ${2:10 minutes}.
+  ```
+
+  Tab types it whole, without a ghost preview; the menu bar says "⇥ expands late". The menu shows only the first line.
+  The first stop is selected once the field has finished taking the keys. Stops are followed by the keys typed in the
+  placeholder, and checked against the field where it reports its selection; where it does not, arrow keys move the
+  caret, so editing a placeholder with a shortcut that deletes more than a character (⌥⌫) can lose the place.
 - `compose: { instruction, nameFrom?, title?, usage?, examples? }`: compose is a slash command whose name
   defaults to `/`, so the line reads `//note`; set a `text` setting with `nameFrom` and the writer can make it
   `/write` instead (`/` or `//` always means the default). It appears in the `/` menu as `//` with `usage`
@@ -153,6 +175,13 @@ the call fails, or this extension is not allowed to use the network. A command m
 HTTPS on port 443, to a public address, with no password in the URL, and the response is at most 256 KB of text.
 Addresses on this Mac or a private network are refused. Analysis cannot fetch. Currency uses it for the
 European Central Bank rates published by [Frankfurter](https://www.frankfurter.app/).
+
+`ghost.date(text, options)` returns a date as `YYYY-MM-DD`, on this Mac's calendar. It throws when it does not
+understand, or the day is not real. `options.language` reads an ambiguous number: `en` and `en-US` take the month
+first, and any other language takes the day first. A part over 12 settles the order. With no language, it reads as English.
+It understands today, tomorrow, yesterday, +7 and -3; Tuesday, next Tue and last Thursday; last Thursday of the last
+month and first Monday of October; 6 October 2026, October 6, 2026, 2026-10-06, 29/01/2026 and 01/29/2026.
+`next Tuesday` is the coming one, after today. A month named without a year is this year.
 
 There is nothing else: no files, clipboard or keys. Each extension runs in its own JavaScript
 context on its own background queue. A command that does not answer within five seconds, or an analysis over
