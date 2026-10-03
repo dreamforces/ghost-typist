@@ -1,7 +1,7 @@
-// ghost {"id":"community.time","name":"Time","version":"1.4.0","author":"Ghost Typist","description":"Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and the time zone. Words follow your language.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.time","name":"Time","version":"1.5.0","author":"Ghost Typist","description":"Type /now, then Tab, for the time now with its time zone. /now 24 changes one use. Options set the format and the time zone. Words follow your language.","tags":["commands"],"capabilities":["1 command"]}
 //
-// Type /time and press Tab. The extension's Options say what you type after the slash (it can be
-// several names, such as "time, t"), so the command is named where you can change it.
+// Type /now and press Tab. The extension's Options say what you type after the slash (it can be
+// several names, such as "now, n"), so the command is named where you can change it.
 
 const zoneName = (d, timeZone, locale) => {
   try {
@@ -64,12 +64,12 @@ const timeZones = () => {
 ghost.define({
   id: "community.time",
   name: "Time",
-  version: "1.4.0",
+  version: "1.5.0",
   author: "Ghost Typist",
-  description: "Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and the time zone. Words follow your language.",
+  description: "Type /now, then Tab, for the time now with its time zone. /now 24 changes one use. Options set the format and the time zone. Words follow your language.",
   settings: [
-    { id: "command", title: "Command", type: "text", value: "time",
-      help: "What you type after the /. Several names work: time, t." },
+    { id: "command", title: "Command", type: "text", value: "now",
+      help: "What you type after the /. Several names work: now, n." },
     { id: "format", title: "Format", type: "choice", value: "12-hour with time zone",
       options: ["12-hour", "12-hour with time zone", "24-hour", "24-hour with time zone", "Custom"] },
     { id: "pattern", title: "Custom pattern", type: "text", value: "HH:mm z",

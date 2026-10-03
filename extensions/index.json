@@ -245,11 +245,11 @@
     {
       "id": "community.time",
       "name": "Time",
-      "description": "Type /time, then Tab, for the time now with its time zone. /time 24 changes one use. Options set the format and the time zone. Words follow your language.",
+      "description": "Type /now, then Tab, for the time now with its time zone. /now 24 changes one use. Options set the format and the time zone. Words follow your language.",
       "author": "Ghost Typist",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "path": "extensions/time.js",
-      "sha256": "3115e23e7b47f41081ea732fbae99cdc6bac25c44c093f338d42c37e6d6b9d1e",
+      "sha256": "f3231b16944612d5fba1e1b724627677b346e50af7131a44002aa548d32ae445",
       "capabilities": [
         "1 command"
       ],

@@ -1,6 +1,6 @@
 # Writing extensions and phrasebooks
 
-Ghost Typist ships a timer, emoji abbreviations and a calculator. Everything else comes from the library at
+Ghost Typist ships a timer, emoji abbreviations, a calculator, unit conversion, currency conversion and time conversion. Everything else comes from the library at
 [dreamforces/ghost-typist](https://github.com/dreamforces/ghost-typist), or from a file. Installing a script
 asks once, from **Allow third-party extensions** at the top of the Extensions page. Until then search, Install from File and Install stay off. After that an install is one click
 with a spinner, and **Details** on any row shows what it adds. Phrasebooks are only terms and never ask.
@@ -116,6 +116,9 @@ links; only `https` links are clickable.
   `{argument}` is the submenu choice; `argumentsFrom` names a `choices` setting. `{setting-id}` is replaced with that setting's value.
 - `model: { name, repository, revision, file, bytes, sha256 }`: a pinned Hugging Face GGUF the actions run
   on. The app downloads it into the Hugging Face cache; the script never names a URL.
+- `network: true`: the extension may call `ghost.fetch`. It stays off until the user allows it. Allowing
+  means the calls are their responsibility; declining leaves it off, and turning it on later asks again.
+  Put `"network"` in the header `capabilities` as well, so the library can say so before install.
 
 ### What `ghost` offers
 
@@ -145,8 +148,14 @@ and opens System Settings once macOS will not show the prompt.
 The app keeps the time: a script still cannot wait or schedule its own callback. Options runs examples
 without posting them.
 
-There is nothing else: no files, network, clipboard or keys. Each extension runs in its own JavaScript
-context on its own background queue. A command that does not answer within a second, or an analysis over
+`ghost.fetch(url)` makes one HTTPS GET and returns the response text. It throws when the address is refused,
+the call fails, or this extension is not allowed to use the network. A command may make 4 calls. Each one is
+HTTPS on port 443, to a public address, with no password in the URL, and the response is at most 256 KB of text.
+Addresses on this Mac or a private network are refused. Analysis cannot fetch. Currency uses it for the
+European Central Bank rates published by [Frankfurter](https://www.frankfurter.app/).
+
+There is nothing else: no files, clipboard or keys. Each extension runs in its own JavaScript
+context on its own background queue. A command that does not answer within five seconds, or an analysis over
 250 ms per paragraph, is dropped. A script that loops forever keeps only its own queue busy.
 
 ## Phrasebooks
