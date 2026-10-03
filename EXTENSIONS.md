@@ -1,6 +1,6 @@
 # Writing extensions and phrasebooks
 
-Ghost Typist ships no extensions. Everything comes from the library at
+Ghost Typist ships a timer, emoji abbreviations and a calculator. Everything else comes from the library at
 [dreamforces/ghost-typist](https://github.com/dreamforces/ghost-typist), or from a file. Installing a script
 asks once, from **Allow third-party extensions** at the top of the Extensions page. Until then search, Install from File and Install stay off. After that an install is one click
 with a spinner, and **Details** on any row shows what it adds. Phrasebooks are only terms and never ask.
@@ -57,8 +57,10 @@ links; only `https` links are clickable.
 - `commands: { name: { title, run(ctx) } }`: Tab after `/name` and any words after it, at the start of a line
   or after a space, replaces them with what `run` returns (a string or number). `ctx.args` is those words
   (`/wc sentences` gives `"sentences"`), `ctx.text` is everything else typed, `ctx.before` and `ctx.after`
-  surround the command. A command may declare its own `settings`; Options lists them under the command, and
-  its `ctx.settings` holds those plus the extension's top-level settings.
+  surround the command. `ctx.language` is the language of that writing, a tag such as `en` or `tr`: English until the text shows otherwise. A command may declare its own `settings`; Options lists them under the command, and
+  its `ctx.settings` holds those plus the extension's top-level settings. A command may call `ghost.notify` and
+  return no text: the slash command is removed and nothing is typed. Text it does return is still typed, and the
+  notice is shown as well.
 
   ```js
   settings: [
@@ -78,11 +80,11 @@ links; only `https` links are clickable.
 
   The app has no commands of its own; this is how an extension registers one. `nameFrom` names a `text` setting
   whose value is what the user types after the `/`, so the user names the command in the extension's Options
-  (`date`, or `d`, or `date, d` for both). Lowercase letters, digits and hyphens only; an empty or invalid value
+  (`date`, or `d`, or `date, d` for both). Lowercase letters, digits and hyphens only, plus `=` so the line reads `/= 3^2`; an empty or invalid value
   falls back to the key the command is declared under (`date` here). `usage` is shown beside the name in the
   `/` menu: `<text>` says the command needs words after its name, `[format]` that it may take some. Typing `/` opens
   that menu, ↑↓ browse it, and Tab completes the name; on a whole name Tab runs a command that needs no words,
-  and only closes the menu for one whose usage starts with `<`. `examples` (up to 4, 80 characters) are full
+  and only closes the menu for one whose usage starts with `<`. A line that starts with `/=`, or has `/=` after a space, is that command through the end of the line, so a later `/` is division. `examples` (up to 4, 80 characters) are full
   lines such as `/date iso`; Options runs each through the script with the user's current options and shows the
   result beside the command name, so the writer sees what their settings do. A command with no `nameFrom`
   or `examples` still works; Options then shows only its name.
@@ -90,7 +92,9 @@ links; only `https` links are clickable.
   and a `run` code column holding a function body, e.g. `return ctx.text.length + " characters"`. These
   commands have no Options of their own; they read their choices from `ctx.args`.
 - `expansionsFrom: "<list setting>"`: a list with `trigger` and `text` columns. When the whole word before
-  the caret is a trigger, its text is offered, and Tab replaces the trigger with it.
+  the caret is a trigger, its text is offered, and Tab replaces the trigger with it. `{skin}` in the text
+  becomes the skin-tone modifier from a choice setting named `skin`, when that choice is an emoji of the tone,
+  and nothing when the emoji has no tone.
 - `compose: { instruction, nameFrom?, title?, usage?, examples? }`: compose is a slash command whose name
   defaults to `/`, so the line reads `//note`; set a `text` setting with `nameFrom` and the writer can make it
   `/write` instead (`/` or `//` always means the default). It appears in the `/` menu as `//` with `usage`
@@ -124,9 +128,26 @@ language it detects.
 `ghost.latin(text)` writes text in plain Latin letters (`İzmir` becomes `Izmir`); `ghost.base64Encode(text)`
 and `ghost.base64Decode(text)` (a string, or null when it is not Base64 of UTF-8 text).
 
-There is nothing else: no files, network, clipboard, timers or keys. Each extension runs in its own
-JavaScript context on its own background queue. A command that does not answer within a second, or an
-analysis over 250 ms per paragraph, is dropped. A script that loops forever keeps only its own queue busy.
+`ghost.notify(title, message, options)` posts a notice. It is for commands (`run`, including commands written
+in Options) and returns `false` when the notice is rejected. Analysis cannot post.
+
+| argument | |
+|---|---|
+| `title` | required, 1–80 characters |
+| `message` | up to 200 characters; pass `""` when there is nothing more to say |
+| `options.after` | whole seconds from now, 0–86400. Omit it, or pass 0, to show the notice as soon as the command finishes. Fractions are rejected |
+| `options.symbol` | an SF Symbol name: a lowercase letter, then lowercase letters, digits and dots, at most 40 characters. `bell` when omitted |
+
+A command may post up to 8 notices. A delayed notice sends a macOS notification when it starts and another
+when it is due, and the due notice is its own popover under the menu bar icon, not a row in the app menu.
+The first banner asks for notification permission. If that prompt is missed or declined, Apps asks again,
+and opens System Settings once macOS will not show the prompt.
+The app keeps the time: a script still cannot wait or schedule its own callback. Options runs examples
+without posting them.
+
+There is nothing else: no files, network, clipboard or keys. Each extension runs in its own JavaScript
+context on its own background queue. A command that does not answer within a second, or an analysis over
+250 ms per paragraph, is dropped. A script that loops forever keeps only its own queue busy.
 
 ## Phrasebooks
 
