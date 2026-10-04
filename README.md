@@ -15,22 +15,7 @@ scripts/                index builder
 ```
 
 The app ships none of these. Allow third-party extensions, at the top of the Extensions page, asks once; until then search and install stay off. After that an install is one click, and Details shows what a
-package adds, including any prompt text word for word. Scripts run in a sandbox with no files or keys. A script uses the network only after you allow that one to. The guide is [EXTENSIONS.md](EXTENSIONS.md).
-
-## Using the extensions
-
-- Slash commands: install one extension per command (`date`, `now`, `random`, `uuid`, `dice`, `coin`, `password`,
-  `base64`, `encode`, `decode`, `title`, `snake`, `pascal`, `caps`, `lower`, `latin`). The name you type after the
-  `/` is the first option of each one, so `/date` can be `/d`, or both (`date, d`); the others are what suits the
-  command: a date format, a number range, a password's length and characters. Type `/` for the list, ↑↓ to
-  browse, Tab to complete a name and close the list, and Tab again to run it. On a whole name Tab runs a command
-  that needs nothing more and only closes the list for one that needs words after it (`/base64 hello`).
-  Words after the name override its options for that one use: `/password 24 special`, `/random 200` (the high end), `/random 3-9`, `/now 24`. `/now` includes the time zone.
-  A command works at the start of a line or after a space (`twelve apples /wc`).
-- `//note` then Tab: Compose is a slash command too, and its name is an option (the default is a second `/`; make it `write` for `/write`). It writes the note as a message in the chosen tone (Friendly, Formal, Direct,
-  Executive, the same as ⌃⌘/ Change Tone). It is a few sentences unless the note asks for a length:
-  `//thank Rachel in a few paragraphs for coming yesterday`.
-- Translate lists 11 languages; add any others Hy-MT2 supports by name, comma-separated.
+package adds, including any prompt text word for word. Scripts run in a sandbox with no files or keys. A script uses the network only after you allow that one to. The catalog, the phrasebooks, and the API are in [EXTENSIONS.md](EXTENSIONS.md).
 
 ## Adding or updating a package
 

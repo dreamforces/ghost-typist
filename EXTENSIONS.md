@@ -1,7 +1,6 @@
 # Writing extensions and phrasebooks
 
-Ghost Typist ships a timer, emoji abbreviations, a calculator, unit conversion, currency conversion and time conversion. Everything else comes from the library at
-[dreamforces/ghost-typist](https://github.com/dreamforces/ghost-typist), or from a file. Installing a script
+Ghost Typist ships no extensions and no phrasebooks. Both come from this library, or from a file. Installing a script
 asks once, from **Allow third-party extensions** at the top of the Extensions page. Until then search, Install from File and Install stay off. After that an install is one click
 with a spinner, and **Details** on any row shows what it adds. Phrasebooks are only terms and never ask.
 
@@ -10,6 +9,41 @@ with a spinner, and **Details** on any row shows what it adds. Phrasebooks are o
   **Extensions → Options…**.
 - **Phrasebooks** are JSON: a field (“Payment systems”) and its terms. They tell the writing model what the
   writer works on, so a plain sentence is continued in that field's words.
+
+## Library
+
+One extension per command. The name after `/` is an option, so `/date` can be `/d`, or both.
+
+| You type | Extension |
+|---|---|
+| `/date` | Date |
+| `/now` | Current Time |
+| `/time` | Time Conversion |
+| `/timer` | Timer |
+| `/=` | Calculator |
+| `/unit` | Unit Conversion |
+| `/money` | Currency. Needs the network, allowed per extension |
+| `/random` | Random Number |
+| `/uuid` | UUID |
+| `/dice` | Dice |
+| `/coin` | Coin Flip |
+| `/password` | Password |
+| `/base64` | Base64 |
+| `/encode` | HTML Encode |
+| `/decode` | HTML Decode |
+| `/title` | Title Case |
+| `/snake` | snake_case |
+| `/pascal` | PascalCase |
+| `/caps` | ALL CAPS |
+| `/lower` | lower case |
+| `/latin` | Latin Letters |
+| `//note` | Compose. The second slash is the name; Options can make it `/write` |
+| `/~` and a trigger | Text Expander. The rows are set in Options |
+| `:)` then Tab | Emoji. Typed as itself, not listed after `/~` |
+
+Also in the library, and not slash commands: Spelling & Grammar (underlines), Rewrite Actions (seven ⌃⌘/ rewrites), and Translate (one ⌃⌘/ action, on its translation model).
+
+Phrasebooks: Engineering, Geospatial & GPS, Medical, Payments, Supply chain & logistics, Travel & airlines.
 
 ## Extensions
 
@@ -105,18 +139,20 @@ links; only `https` links are clickable.
   After the expansion the first stop is selected; Tab goes to the next and Shift-Tab back, and the last Tab
   leaves the caret at `$0`. A click, an arrow key, Esc, Tab past the last stop or another app ends it. A number
   used twice is one stop, at its first place. A price is `\$5`, since `$5` is stop 5. Lines are typed as Shift-Return,
-  so they do not send a chat message (Control-Option-Return in an Excel cell, where Shift-Return would commit it). For example, `/~late` then Tab:
+  so they do not send a chat message (Control-Option-Return in an Excel cell, where Shift-Return would commit it). For example, `/~regards` then Tab:
 
   ```
-  Hi ${1:everyone},
+  Thank you so much ${1:name}, really appreciated.
 
-  Sorry I'm running late and will join the meeting in ${2:10 minutes}.
+  Regards,
+  ${2:your name}
   ```
 
-  Tab types it whole, without a ghost preview; the menu bar says "⇥ expands late". The menu shows only the first line.
-  The first stop is selected once the field has finished taking the keys. Stops are followed by the keys typed in the
-  placeholder, and checked against the field where it reports its selection; where it does not, arrow keys move the
-  caret, so editing a placeholder with a shortcut that deletes more than a character (⌥⌫) can lose the place.
+  Tab types it whole, without a ghost preview; the menu bar says "⇥ expands regards". The first stop is selected once the
+  field has finished taking the keys (a moment, longer in Notes). Stops are followed by the keys typed in the placeholder,
+  and checked against the field where it reports its selection; where it does not (canvas editors such as PowerPoint),
+  or counts positions differently (the ChatGPT app), arrow keys move the caret, so editing a placeholder with a
+  shortcut that deletes more than a character (⌥⌫) can lose the place.
 - `compose: { instruction, nameFrom?, title?, usage?, examples? }`: compose is a slash command whose name
   defaults to `/`, so the line reads `//note`; set a `text` setting with `nameFrom` and the writer can make it
   `/write` instead (`/` or `//` always means the default). It appears in the `/` menu as `//` with `usage`
@@ -134,13 +170,15 @@ links; only `https` links are clickable.
   `kind` is `spelling` or `grammar` for those colours. `apply: true` replaces the span in the scratchpad instead of
   only underlining it. It runs per paragraph, in the background, after you pause; unchanged paragraphs are not analyzed again.
 - `style: { instruction, vocabulary?, apps? }`: added to every suggestion request (or those in `apps`).
-- `actions: [{ id, title, instruction, arguments? | argumentsFrom?, symbol? }]`: ⌃⌘/ rewrites.
+- `actions: [{ id, title, instruction, arguments? | argumentsFrom?, symbol?, model? }]`: ⌃⌘/ rewrites.
   `{argument}` is the submenu choice; `argumentsFrom` names a `choices` setting. `{setting-id}` is replaced with that setting's value.
-- `model: { name, repository, revision, file, bytes, sha256 }`: a pinned Hugging Face GGUF the actions run
-  on. The app downloads it into the Hugging Face cache; the script never names a URL.
+  `model` is a catalog id for that action alone.
+- `model`: a catalog id string, or `{ name, repository, revision, file, bytes, sha256 }`, a pinned Hugging Face GGUF the actions run
+  on. The app downloads the file into the Hugging Face cache; the script never names a URL. An action's own `model` wins over this one.
 - `network: true`: the extension may call `ghost.fetch`. It stays off until the user allows it. Allowing
   means the calls are their responsibility; declining leaves it off, and turning it on later asks again.
   Put `"network"` in the header `capabilities` as well, so the library can say so before install.
+  That header array is only what the index shows. The app ignores it and reads capabilities from `ghost.define`.
 
 ### What `ghost` offers
 
@@ -163,10 +201,10 @@ in Options) and returns `false` when the notice is rejected. Analysis cannot pos
 | `options.after` | whole seconds from now, 0–86400. Omit it, or pass 0, to show the notice as soon as the command finishes. Fractions are rejected |
 | `options.symbol` | an SF Symbol name: a lowercase letter, then lowercase letters, digits and dots, at most 40 characters. `bell` when omitted |
 
-A command may post up to 8 notices. A delayed notice sends a macOS notification when it starts and another
-when it is due, and the due notice is its own popover under the menu bar icon, not a row in the app menu.
-The first banner asks for notification permission. If that prompt is missed or declined, Apps asks again,
-and opens System Settings once macOS will not show the prompt.
+A command may post up to 8 notices. A delayed notice tells you when it starts and again when it is due.
+Both go to the one place chosen in Apps: under the menu bar icon, or Notification Center. Not both.
+The menu bar card is not a row in the app menu. Notification Center asks for permission the first time;
+if that prompt is missed or declined, Apps asks again, and opens System Settings once macOS will not show the prompt.
 The app keeps the time: a script still cannot wait or schedule its own callback. Options runs examples
 without posting them.
 

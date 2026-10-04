@@ -17,6 +17,21 @@
       ]
     },
     {
+      "id": "community.calculator",
+      "name": "Calculator",
+      "description": "Type /= 3^2, then Tab, for the answer. () and + - * / ^ all work.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/calculator.js",
+      "sha256": "d120a2ba2eca34a432128782df483ea1d1562544a6cc7cbb29f28080123831d5",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
       "id": "community.coin",
       "name": "Coin Flip",
       "description": "Type /coin, then Tab, to flip a coin. Options choose what it says, from heads or tails to answers of your own, and how many flips.",
@@ -93,6 +108,21 @@
       ]
     },
     {
+      "id": "community.emoji",
+      "name": "Emoji",
+      "description": "Type :) then Tab for 😊. Hands and people use the skin tone in Options.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/emoji.js",
+      "sha256": "aa44d9e1ea58568951fdbfe9363e192d9ba535a1f3ee2e88ceac8038935f31f2",
+      "capabilities": [
+        "abbreviations"
+      ],
+      "tags": [
+        "abbreviations"
+      ]
+    },
+    {
       "id": "community.encode",
       "name": "HTML Encode",
       "description": "Type /encode and some text, then Tab, to turn &, < and > into HTML entities. Options choose whether quotes and non-ASCII letters are encoded too.",
@@ -147,6 +177,22 @@
       "sha256": "49d1af1871c8f9007e6f80ba0af61a76297eb91baef8f708813dd9eda95ef3c0",
       "capabilities": [
         "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.money",
+      "name": "Currency",
+      "description": "Type /money 100 usd in gbp, then Tab. Add on 29/01/2026 for a rate up to 5 years ago.",
+      "author": "Ghost Typist",
+      "version": "1.2.0",
+      "path": "extensions/money.js",
+      "sha256": "3f9a0734202ca2bae36cd63ec2c3ac297422ee2050a0b869d93455aabaceb73c",
+      "capabilities": [
+        "1 command",
+        "network"
       ],
       "tags": [
         "commands"
@@ -258,6 +304,21 @@
       ]
     },
     {
+      "id": "community.timer",
+      "name": "Timer",
+      "description": "Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/timer.js",
+      "sha256": "24e4b2a264dd487a71a4608cb5243703c726e7f48cdeeb32b962bdb44dfdb3e6",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
       "id": "community.title-case",
       "name": "Title Case",
       "description": "Type /title and some text, then Tab, to capitalise each word. Options keep small words such as of and the in lower case and leave ALL-CAPS words alone.",
@@ -290,6 +351,21 @@
       ]
     },
     {
+      "id": "community.unit",
+      "name": "Unit Conversion",
+      "description": "Type /unit 3 cm in mm, then Tab. in and to both work, for length, area, weight, volume and temperature.",
+      "author": "Ghost Typist",
+      "version": "1.1.0",
+      "path": "extensions/unit.js",
+      "sha256": "c17d8991a226604c3a848c9119e8d753e1231b87ce6abb44251c9ad1f7a99889",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
       "id": "community.upper-case",
       "name": "ALL CAPS",
       "description": "Type /caps and some text, then Tab. Capitals follow the language you are writing.",
@@ -312,6 +388,21 @@
       "version": "1.1.0",
       "path": "extensions/uuid.js",
       "sha256": "9d6e77545ecda6cdf33b9ced69d309a302254e29732dd6ac16f350eb9c77b945",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
+      "id": "community.zones",
+      "name": "Time Conversion",
+      "description": "Type /time in Dallas, or /time 5pm in Sydney, then Tab. in and to both work, and summer time follows the place.",
+      "author": "Ghost Typist",
+      "version": "1.2.0",
+      "path": "extensions/zones.js",
+      "sha256": "70cbe5830db1c08bcf5f24d5de8d35116e37384403de48e1251e1ffd9c72ffb9",
       "capabilities": [
         "1 command"
       ],
