@@ -1,11 +1,11 @@
-// ghost {"id":"community.upper-case","name":"ALL CAPS","version":"1.4.0","author":"Ghost Typist","description":"Type /caps and some text, then Tab. Capitals follow the language you are writing.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.upper-case","name":"ALL CAPS","version":"1.4.1","author":"Ghost Typist","description":"Type /caps and some text, then Tab. Capitals follow the language you are writing.","tags":["commands"],"capabilities":["1 command","1 action"]}
 //
 // Type /caps and press Tab. Capitals follow the language of the writing.
 
 ghost.define({
   id: "community.upper-case",
   name: "ALL CAPS",
-  version: "1.4.0",
+  version: "1.4.1",
   author: "Ghost Typist",
   description: "Type /caps and some text, then Tab. Capitals follow the language you are writing.",
   settings: [
@@ -17,6 +17,7 @@ ghost.define({
       title: "ALL CAPS",
       nameFrom: "command",
       usage: "<text>",
+      selection: true,
       examples: ["quiet please", "istanbul"],
       run(ctx) {
         const raw = (ctx.args || "").trim();

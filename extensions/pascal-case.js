@@ -1,4 +1,4 @@
-// ghost {"id":"community.pascal-case","name":"PascalCase","version":"1.2.0","author":"Ghost Typist","description":"Type /pascal and some text, then Tab, to join its words with a capital letter on each. An option starts with a small letter instead, for camelCase.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.pascal-case","name":"PascalCase","version":"1.2.1","author":"Ghost Typist","description":"Type /pascal and some text, then Tab, to join its words with a capital letter on each. An option starts with a small letter instead, for camelCase.","tags":["commands"],"capabilities":["1 command","1 action"]}
 //
 // Type /pascal and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "pascal, p"), so the command is named where you can change it.
@@ -18,7 +18,7 @@ const capital = (w, locale) => w.charAt(0).toLocaleUpperCase(locale) + w.slice(1
 ghost.define({
   id: "community.pascal-case",
   name: "PascalCase",
-  version: "1.2.0",
+  version: "1.2.1",
   author: "Ghost Typist",
   description: "Type /pascal and some text, then Tab, to join its words with a capital letter on each. An option starts with a small letter instead, for camelCase.",
   settings: [
@@ -31,6 +31,7 @@ ghost.define({
       title: "PascalCase",
       nameFrom: "command",
       usage: "<text>",
+      selection: true,
       examples: ["hello world again", "user_account_id"],
       run(ctx) {
         const locale = ctx.language || "en";

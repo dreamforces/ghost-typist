@@ -1,4 +1,4 @@
-// ghost {"id":"community.encode","name":"HTML Encode","version":"1.1.0","author":"Ghost Typist","description":"Type /encode and some text, then Tab, to turn &, < and > into HTML entities. Options choose whether quotes and non-ASCII letters are encoded too.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.encode","name":"HTML Encode","version":"1.1.1","author":"Ghost Typist","description":"Type /encode and some text, then Tab, to turn &, < and > into HTML entities. Options choose whether quotes and non-ASCII letters are encoded too.","tags":["commands"],"capabilities":["1 command","1 action"]}
 //
 // Type /encode and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "encode, e"), so the command is named where you can change it.
@@ -11,7 +11,7 @@ const text = (ctx) => {
 ghost.define({
   id: "community.encode",
   name: "HTML Encode",
-  version: "1.1.0",
+  version: "1.1.1",
   author: "Ghost Typist",
   description: "Type /encode and some text, then Tab, to turn &, < and > into HTML entities. Options choose whether quotes and non-ASCII letters are encoded too.",
   settings: [
@@ -25,6 +25,7 @@ ghost.define({
       title: "Encode HTML characters",
       nameFrom: "command",
       usage: "<text>",
+      selection: true,
       examples: ["<b>Tom & \"Jerry\"</b>"],
       run(ctx) {
         let out = text(ctx).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

@@ -89,7 +89,7 @@ links; only `https` links are clickable.
 
 ### What an extension can do
 
-- `commands: { name: { title, run(ctx) } }`: Tab after `/name` and any words after it, at the start of a line
+- `commands: { name: { title, run(ctx), nameFrom?, usage?, examples?, settings?, selection? } }`: Tab after `/name` and any words after it, at the start of a line
   or after a space, replaces them with what `run` returns (a string or number). `ctx.args` is those words
   (`/wc sentences` gives `"sentences"`), `ctx.text` is everything else typed, `ctx.before` and `ctx.after`
   surround the command. `ctx.language` is the language of that writing, a tag such as `en` or `tr`: English until the text shows otherwise. A command may declare its own `settings`; Options lists them under the command, and
@@ -123,6 +123,11 @@ links; only `https` links are clickable.
   lines such as `/date iso`; Options runs each through the script with the user's current options and shows the
   result beside the command name, so the writer sees what their settings do. A command with no `nameFrom`
   or `examples` still works; Options then shows only its name.
+
+  **Selection palette.** A command joins ⌃⌘/ when its usage is `<text>`, or when it sets `selection: true`.
+  Choosing it runs the same `run(ctx)`, with the selected text as `ctx.args`, and the text it returns replaces the selection.
+  `selection` is `true` or omitted. Put `"1 action"` in the header `capabilities` next to `"1 command"`, so the library can say so before install.
+  Commands written in Options (`commandsFrom`) are not listed there.
 - `commandsFrom: "<list setting>"`: the user writes more commands in Options. The list has a `name` column
   and a `run` code column holding a function body, e.g. `return ctx.text.length + " characters"`. These
   commands have no Options of their own; they read their choices from `ctx.args`.
@@ -170,7 +175,8 @@ links; only `https` links are clickable.
   `kind` is `spelling` or `grammar` for those colours. `apply: true` replaces the span in the scratchpad instead of
   only underlining it. It runs per paragraph, in the background, after you pause; unchanged paragraphs are not analyzed again.
 - `style: { instruction, vocabulary?, apps? }`: added to every suggestion request (or those in `apps`).
-- `actions: [{ id, title, instruction, arguments? | argumentsFrom?, symbol?, model? }]`: ⌃⌘/ rewrites.
+- `actions: [{ id, title, instruction, arguments? | argumentsFrom?, symbol?, model? }]`: ⌃⌘/ rewrites through the model.
+  The same menu also lists a command registered above; that row runs `run(ctx)` instead. A command's name and an action's id must differ.
   `{argument}` is the submenu choice; `argumentsFrom` names a `choices` setting. `{setting-id}` is replaced with that setting's value.
   `model` is a catalog id for that action alone.
 - `model`: a catalog id string, or `{ name, repository, revision, file, bytes, sha256 }`, a pinned Hugging Face GGUF the actions run
