@@ -110,11 +110,11 @@
     {
       "id": "community.emoji",
       "name": "Emoji",
-      "description": "Type :) then Tab for 😊. Hands and people use the skin tone in Options.",
+      "description": "Type :) or :crying, then Tab. These are the emojis people send most. Hands use the skin tone in Options.",
       "author": "Ghost Typist",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "extensions/emoji.js",
-      "sha256": "aa44d9e1ea58568951fdbfe9363e192d9ba535a1f3ee2e88ceac8038935f31f2",
+      "sha256": "5a80111608738354950be00dc3a0a4e8f1a41ee31eedbb0095bdae69e3879d28",
       "capabilities": [
         "abbreviations"
       ],
