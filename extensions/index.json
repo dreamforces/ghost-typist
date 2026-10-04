@@ -308,9 +308,9 @@
       "name": "Timer",
       "description": "Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.",
       "author": "Ghost Typist",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "extensions/timer.js",
-      "sha256": "cf2003a71a645dcda01cf56b492b5628d07f1f897324ec814b1e711dec561a1c",
+      "sha256": "27cf7916c9592ea38105e29b79383bf536e0219425afd7dc943e45100758b348",
       "capabilities": [
         "1 command"
       ],

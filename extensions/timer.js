@@ -1,4 +1,4 @@
-// ghost {"id":"community.timer","name":"Timer","version":"1.0.1","author":"Ghost Typist","description":"Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.timer","name":"Timer","version":"1.0.2","author":"Ghost Typist","description":"Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /timer and a length, then Tab. 30s, 25m and 1hr are whole amounts. Anything after the
 // length is the note shown when the time is up.
@@ -28,7 +28,7 @@ const clock = (seconds) => {
 ghost.define({
   id: "community.timer",
   name: "Timer",
-  version: "1.0.1",
+  version: "1.0.2",
   author: "Ghost Typist",
   description: "Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.",
   settings: [
@@ -58,6 +58,7 @@ ghost.define({
           throw new Error("that timer could not be set.");
         }
         ghost.ack("hourglass", { motion: "rotate" });
+        ghost.cursor("wait");
         return "";
       }
     }
