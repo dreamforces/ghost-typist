@@ -93,9 +93,9 @@ links; only `https` links are clickable.
   or after a space, replaces them with what `run` returns (a string or number). `ctx.args` is those words
   (`/wc sentences` gives `"sentences"`), `ctx.text` is everything else typed, `ctx.before` and `ctx.after`
   surround the command. `ctx.language` is the language of that writing, a tag such as `en` or `tr`: English until the text shows otherwise. A command may declare its own `settings`; Options lists them under the command, and
-  its `ctx.settings` holds those plus the extension's top-level settings. A command may call `ghost.notify` and
-  return no text: the slash command is removed and nothing is typed. Text it does return is still typed, and the
-  notice is shown as well.
+  its `ctx.settings` holds those plus the extension's top-level settings. A command may call `ghost.notify` or
+  `ghost.menubar` and return no text: the slash command is removed and nothing is typed. Text it does return is
+  still typed, and the notice is shown as well.
 
   ```js
   settings: [
@@ -201,12 +201,36 @@ in Options) and returns `false` when the notice is rejected. Analysis cannot pos
 | `options.after` | whole seconds from now, 0–86400. Omit it, or pass 0, to show the notice as soon as the command finishes. Fractions are rejected |
 | `options.symbol` | an SF Symbol name: a lowercase letter, then lowercase letters, digits and dots, at most 40 characters. `bell` when omitted |
 
-A command may post up to 8 notices. A delayed notice tells you when it starts and again when it is due.
-Both go to the one place chosen in Apps: under the menu bar icon, or Notification Center. Not both.
+A command may post up to 8 notices. A delayed notice is shown when it is due, not when it is set.
+It goes to the one place chosen in Apps: under the menu bar icon, or Notification Center. Not both.
+A delay does not put a countdown on the icon. That is `ghost.menubar`.
+
+`ghost.ack(symbol, options)` plays the menu bar icon for 1 second. It is how a command confirms it was received
+without posting a notice. A menu bar line already showing keeps its text beside the animation. It returns `false`
+when the symbol or the motion is rejected. Analysis cannot play it. `symbol` is an SF Symbol name, the same rule as
+`options.symbol` on `notify`. `options.motion` is `rotate`, `scale`, or `bounce`; omit it for `rotate`.
+
+`ghost.menubar(symbol, text, options)` puts a line beside the menu bar icon: the symbol, then the text. It is how a
+command shows a countdown, or any other short message, there. It returns `false` when the symbol, the text, or the
+time is rejected. Analysis cannot show one. A command may show up to 8. The icon shows the one that ends soonest,
+and the line leaves when its time is up.
+
+`text` is a string of 1–40 characters, or a function. The app calls the function with the whole seconds left, once
+a second, and shows what it returns (a string, the same limit). The script does not schedule that call.
+`options.seconds` is how long the line stays, a whole number from 1 to 86400. `options.tip` is the tooltip, up to
+200 characters; omit it for none. `symbol` is an SF Symbol name, the same rule as `notify`.
+
+```js
+ghost.menubar("hourglass", (left) => {
+  const minutes = Math.floor(left / 60), seconds = left % 60;
+  return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+}, { seconds: 90, tip: "tea" });
+```
+
 The menu bar card is not a row in the app menu. Notification Center asks for permission the first time;
 if that prompt is missed or declined, Apps asks again, and opens System Settings once macOS will not show the prompt.
 The app keeps the time: a script still cannot wait or schedule its own callback. Options runs examples
-without posting them.
+without posting them or showing a menu bar line.
 
 `ghost.fetch(url)` makes one HTTPS GET and returns the response text. It throws when the address is refused,
 the call fails, or this extension is not allowed to use the network. A command may make 4 calls. Each one is
