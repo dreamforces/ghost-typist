@@ -210,6 +210,10 @@ without posting a notice. A menu bar line already showing keeps its text beside 
 when the symbol or the motion is rejected. Analysis cannot play it. `symbol` is an SF Symbol name, the same rule as
 `options.symbol` on `notify`. `options.motion` is `rotate`, `scale`, or `bounce`; omit it for `rotate`.
 
+`ghost.cursor(name)` changes the pointer for 1 second, wherever it is, including in another app. It is another way to confirm a command, and it does not change the menu bar animation. It returns `false` when `name` is not a cursor this Mac has. Analysis cannot set it. One call per command; a second call replaces it.
+
+`name` is a system cursor, or any SF Symbol this Mac has (the same shape as `options.symbol` on `notify`, so `hourglass` is one). System cursors: `arrow`, `iBeam`, `iBeamVertical`, `crosshair`, `pointingHand`, `openHand`, `closedHand`, `operationNotAllowed`, `disappearingItem`, `dragCopy`, `dragLink`, `contextualMenu`, and `wait` (the spinning beachball). On macOS 15 and later, also `zoomIn`, `zoomOut`, `columnResize`, and `rowResize`.
+
 `ghost.menubar(symbol, text, options)` puts a line beside the menu bar icon: the symbol, then the text. It is how a
 command shows a countdown, or any other short message, there. It returns `false` when the symbol, the text, or the
 time is rejected. Analysis cannot show one. A command may show up to 8. The icon shows the one that ends soonest,
