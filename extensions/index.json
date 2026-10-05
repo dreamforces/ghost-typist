@@ -2,6 +2,21 @@
   "schemaVersion": 1,
   "packages": [
     {
+      "id": "community.alarm",
+      "name": "Alarm",
+      "description": "Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/alarm.js",
+      "sha256": "722376c74ff27e06c6daac280207dcff24a5ba552eaf8e531f2ded0f958615dc",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
       "id": "community.base64",
       "name": "Base64",
       "description": "Type /base64 and some text, then Tab, to encode it. /base64 -d decodes. Options set the direction and whether the result is URL-safe.",
