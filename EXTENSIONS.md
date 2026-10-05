@@ -634,7 +634,7 @@ Posts one notice from a command. Returns `true` when it was accepted. Returns `f
 | `message` | Up to 200 characters. Pass `""` when there is nothing more to say. |
 | `options.after` | Whole seconds from the moment the command finishes, 0–86400. Omit it, or pass 0, to show the notice as soon as the command finishes. A fraction is rejected. |
 | `options.symbol` | An SF Symbol name: a lowercase letter, then lowercase letters, digits, and dots, at most 40 characters. `bell` when omitted. |
-| `options.motion` | `rotate`, `scale`, `bounce`, or `shake`. Omit it and the icon stays still. When the notice is shown, the menu bar plays it until the notice is dismissed. A click on the icon stops it. `shake` grows and shrinks the icon and moves it left and right. |
+| `options.motion` | `rotate`, `scale`, `bounce`, or `shake`. Omit it and the icon stays still. When the notice is shown, the menu bar plays it until the notice is dismissed. A click on the icon stops it. `rotate` spins, `scale` pulses, `bounce` hops, and `shake` rocks the icon on its feet without changing its size. Any symbol can use them. |
 
 A command may post up to 8 notices. A delayed notice is shown when it is due. It goes to the one place chosen in Apps: under the menu bar icon, or Notification Center. A delay does not put a countdown on the icon. That is `ghost.menubar`. Options describes a notice in the example preview and does not post it.
 
@@ -648,11 +648,20 @@ run(ctx) {
 }
 ```
 
+The same call rocks the menu bar icon when the notice appears. It keeps rocking until the notice is dismissed.
+
+```js
+run() {
+  ghost.notify("Stand up", "time to stretch", { symbol: "figure.walk", motion: "shake" })
+  return ""
+}
+```
+
 ### `ghost.ack(symbol, options)`
 
 Plays the menu-bar icon for one second, so a command can confirm it ran without posting a notice. A menu-bar line already showing keeps its text beside the animation. Returns `false` when the symbol or the motion is rejected. `analyze` cannot play it.
 
-`symbol` follows the same rule as `options.symbol` on `notify`. `options.motion` is `rotate`, `scale`, `bounce`, or `shake`. Omit it for `rotate`. `shake` grows and shrinks the icon and moves it left and right. One animation per command; a second call replaces it. This one lasts a second. A notice's motion keeps going until the notice is dismissed.
+`symbol` follows the same rule as `options.symbol` on `notify`. `options.motion` is `rotate`, `scale`, `bounce`, or `shake`. Omit it for `rotate`. `shake` is the same rock as on a notice: the icon tips onto one foot, then the other, and stays the same size. One animation per command; a second call replaces it. This one lasts a second. A notice's motion keeps going until the notice is dismissed.
 
 ```js
 run() {
