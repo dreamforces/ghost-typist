@@ -37,7 +37,7 @@ One extension per command. The name after `/` is an option, so `/date` can be `/
 | `/caps` | ALL CAPS |
 | `/lower` | lower case |
 | `/latin` | Latin Letters |
-| `/lorem` | Placeholder. `/lorem printing` writes a paragraph; `1s` is one sentence and `3p` is three |
+| `/lorem` | Placeholder. `/lorem` writes a paragraph; add a topic, or `1s` for one sentence and `3p` for three |
 | `//note` | Compose. The second slash is the name; Options can make it `/write` |
 | `/~` and a trigger | Text Expander. The rows are set in Options |
 | `:)` then Tab | Emoji. Typed as itself, not listed after `/~` |

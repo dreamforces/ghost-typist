@@ -1,11 +1,11 @@
-// ghost {"id":"community.lorem","name":"Placeholder","version":"1.0.0","author":"Ghost Typist","description":"Type /lorem printing, then Tab, for placeholder text about it. 1s is one sentence and 3p is three paragraphs.","tags":["writing","commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.lorem","name":"Placeholder","version":"1.0.1","author":"Ghost Typist","description":"Type /lorem, then Tab, for a paragraph of placeholder text. Add a topic, or 1s for one sentence and 3p for three paragraphs.","tags":["writing","commands"],"capabilities":["1 command"]}
 //
-// Type /lorem and a topic, then Tab. The writing model fills in placeholder prose.
-// A length at the end wins over the option: 1s is one sentence, 4s is four, 3p is three paragraphs.
+// Type /lorem, then Tab. The writing model fills in placeholder prose.
+// A topic focuses it. A length at the end wins over the option: 1s is one sentence, 4s is four, 3p is three paragraphs.
 
 const lengths = { "1 sentence": "1s", "1 paragraph": "1p", "2 paragraphs": "2p", "3 paragraphs": "3p" };
 
-const instruction = "Write placeholder prose about the topic. Return only the prose. No title, no bullet list, no quotation marks, and do not say that it is placeholder text. Use calm, plain sentences a reader could paste into a draft. Follow the length exactly and then stop. One sentence means one sentence. Several sentences stay in one paragraph. One paragraph means one paragraph of three or four sentences. Several paragraphs have a blank line between them.";
+const instruction = "Write placeholder prose about the topic. Return only the prose. No title, no bullet list, no quotation marks, and do not say that it is placeholder text. Use calm, plain sentences a reader could paste into a draft. Follow the length exactly and then stop. One sentence means one sentence. Several sentences stay in one paragraph. One paragraph means one paragraph of three or four sentences. Several paragraphs have a blank line between them. When the topic is none, write generic placeholder prose and do not invent a named subject.";
 
 const samples = [
   { user: "Topic: tea\nLength: 1 sentence", reply: "Tea has been brewed for thousands of years and remains one of the most popular drinks in the world." },
@@ -31,7 +31,6 @@ const request = (args, fallback) => {
     throw new Error("Say 4s for four sentences or 3p for three paragraphs.");
   }
   const topic = words.join(" ");
-  if (!topic) throw new Error("Say what it is about, such as /lorem printing.");
   if (topic.length > 200) throw new Error("Keep the topic to a short phrase.");
   const count = Number(unit.slice(0, -1));
   const kind = unit.slice(-1);
@@ -41,7 +40,7 @@ const request = (args, fallback) => {
   return {
     ask: {
       instruction,
-      text: "Topic: " + topic + "\nLength: " + length,
+      text: "Topic: " + (topic || "none") + "\nLength: " + length,
       examples: samples,
       maxTokens: kind === "s" ? Math.min(2048, 80 * count + 32) : Math.min(2048, 280 * count + 32),
       separateParagraphs: kind === "p" && count > 1
@@ -52,12 +51,12 @@ const request = (args, fallback) => {
 ghost.define({
   id: "community.lorem",
   name: "Placeholder",
-  version: "1.0.0",
+  version: "1.0.1",
   author: "Ghost Typist",
-  description: "Type /lorem printing, then Tab, for placeholder text about it. 1s is one sentence and 3p is three paragraphs.",
+  description: "Type /lorem, then Tab, for a paragraph of placeholder text. Add a topic, or 1s for one sentence and 3p for three paragraphs.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "lorem",
-      help: "What you type after the /. A length at the end overrides Length: 1s is one sentence, 4s is four, and 3p is three paragraphs." },
+      help: "What you type after the /. Tab on /lorem writes a paragraph. Add a topic to focus it. A trailing 1s or 3p overrides Length." },
     { id: "length", title: "Length", type: "choice", value: "1 paragraph",
       options: ["1 sentence", "1 paragraph", "2 paragraphs", "3 paragraphs"],
       help: "How much to write when you do not type a length such as 1s or 3p." }
@@ -66,8 +65,8 @@ ghost.define({
     lorem: {
       title: "Placeholder text",
       nameFrom: "command",
-      usage: "<topic> [1s or 3p]",
-      examples: ["printing", "printing 1s", "printing 4s", "printing 3p"],
+      usage: "[topic or 1s]",
+      examples: ["", "1s", "printing", "printing 3p"],
       written: [
         { input: "printing", output: "Printing has revolutionized how we share information by allowing ideas to be copied and distributed quickly and efficiently. From the early days of movable type to modern digital presses, this technology has made books, newspapers, and documents accessible to people everywhere. Today, printing continues to evolve with new methods that offer greater speed, lower costs, and higher quality, ensuring that our knowledge and creativity can reach a global audience." },
         { input: "printing 1s", output: "Printing has revolutionized how we share information by allowing ideas to be copied and distributed quickly and efficiently." },
