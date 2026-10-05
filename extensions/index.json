@@ -6,9 +6,9 @@
       "name": "Alarm",
       "description": "Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.",
       "author": "Ghost Typist",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "extensions/alarm.js",
-      "sha256": "722376c74ff27e06c6daac280207dcff24a5ba552eaf8e531f2ded0f958615dc",
+      "sha256": "0470cae9e91ea6e388a257eb39da734b5307eabaee13dac63816d9279bafb50c",
       "capabilities": [
         "1 command"
       ],
