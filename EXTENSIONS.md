@@ -37,6 +37,7 @@ One extension per command. The name after `/` is an option, so `/date` can be `/
 | `/caps` | ALL CAPS |
 | `/lower` | lower case |
 | `/latin` | Latin Letters |
+| `/lorem` | Placeholder. `/lorem printing` writes a paragraph; `1s` is one sentence and `3p` is three |
 | `//note` | Compose. The second slash is the name; Options can make it `/write` |
 | `/~` and a trigger | Text Expander. The rows are set in Options |
 | `:)` then Tab | Emoji. Typed as itself, not listed after `/~` |
@@ -123,6 +124,14 @@ links; only `https` links are clickable.
   lines such as `/date iso`; Options runs each through the script with the user's current options and shows the
   result beside the command name, so the writer sees what their settings do. A command with no `nameFrom`
   or `examples` still works; Options then shows only its name.
+
+  **Asking the model.** `run` may return `{ ask: { instruction, text, examples?, maxTokens?, separateParagraphs? } }`
+  instead of text. `instruction` is the system prompt and `text` is what to write, each 1–2000 characters.
+  `examples` is up to 4 `{ user, reply }` turns of up to 800 characters; a small model follows those.
+  `maxTokens` is clamped to 32–2048. Tab sends that to the writing model and types the reply. With a remote model,
+  the app has to be one the writer allowed. Line breaks in the reply are kept. `separateParagraphs: true` turns a
+  single line break into a blank line. `written` is up to 4 `{ input, output }` samples (output up to 1200 characters,
+  and it may contain line breaks) shown in Options; the model is not called there.
 
   **Selection palette.** A command joins ⌃⌘/ when its usage is `<text>`, or when it sets `selection: true`.
   Choosing it runs the same `run(ctx)`, with the selected text as `ctx.args`, and the text it returns replaces the selection.

@@ -172,6 +172,22 @@
       ]
     },
     {
+      "id": "community.lorem",
+      "name": "Placeholder",
+      "description": "Type /lorem printing, then Tab, for placeholder text about it. 1s is one sentence and 3p is three paragraphs.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/lorem.js",
+      "sha256": "6ae238c43b93ff2fa6363f1a6ac513e62f8f28c17a0ae1b5b0547ba84e0ae98c",
+      "capabilities": [
+        "1 command"
+      ],
+      "tags": [
+        "writing",
+        "commands"
+      ]
+    },
+    {
       "id": "community.lower-case",
       "name": "lower case",
       "description": "Type /lower and some text, then Tab, for small letters. An option follows Turkish rules, where I becomes ı.",
