@@ -225,6 +225,8 @@ without posting a notice. A menu bar line already showing keeps its text beside 
 when the symbol or the motion is rejected. Analysis cannot play it. `symbol` is an SF Symbol name, the same rule as
 `options.symbol` on `notify`. `options.motion` is `rotate`, `scale`, or `bounce`; omit it for `rotate`.
 
+`ghost.loading(on)` shows a spinner at the text caret while a command is still working. Pass `true` before a network call or other wait, and `false` when that work is done. It returns `false` when `on` is not a boolean. Analysis cannot set it. A later call replaces the earlier one. Leave it `true` when `run` returns an `ask`, and the spinner stays up while the writing model answers; the app turns it off when that answer arrives.
+
 `ghost.cursor(name)` changes the pointer for half a second, wherever it is, including in another app. It is another way to confirm a command, and it does not change the menu bar animation. It returns `false` when `name` is not a cursor this Mac has. Analysis cannot set it. One call per command; a second call replaces it.
 
 `name` is a system cursor, or any SF Symbol this Mac has (the same shape as `options.symbol` on `notify`, so `hourglass` is one). System cursors: `arrow`, `iBeam`, `iBeamVertical`, `crosshair`, `pointingHand`, `openHand`, `closedHand`, `operationNotAllowed`, `disappearingItem`, `dragCopy`, `dragLink`, `contextualMenu`, and `wait` (the spinning beachball). On macOS 15 and later, also `zoomIn`, `zoomOut`, `columnResize`, and `rowResize`.

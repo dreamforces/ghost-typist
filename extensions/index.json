@@ -208,9 +208,9 @@
       "name": "Currency",
       "description": "Type /money 100 usd in gbp, then Tab. Add on 29/01/2026 for a rate up to 5 years ago.",
       "author": "Ghost Typist",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "path": "extensions/money.js",
-      "sha256": "3f9a0734202ca2bae36cd63ec2c3ac297422ee2050a0b869d93455aabaceb73c",
+      "sha256": "4b19e4e499e340acd3b4a8f07bbdedf4fbb043ae3215fa2ccf30e64ccd9580fa",
       "capabilities": [
         "1 command",
         "network"
@@ -331,9 +331,9 @@
       "name": "Timer",
       "description": "Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.",
       "author": "Ghost Typist",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "path": "extensions/timer.js",
-      "sha256": "27cf7916c9592ea38105e29b79383bf536e0219425afd7dc943e45100758b348",
+      "sha256": "9aff7f04a4108cb1eb0e6f0d05018c6a5727db13a04208b115029ba2a32e79d3",
       "capabilities": [
         "1 command"
       ],

@@ -1,4 +1,4 @@
-// ghost {"id":"community.money","name":"Currency","version":"1.2.0","author":"Ghost Typist","description":"Type /money 100 usd in gbp, then Tab. Add on 29/01/2026 for a rate up to 5 years ago.","tags":["commands"],"capabilities":["1 command","network"]}
+// ghost {"id":"community.money","name":"Currency","version":"1.2.1","author":"Ghost Typist","description":"Type /money 100 usd in gbp, then Tab. Add on 29/01/2026 for a rate up to 5 years ago.","tags":["commands"],"capabilities":["1 command","network"]}
 //
 // Type /money and an amount, then Tab. Rates are the European Central Bank's, from Frankfurter.
 // 100usd in gbp, 100 usd to gbp, $100 in gbp, and 100 gbp in usd on 29/01/2026.
@@ -68,11 +68,16 @@ const quote = (args, language) => {
   const root = when ? `https://api.frankfurter.app/${when}` : "https://api.frankfurter.app/latest";
   const url = `${root}?amount=${encodeURIComponent(String(parsed.amount))}&from=${parsed.code}&to=${parsed.to}`;
   let payload;
-  try { payload = ghost.fetch(url); }
-  catch (error) {
-    const message = String((error && error.message) || error);
-    if (message.includes("404") || message.includes("422")) throw new Error("that currency is not one the rate service knows.");
-    throw new Error(message || "the exchange rate did not answer.");
+  ghost.loading(true);
+  try {
+    try { payload = ghost.fetch(url); }
+    catch (error) {
+      const message = String((error && error.message) || error);
+      if (message.includes("404") || message.includes("422")) throw new Error("that currency is not one the rate service knows.");
+      throw new Error(message || "the exchange rate did not answer.");
+    }
+  } finally {
+    ghost.loading(false);
   }
   let data;
   try { data = JSON.parse(payload); }
@@ -85,7 +90,7 @@ const quote = (args, language) => {
 ghost.define({
   id: "community.money",
   name: "Currency",
-  version: "1.2.0",
+  version: "1.2.1",
   author: "Ghost Typist",
   description: "Type /money 100 usd in gbp, then Tab. Add on 29/01/2026 for a rate up to 5 years ago.",
   network: true,
