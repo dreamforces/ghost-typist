@@ -1,16 +1,16 @@
-// ghost {"id":"community.compose","name":"Compose","version":"2.0.2","author":"Ghost Typist","description":"Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.","tags":["writing","commands"],"capabilities":["compose"]}
+// ghost {"id":"community.compose","name":"Compose","version":"2.1.0","author":"Ghost Typist","description":"Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.","tags":["writing","commands"],"capabilities":["compose"]}
 ghost.define({
   id: "community.compose",
   name: "Compose",
-  version: "2.0.2",
+  version: "2.1.0",
   author: "Ghost Typist",
   description: "Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.",
   settings: [
     { id: "command", title: "Command", type: "text", value: "/",
       help: "What you type after the first /. The default, a second /, reads //note. Try write for /write thank Rachel. Several names work: /, write." },
-    { id: "tone", title: "Tone", type: "choice", options: ["Friendly", "Formal", "Direct", "Executive"], value: "Friendly", help: "The same tones as Change Tone. Ask for a length in the note: //thank Rachel in a few paragraphs for coming yesterday" },
+    { id: "tone", title: "Tone", type: "choice", options: ["Friendly", "Formal", "Direct", "Executive"], value: "Friendly", help: "The same tones as Change Tone. Ask for a size in the note and it is kept: //thank Rachel in 2 paragraphs for coming yesterday, or //write 3 sentences about tea." },
     { id: "length", title: "Length", type: "choice", options: ["as short as possible", "a sentence", "a paragraph", "unlimited"], value: "unlimited",
-      help: "How long an expanded or rephrased note is. An answer to a question stays short." }
+      help: "How long a message is when the note names no size. A size in the note, such as 2 paragraphs or under 20 words, wins. An answer to a question stays short." }
   ],
   compose: {
     nameFrom: "command",

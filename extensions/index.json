@@ -67,9 +67,9 @@
       "name": "Compose",
       "description": "Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.",
       "author": "Ghost Typist",
-      "version": "2.0.2",
+      "version": "2.1.0",
       "path": "extensions/compose.js",
-      "sha256": "d71bb548f3391b5c67aa391782c509414d4823ea6204a24fc66da02eeaaafe42",
+      "sha256": "646845a2e89da8e796ee8c79a3dbfeca3ef9175d7ec08e17228e7d1a71cab795",
       "capabilities": [
         "compose"
       ],
@@ -300,9 +300,9 @@
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "3.3.1",
+      "version": "3.4.0",
       "path": "extensions/rewrite.js",
-      "sha256": "840b258f6b3e8accda3458bf6ca5420d8188fba6b1b50c6e45166cdf49fcc342",
+      "sha256": "d2c14d6613acd58a9d9a649df597b9e3e5fadba05dc2c688626023fd5b0640ac",
       "capabilities": [
         "7 actions"
       ],
