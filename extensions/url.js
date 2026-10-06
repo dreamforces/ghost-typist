@@ -1,4 +1,4 @@
-// ghost {"id":"community.url","name":"Short URL","version":"1.1.0","author":"Ghost Typist","description":"Type /url https://example.com/long/address, then Tab, for a short link. Options pick the service.","tags":["commands"],"capabilities":["1 command","network"]}
+// ghost {"id":"community.url","name":"Short URL","version":"1.1.1","author":"Ghost Typist","description":"Type /url https://example.com/long/address, then Tab, for a short link. Options pick the service.","tags":["commands"],"capabilities":["1 command","network"]}
 //
 // Type /url and an address, then Tab. The address goes to the chosen service (da.gd, TinyURL, clck.ru or is.gd),
 // which returns the short link. A missing https:// is added.
@@ -51,7 +51,7 @@ const shorten = (args, service) => {
 ghost.define({
   id: "community.url",
   name: "Short URL",
-  version: "1.1.0",
+  version: "1.1.1",
   author: "Ghost Typist",
   description: "Type /url https://example.com/long/address, then Tab, for a short link. Options pick the service.",
   network: true,
@@ -66,6 +66,7 @@ ghost.define({
       title: "Short link",
       nameFrom: "command",
       usage: "<address>",
+      examples: ["github.com/anthropics/claude-code"],
       run(ctx) { return shorten(ctx.args, ctx.settings.service); }
     }
   }

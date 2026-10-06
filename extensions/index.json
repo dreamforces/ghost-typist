@@ -410,9 +410,9 @@
       "name": "Short URL",
       "description": "Type /url https://example.com/long/address, then Tab, for a short link. Options pick the service.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "extensions/url.js",
-      "sha256": "4501ef0ca09ad36e8f016d9ff27fd85b6e6f8f11c45852f7b570834d21706c33",
+      "sha256": "c11f13de10cbc9891be1c88a76a59bd370fa381c962cfed06a955ccf9c153d06",
       "capabilities": [
         "1 command",
         "network"
