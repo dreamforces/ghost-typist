@@ -1,11 +1,14 @@
-// ghost {"id":"community.url","name":"Short URL","version":"1.0.0","author":"Ghost Typist","description":"Type /url https://example.com/long/address, then Tab, for a short link. Options pick the service.","tags":["commands"],"capabilities":["1 command","network"]}
+// ghost {"id":"community.url","name":"Short URL","version":"1.1.0","author":"Ghost Typist","description":"Type /url https://example.com/long/address, then Tab, for a short link. Options pick the service.","tags":["commands"],"capabilities":["1 command","network"]}
 //
-// Type /url and an address, then Tab. The address goes to the chosen service (is.gd or TinyURL),
+// Type /url and an address, then Tab. The address goes to the chosen service (da.gd, TinyURL, clck.ru or is.gd),
 // which returns the short link. A missing https:// is added.
 
+// Each one answers a GET with the short link as plain text. The order is the order tried after the chosen one.
 const services = {
-  "is.gd": (url) => `https://is.gd/create.php?format=simple&url=${encodeURIComponent(url)}`,
-  "TinyURL": (url) => `https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`
+  "da.gd": (url) => `https://da.gd/s?url=${encodeURIComponent(url)}`,
+  "TinyURL": (url) => `https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`,
+  "clck.ru": (url) => `https://clck.ru/--?url=${encodeURIComponent(url)}`,
+  "is.gd": (url) => `https://is.gd/create.php?format=simple&url=${encodeURIComponent(url)}`
 };
 
 const normalize = (args) => {
@@ -18,40 +21,51 @@ const normalize = (args) => {
   return address;
 };
 
+const ask = (service, address) => {
+  let reply;
+  try { reply = ghost.fetch(services[service](address)); }
+  catch (error) { return { error: String((error && error.message) || error) || "the service did not answer." }; }
+  const link = String(reply ?? "").trim();
+  return /^https:\/\/[^\s]+$/.test(link) ? { link } : { error: link.replace(/^Error[:,]\s*/i, "").slice(0, 120) || "the service did not answer." };
+};
+
+// The chosen service first. When it refuses, the next one gets the same address.
 const shorten = (args, service) => {
   const address = normalize(args);
-  let reply;
+  const order = [service, ...Object.keys(services).filter((name) => name !== service)];
+  if (!services[service]) order.shift();
+  let failure;
   ghost.loading(true);
   try {
-    try { reply = ghost.fetch(services[service](address)); }
-    catch (error) { throw new Error(String((error && error.message) || error) || "the service did not answer."); }
+    for (const name of order) {
+      const result = ask(name, address);
+      if (result.link) return result.link;
+      failure = failure || result.error;
+    }
   } finally {
     ghost.loading(false);
   }
-  const link = String(reply ?? "").trim();
-  if (!/^https:\/\/[^\s]+$/.test(link)) throw new Error(link.replace(/^Error:\s*/i, "").slice(0, 120) || "the service did not answer.");
-  return link;
+  throw new Error(failure);
 };
 
 ghost.define({
   id: "community.url",
   name: "Short URL",
-  version: "1.0.0",
+  version: "1.1.0",
   author: "Ghost Typist",
   description: "Type /url https://example.com/long/address, then Tab, for a short link. Options pick the service.",
   network: true,
   settings: [
     { id: "command", title: "Command", type: "text", value: "url",
       help: "What you type after the /. Several names work: url, short." },
-    { id: "service", title: "Service", type: "choice", value: "is.gd", options: ["is.gd", "TinyURL"],
-      help: "The address is sent to this service, which keeps the link. Both are free and need no account." }
+    { id: "service", title: "Service", type: "choice", value: "da.gd", options: Object.keys(services),
+      help: "The address is sent to this service, which keeps the link. All are free and need no account. If one refuses an address, the others are tried in turn." }
   ],
   commands: {
     url: {
       title: "Short link",
       nameFrom: "command",
       usage: "<address>",
-      examples: ["https://example.com/a/very/long/page?with=query"],
       run(ctx) { return shorten(ctx.args, ctx.settings.service); }
     }
   }
