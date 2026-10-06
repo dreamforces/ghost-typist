@@ -156,21 +156,6 @@
       ]
     },
     {
-      "id": "community.expander",
-      "name": "Text Expander",
-      "description": "Type /~ and an abbreviation, then press Tab: it is replaced with the text you set in Options.",
-      "author": "Ghost Typist",
-      "version": "2.5.0",
-      "path": "extensions/expander.js",
-      "sha256": "479dc7faa71b3a7f04093b7d83a9f865d8271b2629bfe0eec9d9ab7e79a9fed5",
-      "capabilities": [
-        "abbreviations"
-      ],
-      "tags": [
-        "writing"
-      ]
-    },
-    {
       "id": "community.latin",
       "name": "Latin Letters",
       "description": "Type /latin and some text, then Tab, to write it in plain Latin letters: Café becomes Cafe and İzmir becomes Izmir. An option writes a URL slug instead.",
