@@ -437,8 +437,23 @@ actions: [
 | `argumentsFrom` | The id of a `choices` setting. Use this or `arguments`, not both. |
 | `symbol` | An SF Symbol name: lowercase letters, digits, and dots, 1–60 characters. The default icon is a puzzle piece. |
 | `model` | A catalog tool-model id for this action alone. See [Models](#models). |
+| `category` | The group ⌃⌘/ lists it under. See [Categories](#categories). Optional. |
 
 At most 20 actions. A command listed in ⌃⌘/ appears in the same menu and runs `run(ctx)` instead of the model. Put `"7 actions"` (the count) in the header `capabilities`. Selection commands count toward that number.
+
+### Categories
+
+⌃⌘/ lists actions and selection commands in groups, each under a small heading, and each row is a slash name: `/enrich`, `/base64`. The group is the `category`: a string of 1–24 characters. Without one an action that runs the model is in **Intelligence** and a selection command is in **Transform**, so most extensions need nothing. Set `category` on the extension to put everything it lists in one group, or on a single action or command to move that one. **Intelligence** is listed first and **Transform** second, then any other group in the order they first appear. When every row falls in one group there are no headings.
+
+Words typed after an action’s name go to it as an extra instruction (`/summarise in two paragraphs`), except for an action with choices or its own `model`, and a selection command, which take none.
+
+```js
+category: "Language",           // for everything this extension lists in ⌃⌘/
+actions: [
+  { id: "formal", title: "Make Formal", category: "Intelligence",  // this one is moved
+    instruction: "Rewrite the text in a formal tone. Return only the rewritten text." }
+]
+```
 
 ## Models
 
