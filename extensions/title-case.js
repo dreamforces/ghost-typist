@@ -1,4 +1,4 @@
-// ghost {"id":"community.title-case","name":"Title Case","version":"1.3.1","author":"Ghost Typist","description":"Type /title and some text, then Tab, to capitalise each word. Options keep small words such as of and the in lower case and leave ALL-CAPS words alone.","tags":["commands"],"capabilities":["1 command","1 action"]}
+// ghost {"id":"community.title-case","name":"Title Case","version":"1.3.2","author":"Ghost Typist","description":"Type /title and some text, then Tab, to capitalise each word. Options keep small words such as of and the in lower case and leave ALL-CAPS words alone.","icon":"textformat.size","tags":["commands"],"capabilities":["1 command","1 action"]}
 //
 // Type /title and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "title, t"), so the command is named where you can change it.
@@ -18,9 +18,10 @@ const capital = (w, locale) => w.charAt(0).toLocaleUpperCase(locale) + w.slice(1
 ghost.define({
   id: "community.title-case",
   name: "Title Case",
-  version: "1.3.1",
+  version: "1.3.2",
   author: "Ghost Typist",
   description: "Type /title and some text, then Tab, to capitalise each word. Options keep small words such as of and the in lower case and leave ALL-CAPS words alone.",
+  icon: "textformat.size",
   settings: [
     { id: "command", title: "Command", type: "text", value: "title",
       help: "What you type after the /. Several names work: title, t." },

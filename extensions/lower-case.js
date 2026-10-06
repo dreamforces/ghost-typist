@@ -1,4 +1,4 @@
-// ghost {"id":"community.lower-case","name":"lower case","version":"1.2.1","author":"Ghost Typist","description":"Type /lower and some text, then Tab, for small letters. An option follows Turkish rules, where I becomes ı.","tags":["commands"],"capabilities":["1 command","1 action"]}
+// ghost {"id":"community.lower-case","name":"lower case","version":"1.2.2","author":"Ghost Typist","description":"Type /lower and some text, then Tab, for small letters. An option follows Turkish rules, where I becomes ı.","icon":"textformat.abc","tags":["commands"],"capabilities":["1 command","1 action"]}
 //
 // Type /lower and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "lower, l"), so the command is named where you can change it.
@@ -11,9 +11,10 @@ const text = (ctx) => {
 ghost.define({
   id: "community.lower-case",
   name: "lower case",
-  version: "1.2.1",
+  version: "1.2.2",
   author: "Ghost Typist",
   description: "Type /lower and some text, then Tab, for small letters. An option follows Turkish rules, where I becomes ı.",
+  icon: "textformat.abc",
   settings: [
     { id: "command", title: "Command", type: "text", value: "lower",
       help: "What you type after the /. Several names work: lower, l." },

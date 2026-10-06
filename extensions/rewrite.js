@@ -1,10 +1,11 @@
-// ghost {"id":"community.rewrite","name":"Rewrite Actions","version":"3.4.0","author":"Ghost Typist","description":"Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.","tags":["writing"],"capabilities":["7 actions"]}
+// ghost {"id":"community.rewrite","name":"Rewrite Actions","version":"3.4.1","author":"Ghost Typist","description":"Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.","icon":"pencil.line","tags":["writing"],"capabilities":["7 actions"]}
 ghost.define({
   id: "community.rewrite",
   name: "Rewrite Actions",
-  version: "3.4.0",
+  version: "3.4.1",
   author: "Ghost Typist",
   description: "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
+  icon: "pencil.line",
   settings: [
     { id: "tones", title: "Tones", type: "choices", custom: true, options: ["Friendly", "Formal", "Direct", "Executive"],
       value: ["Friendly", "Formal", "Direct", "Executive"], help: "The tones Change Tone offers. Add your own, such as Sarcastic." },

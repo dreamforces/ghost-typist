@@ -1,4 +1,4 @@
-// ghost {"id":"community.money","name":"Currency","version":"1.2.1","author":"Ghost Typist","description":"Type /money 100 usd in gbp, then Tab. Add on 29/01/2026 for a rate up to 5 years ago.","tags":["commands"],"capabilities":["1 command","network"]}
+// ghost {"id":"community.money","name":"Currency","version":"1.2.2","author":"Ghost Typist","description":"Type /money 100 usd in gbp, then Tab. Add on 29/01/2026 for a rate up to 5 years ago.","icon":"dollarsign.circle","tags":["commands"],"capabilities":["1 command","network"]}
 //
 // Type /money and an amount, then Tab. Rates are the European Central Bank's, from Frankfurter.
 // 100usd in gbp, 100 usd to gbp, $100 in gbp, and 100 gbp in usd on 29/01/2026.
@@ -90,9 +90,10 @@ const quote = (args, language) => {
 ghost.define({
   id: "community.money",
   name: "Currency",
-  version: "1.2.1",
+  version: "1.2.2",
   author: "Ghost Typist",
   description: "Type /money 100 usd in gbp, then Tab. Add on 29/01/2026 for a rate up to 5 years ago.",
+  icon: "dollarsign.circle",
   network: true,
   settings: [
     { id: "command", title: "Command", type: "text", value: "money",

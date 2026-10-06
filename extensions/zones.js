@@ -1,4 +1,4 @@
-// ghost {"id":"community.zones","name":"Time Conversion","version":"1.2.0","author":"Ghost Typist","description":"Type /time in Dallas, or /time 5pm in Sydney, then Tab. in and to both work, and summer time follows the place.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.zones","name":"Time Conversion","version":"1.2.1","author":"Ghost Typist","description":"Type /time in Dallas, or /time 5pm in Sydney, then Tab. in and to both work, and summer time follows the place.","icon":"globe","tags":["commands"],"capabilities":["1 command"]}
 
 // Type /time and a place, then Tab. /time in Dallas is the time there now. /time 5pm in Sydney is
 // 5pm on this Mac, shown in Sydney. /time 2pm London in San Francisco crosses from one place to the
@@ -246,9 +246,10 @@ const convert = (source, zoneOn) => {
 ghost.define({
   id: "community.zones",
   name: "Time Conversion",
-  version: "1.2.0",
+  version: "1.2.1",
   author: "Ghost Typist",
   description: "Type /time in Dallas, or /time 5pm in Sydney, then Tab. in and to both work, and summer time follows the place.",
+  icon: "globe",
   settings: [
     { id: "command", title: "Command", type: "text", value: "time",
       help: "Cities, countries, states and time zones. in and to both work. Summer time is included. Add on next Tuesday, or on 2026-03-08, for that day." },

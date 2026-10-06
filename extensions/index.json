@@ -6,365 +6,388 @@
       "name": "Alarm",
       "description": "Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.",
       "author": "Ghost Typist",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "extensions/alarm.js",
-      "sha256": "0470cae9e91ea6e388a257eb39da734b5307eabaee13dac63816d9279bafb50c",
+      "sha256": "16125720e53b78bb8a7bd15dc0a6f378c9e7c08aeb05632997ceba177555a8af",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "alarm"
     },
     {
       "id": "community.base64",
       "name": "Base64",
       "description": "Type /base64 and some text, then Tab, to encode it. /base64 -d decodes. Options set the direction and whether the result is URL-safe.",
       "author": "Ghost Typist",
-      "version": "1.1.2",
+      "version": "1.1.3",
       "path": "extensions/base64.js",
-      "sha256": "e363cab805537d78ac2619cef6a36e2468c4cd581f5b72042b665031a2134a8d",
+      "sha256": "502068b8fceb205b52fcc77b5f15082e6022137f6a302d6ffca2cb282499df29",
       "capabilities": [
         "1 command",
         "1 action"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "number.square"
     },
     {
       "id": "community.calculator",
       "name": "Calculator",
       "description": "Type /= 3^2, then Tab, for the answer. () and + - * / ^ all work.",
       "author": "Ghost Typist",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "extensions/calculator.js",
-      "sha256": "d120a2ba2eca34a432128782df483ea1d1562544a6cc7cbb29f28080123831d5",
+      "sha256": "184592627d0570191c29d32ebcf6bf2052436a5450b644a20067d5404342ae0e",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "plusminus"
     },
     {
       "id": "community.coin",
       "name": "Coin Flip",
       "description": "Type /coin, then Tab, to flip a coin. Options choose what it says, from heads or tails to answers of your own, and how many flips.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "extensions/coin.js",
-      "sha256": "ea76000ba368714cb22b9f7caf7a092cfe993d3c7f26611614f259b1c4a86866",
+      "sha256": "d595d746a1bb9e29efe8b11bc2ee2030c389a0c7e016d51a6faec6b5b144b271",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "centsign.circle"
     },
     {
       "id": "community.compose",
       "name": "Compose",
       "description": "Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.",
       "author": "Ghost Typist",
-      "version": "2.1.0",
+      "version": "2.1.1",
       "path": "extensions/compose.js",
-      "sha256": "646845a2e89da8e796ee8c79a3dbfeca3ef9175d7ec08e17228e7d1a71cab795",
+      "sha256": "7039bf3caf8bbb9a6d5621ac3edd66f8b61f6a564f890a4e7049588dd442147f",
       "capabilities": [
         "compose"
       ],
       "tags": [
         "writing",
         "commands"
-      ]
+      ],
+      "icon": "text.bubble"
     },
     {
       "id": "community.date",
       "name": "Date",
       "description": "Type /date, then Tab, for today's date. /date yesterday or /date next Tue gives another day. Options set the format and the language.",
       "author": "Ghost Typist",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "path": "extensions/date.js",
-      "sha256": "8f9c573acd38278970f12798326bd1d79621295a1f042f60857e68aae6099f94",
+      "sha256": "b37f3d6cc4aa855ac8b1dc4c86b1c9dfd1d73bb41936feff155e930a7e8161ef",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "calendar"
     },
     {
       "id": "community.decode",
       "name": "HTML Decode",
       "description": "Type /decode and some text, then Tab, to turn HTML entities such as &lt;, &#39; and &copy; back into characters.",
       "author": "Ghost Typist",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "path": "extensions/decode.js",
-      "sha256": "2300d3cdb1b6b21eaf997b21ddc2de29f08545da1bc017a9e7ba5c32b47684f5",
+      "sha256": "66cd21b489607b247e91576eb8d5ba50be168d4828780f25361fdacd578843c2",
       "capabilities": [
         "1 command",
         "1 action"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "lock.open"
     },
     {
       "id": "community.dice",
       "name": "Dice",
       "description": "Type /dice, then Tab, to roll a die. /dice 20 rolls a 20-sided one and /dice 2d6 rolls two six-sided dice. Options set the dice a plain /dice rolls.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "extensions/dice.js",
-      "sha256": "d0c3d1bd1c046399426d08b3eba64c53f52b8d4c242ccd818d456c4a1eb91755",
+      "sha256": "1e6d57eb603cc0b162216702a35504fe28a71dc377f6a134e8df24276607ec0f",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "die.face.5"
     },
     {
       "id": "community.emoji",
       "name": "Emoji",
       "description": "Type :) or :crying, then Tab. These are the emojis people send most. Hands use the skin tone in Options.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "extensions/emoji.js",
-      "sha256": "5a80111608738354950be00dc3a0a4e8f1a41ee31eedbb0095bdae69e3879d28",
+      "sha256": "b7b0dc026400d6f79c6a2b8a0fd11235c5f8e81b73306ea69771800f2f5aa90b",
       "capabilities": [
         "abbreviations"
       ],
       "tags": [
         "abbreviations"
-      ]
+      ],
+      "icon": "face.smiling"
     },
     {
       "id": "community.encode",
       "name": "HTML Encode",
       "description": "Type /encode and some text, then Tab, to turn &, < and > into HTML entities. Options choose whether quotes and non-ASCII letters are encoded too.",
       "author": "Ghost Typist",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "path": "extensions/encode.js",
-      "sha256": "9c1f6e04b05ea1806fadd22b1fc7be3e6f8bf6eb072c41b273d9b73964868242",
+      "sha256": "a0219d71b61caccb7810c8154d88f0135c547a6d1bccfc961b12c8d0db801edb",
       "capabilities": [
         "1 command",
         "1 action"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "lock"
     },
     {
       "id": "community.latin",
       "name": "Latin Letters",
       "description": "Type /latin and some text, then Tab, to write it in plain Latin letters: Café becomes Cafe and İzmir becomes Izmir. An option writes a URL slug instead.",
       "author": "Ghost Typist",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "path": "extensions/latin.js",
-      "sha256": "32c3c4d5a649dbe5d5638491d26ef51d4b893e762b686ef6e58bf565c8673757",
+      "sha256": "db0326b7fabaa0f7360daeb4fa079079b9c37fd76816153dd1a669c4ab565d3d",
       "capabilities": [
         "1 command",
         "1 action"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "character.book.closed"
     },
     {
       "id": "community.lorem",
       "name": "Placeholder",
       "description": "Type /lorem, then Tab, for a paragraph of placeholder text. Add a topic, or 1s for one sentence and 3p for three paragraphs.",
       "author": "Ghost Typist",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "extensions/lorem.js",
-      "sha256": "0f5a384a52389eda34830e0f234704cac6a4733d7d2dd839769a4fa290cb7f76",
+      "sha256": "6a270c6d29cc9319a1249ee6d8d4b9c068530689a099abe43543e8a0064422ed",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "writing",
         "commands"
-      ]
+      ],
+      "icon": "text.alignleft"
     },
     {
       "id": "community.lower-case",
       "name": "lower case",
       "description": "Type /lower and some text, then Tab, for small letters. An option follows Turkish rules, where I becomes ı.",
       "author": "Ghost Typist",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "path": "extensions/lower-case.js",
-      "sha256": "4991b7c714f97681af5fd079aac4ce77fb8994cf52336dcb1d065f232e381667",
+      "sha256": "d67efa470caf30b0194b645d2dc2863ec27423489d8e6e5651cdf0ce1288ea30",
       "capabilities": [
         "1 command",
         "1 action"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "textformat.abc"
     },
     {
       "id": "community.money",
       "name": "Currency",
       "description": "Type /money 100 usd in gbp, then Tab. Add on 29/01/2026 for a rate up to 5 years ago.",
       "author": "Ghost Typist",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "path": "extensions/money.js",
-      "sha256": "4b19e4e499e340acd3b4a8f07bbdedf4fbb043ae3215fa2ccf30e64ccd9580fa",
+      "sha256": "7e06520a15403f00c5698e469d405ac7b858aaec19685054aeb2fd0c2a099a08",
       "capabilities": [
         "1 command",
         "network"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "dollarsign.circle"
     },
     {
       "id": "community.pascal-case",
       "name": "PascalCase",
       "description": "Type /pascal and some text, then Tab, to join its words with a capital letter on each. An option starts with a small letter instead, for camelCase.",
       "author": "Ghost Typist",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "path": "extensions/pascal-case.js",
-      "sha256": "1c0c8b7e98abe5c7462c2eaab8b6feab33c38b5379f8ab47b561fb2beca367d5",
+      "sha256": "8dfc30df16f99ec15eeb85ac1f7c36ebafb5866c057477e7eacf40ee00345651",
       "capabilities": [
         "1 command",
         "1 action"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "textformat"
     },
     {
       "id": "community.password",
       "name": "Password",
       "description": "Type /password, then Tab, for a random password. /password 24 special changes one use. Memorable is three or more English words.",
       "author": "Ghost Typist",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "path": "extensions/password.js",
-      "sha256": "753b628c3c5b5fc59779a1b15193ed4f6e85f916aa4903f8abadf37f8d07223c",
+      "sha256": "cc446030411dd22dd4569f17e03ebbee797ecca89e117441d30d6e0644eff446",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "key"
     },
     {
       "id": "community.proofread",
       "name": "Spelling & Grammar",
       "description": "Underlines misspellings and grammar slips with the macOS checker, or fixes a typo when you turn that on.",
       "author": "Ghost Typist",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "path": "extensions/proofread.js",
-      "sha256": "d1643e9b1212f22cae423eb1e2147a316ea0ce8d77a48df78e5c02df1d422575",
+      "sha256": "cb2633bf1a9c1da78c74fbaa254960edf30699eecdbed7beac71948a73a689b8",
       "capabilities": [
         "marks writing"
       ],
       "tags": [
         "writing"
-      ]
+      ],
+      "icon": "checkmark.seal"
     },
     {
       "id": "community.random",
       "name": "Random Number",
       "description": "Type /random, then Tab, for a random number in the default range. /random 200 goes up to 200, and /random 3-9 uses that range.",
       "author": "Ghost Typist",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "path": "extensions/random.js",
-      "sha256": "b379d60f704b4f1b14c1c3d14f9d9d0ee1013cc619b9afbb206c38a45b994aeb",
+      "sha256": "d8cfbe721f8aba8b3fde26079d6ed51a4be4c1b9259080a66493640f7f8d0816",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "shuffle"
     },
     {
       "id": "community.rewrite",
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "3.4.0",
+      "version": "3.4.1",
       "path": "extensions/rewrite.js",
-      "sha256": "d2c14d6613acd58a9d9a649df597b9e3e5fadba05dc2c688626023fd5b0640ac",
+      "sha256": "a0660607184cd8669b65e2f13c7f666478d24f0e1e40e80ec07158c3c323e846",
       "capabilities": [
         "7 actions"
       ],
       "tags": [
         "writing"
-      ]
+      ],
+      "icon": "pencil.line"
     },
     {
       "id": "community.snake-case",
       "name": "snake_case",
       "description": "Type /snake and some text, then Tab, to join its words in lower case with underscores. Options change the joiner, so it can write kebab-case or CONSTANT_CASE.",
       "author": "Ghost Typist",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "path": "extensions/snake-case.js",
-      "sha256": "a568061a836d37838befdd6ef1d63e050187be76f36da32fcf7918a5ae184523",
+      "sha256": "ac1d8fd3308e3e05879ce0c3c8f197fddb618be7f5a9905505e860ed97edc956",
       "capabilities": [
         "1 command",
         "1 action"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "minus"
     },
     {
       "id": "community.time",
       "name": "Current Time",
       "description": "Type /now, then Tab, for the time now. /now 24 changes one use. Options set the format, the time zone, and whether that zone is shown.",
       "author": "Ghost Typist",
-      "version": "1.7.0",
+      "version": "1.7.1",
       "path": "extensions/time.js",
-      "sha256": "b82948aa17ef315bae084d4b7aaee18bee4412fee7ae00429d60c526fb9aa47f",
+      "sha256": "dbed88baa73d156534565e300d73faea2308bbcce50ee1bb76f5609dfa0bb491",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "clock"
     },
     {
       "id": "community.timer",
       "name": "Timer",
       "description": "Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.",
       "author": "Ghost Typist",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "path": "extensions/timer.js",
-      "sha256": "9aff7f04a4108cb1eb0e6f0d05018c6a5727db13a04208b115029ba2a32e79d3",
+      "sha256": "57c760126758cae5c027dfb5974c04048f0e6c58b2003621e5436707406b7c93",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "timer"
     },
     {
       "id": "community.title-case",
       "name": "Title Case",
       "description": "Type /title and some text, then Tab, to capitalise each word. Options keep small words such as of and the in lower case and leave ALL-CAPS words alone.",
       "author": "Ghost Typist",
-      "version": "1.3.1",
+      "version": "1.3.2",
       "path": "extensions/title-case.js",
-      "sha256": "e386cd652a6343408fe27528c01e225499602a386a985e3ae79dc816cff8d3aa",
+      "sha256": "f30886f71d6f2e5d32c14d4c1805b907c42ec39d0d8fc8ba8343b58cabc6f820",
       "capabilities": [
         "1 command",
         "1 action"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "textformat.size"
     },
     {
       "id": "community.translate",
       "name": "Translate",
       "description": "Translates a selection, in the same menu as your other actions.",
       "author": "Ghost Typist",
-      "version": "3.2.2",
+      "version": "3.2.3",
       "path": "extensions/translate.js",
-      "sha256": "8806592c006e8d9342e7486ada994da9f8a11cba8781a3cd49c3eda5df30e01c",
+      "sha256": "f34ddc9f92aed93332143770b27c7dff91a3a2da4ba616828e0efba203356fe3",
       "capabilities": [
         "1 action",
         "translation model"
@@ -372,84 +395,90 @@
       "tags": [
         "writing",
         "translation"
-      ]
+      ],
+      "icon": "translate"
     },
     {
       "id": "community.unit",
       "name": "Unit Conversion",
       "description": "Type /unit 3 cm in mm, then Tab. in and to both work, for length, area, weight, volume and temperature.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "extensions/unit.js",
-      "sha256": "c17d8991a226604c3a848c9119e8d753e1231b87ce6abb44251c9ad1f7a99889",
+      "sha256": "d64b8d0a6ee48ec6fdd0047c9eb8c2b2327e414f83193db3ea9a5f70023db7b5",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "ruler"
     },
     {
       "id": "community.upper-case",
       "name": "ALL CAPS",
       "description": "Type /caps and some text, then Tab. Capitals follow the language you are writing.",
       "author": "Ghost Typist",
-      "version": "1.4.1",
+      "version": "1.4.2",
       "path": "extensions/upper-case.js",
-      "sha256": "45e937bb63fdee00e71d3b10d6751fb2313b7bf7f10ac14cbf8b17b51cac60e7",
+      "sha256": "81335404e741480fc5be7db93469fe1d8347bb14fe13da66cd3d424ef9fe1707",
       "capabilities": [
         "1 command",
         "1 action"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "textformat.size.larger"
     },
     {
       "id": "community.url",
       "name": "Short URL",
       "description": "Type /url https://example.com/long/address, then Tab, for a short link. Options pick the service.",
       "author": "Ghost Typist",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "path": "extensions/url.js",
-      "sha256": "c11f13de10cbc9891be1c88a76a59bd370fa381c962cfed06a955ccf9c153d06",
+      "sha256": "1014665f2b002951354d794327c491d4473e79c96dd076c29d316e53f02b883f",
       "capabilities": [
         "1 command",
         "network"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "link"
     },
     {
       "id": "community.uuid",
       "name": "UUID",
       "description": "Type /uuid, then Tab, for a random UUID. Options set the version, the letter case, the hyphens and braces.",
       "author": "Ghost Typist",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "extensions/uuid.js",
-      "sha256": "9d6e77545ecda6cdf33b9ced69d309a302254e29732dd6ac16f350eb9c77b945",
+      "sha256": "35bbc685a56b61f7822bb116fbc5b2b39ce30ed6b0fcd972d4bce9525d04d9f4",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "number"
     },
     {
       "id": "community.zones",
       "name": "Time Conversion",
       "description": "Type /time in Dallas, or /time 5pm in Sydney, then Tab. in and to both work, and summer time follows the place.",
       "author": "Ghost Typist",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "path": "extensions/zones.js",
-      "sha256": "70cbe5830db1c08bcf5f24d5de8d35116e37384403de48e1251e1ffd9c72ffb9",
+      "sha256": "9ddecd30fc4acde715262099a85e14fc24f24853e9a58dc3b6066ae4f6edcc52",
       "capabilities": [
         "1 command"
       ],
       "tags": [
         "commands"
-      ]
+      ],
+      "icon": "globe"
     }
   ]
 }

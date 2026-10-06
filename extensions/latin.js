@@ -1,4 +1,4 @@
-// ghost {"id":"community.latin","name":"Latin Letters","version":"1.1.1","author":"Ghost Typist","description":"Type /latin and some text, then Tab, to write it in plain Latin letters: Café becomes Cafe and İzmir becomes Izmir. An option writes a URL slug instead.","tags":["commands"],"capabilities":["1 command","1 action"]}
+// ghost {"id":"community.latin","name":"Latin Letters","version":"1.1.2","author":"Ghost Typist","description":"Type /latin and some text, then Tab, to write it in plain Latin letters: Café becomes Cafe and İzmir becomes Izmir. An option writes a URL slug instead.","icon":"character.book.closed","tags":["commands"],"capabilities":["1 command","1 action"]}
 //
 // Type /latin and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "latin, l"), so the command is named where you can change it.
@@ -11,9 +11,10 @@ const text = (ctx) => {
 ghost.define({
   id: "community.latin",
   name: "Latin Letters",
-  version: "1.1.1",
+  version: "1.1.2",
   author: "Ghost Typist",
   description: "Type /latin and some text, then Tab, to write it in plain Latin letters: Café becomes Cafe and İzmir becomes Izmir. An option writes a URL slug instead.",
+  icon: "character.book.closed",
   settings: [
     { id: "command", title: "Command", type: "text", value: "latin",
       help: "What you type after the /. Several names work: latin, l." },

@@ -1,4 +1,4 @@
-// ghost {"id":"community.alarm","name":"Alarm","version":"1.0.1","author":"Ghost Typist","description":"Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.alarm","name":"Alarm","version":"1.0.2","author":"Ghost Typist","description":"Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.","icon":"alarm","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /alarm, a clock time, and a note, then Tab. 2pm and 8:45am are today, or tomorrow if
 // that time has passed. The menu bar counts down, and the clock rocks on its feet when it is due.
@@ -16,9 +16,10 @@ const clock = (seconds) => {
 ghost.define({
   id: "community.alarm",
   name: "Alarm",
-  version: "1.0.1",
+  version: "1.0.2",
   author: "Ghost Typist",
   description: "Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.",
+  icon: "alarm",
   settings: [
     { id: "command", title: "Command", type: "text", value: "alarm",
       help: "What you type after the /. Several names work: alarm, a." }

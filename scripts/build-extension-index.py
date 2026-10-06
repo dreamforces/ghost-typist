@@ -44,6 +44,8 @@ for path in sorted(extensions.glob("*.js")):
     entry.update(path=path.as_posix(), sha256=hashlib.sha256(data).hexdigest(), capabilities=header.get("capabilities") or [])
     if header.get("tags"):
         entry["tags"] = header["tags"]
+    if header.get("icon"):
+        entry["icon"] = header["icon"]
     entries.append(entry)
 entries.sort(key=lambda entry: entry["id"])
 (extensions / "index.json").write_text(json.dumps({"schemaVersion": 1, "packages": entries}, indent=2, ensure_ascii=False) + "\n")

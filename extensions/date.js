@@ -1,4 +1,4 @@
-// ghost {"id":"community.date","name":"Date","version":"1.3.0","author":"Ghost Typist","description":"Type /date, then Tab, for today's date. /date yesterday or /date next Tue gives another day. Options set the format and the language.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.date","name":"Date","version":"1.3.1","author":"Ghost Typist","description":"Type /date, then Tab, for today's date. /date yesterday or /date next Tue gives another day. Options set the format and the language.","icon":"calendar","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /date and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "date, d"), so the command is named where you can change it.
@@ -42,9 +42,10 @@ const format = (d, pattern, locale, utc) => {
 ghost.define({
   id: "community.date",
   name: "Date",
-  version: "1.3.0",
+  version: "1.3.1",
   author: "Ghost Typist",
   description: "Type /date, then Tab, for today's date. /date yesterday or /date next Tue gives another day. Options set the format and the language.",
+  icon: "calendar",
   settings: [
     { id: "command", title: "Command", type: "text", value: "date",
       help: "What you type after the /. Several names work: date, d. Try yesterday, next Tue, last Thursday of last month, 6 October 2026, or +7." },

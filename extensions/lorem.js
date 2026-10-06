@@ -1,4 +1,4 @@
-// ghost {"id":"community.lorem","name":"Placeholder","version":"1.0.1","author":"Ghost Typist","description":"Type /lorem, then Tab, for a paragraph of placeholder text. Add a topic, or 1s for one sentence and 3p for three paragraphs.","tags":["writing","commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.lorem","name":"Placeholder","version":"1.0.2","author":"Ghost Typist","description":"Type /lorem, then Tab, for a paragraph of placeholder text. Add a topic, or 1s for one sentence and 3p for three paragraphs.","icon":"text.alignleft","tags":["writing","commands"],"capabilities":["1 command"]}
 //
 // Type /lorem, then Tab. The writing model fills in placeholder prose.
 // A topic focuses it. A length at the end wins over the option: 1s is one sentence, 4s is four, 3p is three paragraphs.
@@ -51,9 +51,10 @@ const request = (args, fallback) => {
 ghost.define({
   id: "community.lorem",
   name: "Placeholder",
-  version: "1.0.1",
+  version: "1.0.2",
   author: "Ghost Typist",
   description: "Type /lorem, then Tab, for a paragraph of placeholder text. Add a topic, or 1s for one sentence and 3p for three paragraphs.",
+  icon: "text.alignleft",
   settings: [
     { id: "command", title: "Command", type: "text", value: "lorem",
       help: "What you type after the /. Tab on /lorem writes a paragraph. Add a topic to focus it. A trailing 1s or 3p overrides Length." },

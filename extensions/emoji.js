@@ -1,4 +1,4 @@
-// ghost {"id":"community.emoji","name":"Emoji","version":"1.1.0","author":"Ghost Typist","description":"Type :) or :crying, then Tab. These are the emojis people send most. Hands use the skin tone in Options.","tags":["abbreviations"],"capabilities":["abbreviations"]}
+// ghost {"id":"community.emoji","name":"Emoji","version":"1.1.1","author":"Ghost Typist","description":"Type :) or :crying, then Tab. These are the emojis people send most. Hands use the skin tone in Options.","icon":"face.smiling","tags":["abbreviations"],"capabilities":["abbreviations"]}
 //
 // Type an emoticon or a :word, then Tab. The rows are the ones people actually send:
 // Unicode's frequency list, and the faces social media uses more than that list shows.
@@ -98,9 +98,10 @@ const rows = [
 ghost.define({
   id: "community.emoji",
   name: "Emoji",
-  version: "1.1.0",
+  version: "1.1.1",
   author: "Ghost Typist",
   description: "Type :) or :crying, then Tab. These are the emojis people send most. Hands use the skin tone in Options.",
+  icon: "face.smiling",
   settings: [
     { id: "skin", title: "Skin tone", type: "choice", value: "👍",
       options: ["👍", "👍🏻", "👍🏼", "👍🏽", "👍🏾", "👍🏿"],

@@ -1,4 +1,4 @@
-// ghost {"id":"community.decode","name":"HTML Decode","version":"1.1.1","author":"Ghost Typist","description":"Type /decode and some text, then Tab, to turn HTML entities such as &lt;, &#39; and &copy; back into characters.","tags":["commands"],"capabilities":["1 command","1 action"]}
+// ghost {"id":"community.decode","name":"HTML Decode","version":"1.1.2","author":"Ghost Typist","description":"Type /decode and some text, then Tab, to turn HTML entities such as &lt;, &#39; and &copy; back into characters.","icon":"lock.open","tags":["commands"],"capabilities":["1 command","1 action"]}
 //
 // Type /decode and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "decode, d"), so the command is named where you can change it.
@@ -11,9 +11,10 @@ const text = (ctx) => {
 ghost.define({
   id: "community.decode",
   name: "HTML Decode",
-  version: "1.1.1",
+  version: "1.1.2",
   author: "Ghost Typist",
   description: "Type /decode and some text, then Tab, to turn HTML entities such as &lt;, &#39; and &copy; back into characters.",
+  icon: "lock.open",
   settings: [
     { id: "command", title: "Command", type: "text", value: "decode",
       help: "What you type after the /. Several names work: decode, d." },

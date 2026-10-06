@@ -1,4 +1,4 @@
-// ghost {"id":"community.dice","name":"Dice","version":"1.1.0","author":"Ghost Typist","description":"Type /dice, then Tab, to roll a die. /dice 20 rolls a 20-sided one and /dice 2d6 rolls two six-sided dice. Options set the dice a plain /dice rolls.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.dice","name":"Dice","version":"1.1.1","author":"Ghost Typist","description":"Type /dice, then Tab, to roll a die. /dice 20 rolls a 20-sided one and /dice 2d6 rolls two six-sided dice. Options set the dice a plain /dice rolls.","icon":"die.face.5","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /dice and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "dice, d"), so the command is named where you can change it.
@@ -6,9 +6,10 @@
 ghost.define({
   id: "community.dice",
   name: "Dice",
-  version: "1.1.0",
+  version: "1.1.1",
   author: "Ghost Typist",
   description: "Type /dice, then Tab, to roll a die. /dice 20 rolls a 20-sided one and /dice 2d6 rolls two six-sided dice. Options set the dice a plain /dice rolls.",
+  icon: "die.face.5",
   settings: [
     { id: "command", title: "Command", type: "text", value: "dice",
       help: "What you type after the /. Several names work: dice, d." },

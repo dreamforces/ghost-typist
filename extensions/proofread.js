@@ -1,10 +1,11 @@
-// ghost {"id":"community.proofread","name":"Spelling & Grammar","version":"1.2.0","author":"Ghost Typist","description":"Underlines misspellings and grammar slips with the macOS checker, or fixes a typo when you turn that on.","tags":["writing"],"capabilities":["marks writing"]}
+// ghost {"id":"community.proofread","name":"Spelling & Grammar","version":"1.2.1","author":"Ghost Typist","description":"Underlines misspellings and grammar slips with the macOS checker, or fixes a typo when you turn that on.","icon":"checkmark.seal","tags":["writing"],"capabilities":["marks writing"]}
 ghost.define({
   id: "community.proofread",
   name: "Spelling & Grammar",
-  version: "1.2.0",
+  version: "1.2.1",
   author: "Ghost Typist",
   description: "Underlines misspellings and grammar slips with the macOS checker, or fixes a typo when you turn that on.",
+  icon: "checkmark.seal",
   settings: [
     { id: "fix", title: "Fix typos", type: "toggle", value: false,
       help: "On, a misspelling in the scratchpad is replaced with the suggestion when you pause. Off, it is only underlined." },

@@ -1,4 +1,4 @@
-// ghost {"id":"community.timer","name":"Timer","version":"1.0.3","author":"Ghost Typist","description":"Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.timer","name":"Timer","version":"1.0.4","author":"Ghost Typist","description":"Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.","icon":"timer","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /timer and a length, then Tab. 30s, 25m and 1hr are whole amounts. Anything after the
 // length is the note shown when the time is up.
@@ -28,9 +28,10 @@ const clock = (seconds) => {
 ghost.define({
   id: "community.timer",
   name: "Timer",
-  version: "1.0.3",
+  version: "1.0.4",
   author: "Ghost Typist",
   description: "Type /timer 25m, then Tab, to count down. A note after the time is shown when it ends.",
+  icon: "timer",
   settings: [
     { id: "command", title: "Command", type: "text", value: "timer",
       help: "What you type after the /. Several names work: timer, t." }

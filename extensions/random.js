@@ -1,4 +1,4 @@
-// ghost {"id":"community.random","name":"Random Number","version":"1.2.0","author":"Ghost Typist","description":"Type /random, then Tab, for a random number in the default range. /random 200 goes up to 200, and /random 3-9 uses that range.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.random","name":"Random Number","version":"1.2.1","author":"Ghost Typist","description":"Type /random, then Tab, for a random number in the default range. /random 200 goes up to 200, and /random 3-9 uses that range.","icon":"shuffle","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /random and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "random, r"), so the command is named where you can change it.
@@ -6,9 +6,10 @@
 ghost.define({
   id: "community.random",
   name: "Random Number",
-  version: "1.2.0",
+  version: "1.2.1",
   author: "Ghost Typist",
   description: "Type /random, then Tab, for a random number in the default range. /random 200 goes up to 200, and /random 3-9 uses that range.",
+  icon: "shuffle",
   settings: [
     { id: "command", title: "Command", type: "text", value: "random",
       help: "What you type after the /. Several names work: random, r." },

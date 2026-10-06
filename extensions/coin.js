@@ -1,4 +1,4 @@
-// ghost {"id":"community.coin","name":"Coin Flip","version":"1.1.0","author":"Ghost Typist","description":"Type /coin, then Tab, to flip a coin. Options choose what it says, from heads or tails to answers of your own, and how many flips.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.coin","name":"Coin Flip","version":"1.1.1","author":"Ghost Typist","description":"Type /coin, then Tab, to flip a coin. Options choose what it says, from heads or tails to answers of your own, and how many flips.","icon":"centsign.circle","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /coin and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "coin, c"), so the command is named where you can change it.
@@ -6,9 +6,10 @@
 ghost.define({
   id: "community.coin",
   name: "Coin Flip",
-  version: "1.1.0",
+  version: "1.1.1",
   author: "Ghost Typist",
   description: "Type /coin, then Tab, to flip a coin. Options choose what it says, from heads or tails to answers of your own, and how many flips.",
+  icon: "centsign.circle",
   settings: [
     { id: "command", title: "Command", type: "text", value: "coin",
       help: "What you type after the /. Several names work: coin, c." },

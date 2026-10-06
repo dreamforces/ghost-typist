@@ -1,4 +1,4 @@
-// ghost {"id":"community.time","name":"Current Time","version":"1.7.0","author":"Ghost Typist","description":"Type /now, then Tab, for the time now. /now 24 changes one use. Options set the format, the time zone, and whether that zone is shown.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.time","name":"Current Time","version":"1.7.1","author":"Ghost Typist","description":"Type /now, then Tab, for the time now. /now 24 changes one use. Options set the format, the time zone, and whether that zone is shown.","icon":"clock","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /now and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "now, n"), so the command is named where you can change it.
@@ -64,9 +64,10 @@ const timeZones = () => {
 ghost.define({
   id: "community.time",
   name: "Current Time",
-  version: "1.7.0",
+  version: "1.7.1",
   author: "Ghost Typist",
   description: "Type /now, then Tab, for the time now. /now 24 changes one use. Options set the format, the time zone, and whether that zone is shown.",
+  icon: "clock",
   settings: [
     { id: "command", title: "Command", type: "text", value: "now",
       help: "What you type after the /. Several names work: now, n." },

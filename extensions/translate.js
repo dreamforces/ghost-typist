@@ -1,10 +1,11 @@
-// ghost {"id":"community.translate","name":"Translate","version":"3.2.2","author":"Ghost Typist","description":"Translates a selection, in the same menu as your other actions.","tags":["writing","translation"],"capabilities":["1 action","translation model"]}
+// ghost {"id":"community.translate","name":"Translate","version":"3.2.3","author":"Ghost Typist","description":"Translates a selection, in the same menu as your other actions.","icon":"translate","tags":["writing","translation"],"capabilities":["1 action","translation model"]}
 ghost.define({
   id: "community.translate",
   name: "Translate",
-  version: "3.2.2",
+  version: "3.2.3",
   author: "Ghost Typist",
   description: "Translates a selection, in the same menu as your other actions.",
+  icon: "translate",
   model: "translategemma-4b-q4",
   settings: [
     { id: "languages", title: "Languages", type: "choices", custom: true, help: "The languages Translate offers. Add your own.", options: ["English", "Chinese", "Spanish", "French", "German", "Portuguese", "Russian", "Arabic", "Japanese", "Korean", "Turkish"], value: ["English", "French", "Turkish"] }

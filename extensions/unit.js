@@ -1,4 +1,4 @@
-// ghost {"id":"community.unit","name":"Unit Conversion","version":"1.1.0","author":"Ghost Typist","description":"Type /unit 3 cm in mm, then Tab. in and to both work, for length, area, weight, volume and temperature.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.unit","name":"Unit Conversion","version":"1.1.1","author":"Ghost Typist","description":"Type /unit 3 cm in mm, then Tab. in and to both work, for length, area, weight, volume and temperature.","icon":"ruler","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /unit and a conversion, then Tab. 3cm in mm, 3 cm to mm, 4 lbs in kg and 10 m in inches.
 
@@ -95,9 +95,10 @@ const convert = (source) => {
 ghost.define({
   id: "community.unit",
   name: "Unit Conversion",
-  version: "1.1.0",
+  version: "1.1.1",
   author: "Ghost Typist",
   description: "Type /unit 3 cm in mm, then Tab. in and to both work, for length, area, weight, volume and temperature.",
+  icon: "ruler",
   settings: [
     { id: "command", title: "Command", type: "text", value: "unit",
       help: "What you type after the /. in and to both work. Acres are international. Cups, pints and gallons are US." }

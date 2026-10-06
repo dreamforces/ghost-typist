@@ -1,4 +1,4 @@
-// ghost {"id":"community.uuid","name":"UUID","version":"1.1.0","author":"Ghost Typist","description":"Type /uuid, then Tab, for a random UUID. Options set the version, the letter case, the hyphens and braces.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.uuid","name":"UUID","version":"1.1.1","author":"Ghost Typist","description":"Type /uuid, then Tab, for a random UUID. Options set the version, the letter case, the hyphens and braces.","icon":"number","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /uuid and press Tab. The extension's Options say what you type after the slash (it can be
 // several names, such as "uuid, u"), so the command is named where you can change it.
@@ -6,9 +6,10 @@
 ghost.define({
   id: "community.uuid",
   name: "UUID",
-  version: "1.1.0",
+  version: "1.1.1",
   author: "Ghost Typist",
   description: "Type /uuid, then Tab, for a random UUID. Options set the version, the letter case, the hyphens and braces.",
+  icon: "number",
   settings: [
     { id: "command", title: "Command", type: "text", value: "uuid",
       help: "What you type after the /. Several names work: uuid, u." },

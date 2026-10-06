@@ -1,4 +1,4 @@
-// ghost {"id":"community.calculator","name":"Calculator","version":"1.0.0","author":"Ghost Typist","description":"Type /= 3^2, then Tab, for the answer. () and + - * / ^ all work.","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.calculator","name":"Calculator","version":"1.0.1","author":"Ghost Typist","description":"Type /= 3^2, then Tab, for the answer. () and + - * / ^ all work.","icon":"plusminus","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /= and a sum, then Tab. The rest of the line is the calculation, so a later / is division.
 
@@ -95,9 +95,10 @@ const format = (n) => {
 ghost.define({
   id: "community.calculator",
   name: "Calculator",
-  version: "1.0.0",
+  version: "1.0.1",
   author: "Ghost Typist",
   description: "Type /= 3^2, then Tab, for the answer. () and + - * / ^ all work.",
+  icon: "plusminus",
   settings: [
     { id: "command", title: "Command", type: "text", value: "=",
       help: "What you type after the /. = makes the command /=. You can also use calc, or both: =, calc." }
