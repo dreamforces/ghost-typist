@@ -1,8 +1,8 @@
-// ghost {"id":"community.rewrite","name":"Rewrite Actions","version":"3.4.3","author":"Ghost Typist","description":"Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.","icon":"pencil.line","tags":["writing"],"capabilities":["7 actions"]}
+// ghost {"id":"community.rewrite","name":"Text Transformations","version":"3.4.4","author":"Ghost Typist","description":"Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.","icon":"pencil.line","tags":["writing"],"capabilities":["7 actions"]}
 ghost.define({
   id: "community.rewrite",
-  name: "Rewrite Actions",
-  version: "3.4.3",
+  name: "Text Transformations",
+  version: "3.4.4",
   author: "Ghost Typist",
   description: "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
   icon: "pencil.line",
