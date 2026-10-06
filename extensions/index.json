@@ -303,9 +303,9 @@
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "3.4.2",
+      "version": "3.4.3",
       "path": "extensions/rewrite.js",
-      "sha256": "07382b325469cfd5b42ed6c0ce876ac41b4005ca05d587c25050a41a7ee6d080",
+      "sha256": "8bd5bd68cc2e80c7948a3eba4387d938d472ac092b13459ea1e295c2a2e2bf9d",
       "capabilities": [
         "7 actions"
       ],
