@@ -6,9 +6,9 @@
       "name": "Alarm",
       "description": "Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.",
       "author": "Ghost Typist",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "path": "extensions/alarm.js",
-      "sha256": "16125720e53b78bb8a7bd15dc0a6f378c9e7c08aeb05632997ceba177555a8af",
+      "sha256": "ed518bba1c9240a56384b7108cb69569af3597dc25207a0d603f6cc25c214611",
       "capabilities": [
         "1 command"
       ],
@@ -71,9 +71,9 @@
       "name": "Compose",
       "description": "Type // and a short note, then Tab. The model turns it into a message in your tone. Rename the second slash in Options.",
       "author": "Ghost Typist",
-      "version": "2.1.1",
+      "version": "2.1.2",
       "path": "extensions/compose.js",
-      "sha256": "7039bf3caf8bbb9a6d5621ac3edd66f8b61f6a564f890a4e7049588dd442147f",
+      "sha256": "c8df1f67be4111377f0c086c4b642a9d464e1b48c18ff4e3c7596a4cccc13636",
       "capabilities": [
         "compose"
       ],
@@ -303,9 +303,9 @@
       "name": "Rewrite Actions",
       "description": "Rewrite, shorten, enrich, change tone, summarise, fix grammar, or remove filler in a selection.",
       "author": "Ghost Typist",
-      "version": "3.4.1",
+      "version": "3.4.2",
       "path": "extensions/rewrite.js",
-      "sha256": "a0660607184cd8669b65e2f13c7f666478d24f0e1e40e80ec07158c3c323e846",
+      "sha256": "07382b325469cfd5b42ed6c0ce876ac41b4005ca05d587c25050a41a7ee6d080",
       "capabilities": [
         "7 actions"
       ],

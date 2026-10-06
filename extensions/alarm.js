@@ -1,4 +1,4 @@
-// ghost {"id":"community.alarm","name":"Alarm","version":"1.0.2","author":"Ghost Typist","description":"Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.","icon":"alarm","tags":["commands"],"capabilities":["1 command"]}
+// ghost {"id":"community.alarm","name":"Alarm","version":"1.0.3","author":"Ghost Typist","description":"Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.","icon":"alarm","tags":["commands"],"capabilities":["1 command"]}
 //
 // Type /alarm, a clock time, and a note, then Tab. 2pm and 8:45am are today, or tomorrow if
 // that time has passed. The menu bar counts down, and the clock rocks on its feet when it is due.
@@ -16,7 +16,7 @@ const clock = (seconds) => {
 ghost.define({
   id: "community.alarm",
   name: "Alarm",
-  version: "1.0.2",
+  version: "1.0.3",
   author: "Ghost Typist",
   description: "Type /alarm 2pm pay the bills, then Tab. The clock counts down, then shakes when it is time.",
   icon: "alarm",
@@ -29,20 +29,25 @@ ghost.define({
       title: "Alarm",
       nameFrom: "command",
       usage: "<time> <note>",
-      examples: ["2pm pay the bills", "8:45am take kids to the school", "2.15pm \"I'll help you\""],
+      examples: ["2pm pay the bills", "8:45am take kids to the school", "19:49 call Sam", "2.15pm \"I'll help you\""],
       run(ctx) {
-        const parsed = /^(\d{1,2})(?:[:.](\d{2}))?\s*(am|pm)\b\s*([\s\S]*)$/i.exec(String(ctx.args || "").trim());
-        if (!parsed) throw new Error("use a time and a note, like 2pm or 2.15pm pay the bills.");
-        let hour = Number(parsed[1]);
-        const minute = parsed[2] ? Number(parsed[2]) : 0;
-        let note = parsed[4].trim();
+        // 2pm, 2.15pm, 2:15 pm, p.m., or the 24-hour clock: 14:15, 14.15.
+        const text = String(ctx.args || "").trim().replace(/\b([ap])\.m\.?/gi, "$1m");
+        const parsed = /^(?:(\d{1,2})(?:[:.](\d{2}))?\s*(am|pm)\b|(\d{1,2})[:.](\d{2})(?!\d))\s*([\s\S]*)$/i.exec(text);
+        if (!parsed) throw new Error("use a time and a note, like 2pm, 2:15pm or 14:15 pay the bills.");
+        const clock24 = parsed[3] === undefined;
+        let hour = Number(parsed[1] ?? parsed[4]);
+        const minute = Number(parsed[2] ?? parsed[5] ?? 0);
+        let note = parsed[6].trim();
         const wrap = note.length > 1 && (note[0] === '"' && note.endsWith('"') || note[0] === "'" && note.endsWith("'") || note.startsWith("“") && note.endsWith("”"));
         if (wrap) note = note.slice(1, -1).trim();
-        if (hour < 1 || hour > 12 || minute > 59) throw new Error("use a time like 2pm or 8:45am.");
+        if (clock24 ? hour > 23 || minute > 59 : hour < 1 || hour > 12 || minute > 59) throw new Error("use a time like 2pm, 8:45am or 19:49.");
         if (!note) throw new Error("say what the alarm is for.");
         if (note.length > 200) throw new Error("keep the note to 200 characters.");
-        hour %= 12;
-        if (parsed[3].toLowerCase() === "pm") hour += 12;
+        if (!clock24) {
+          hour %= 12;
+          if (parsed[3].toLowerCase() === "pm") hour += 12;
+        }
         const now = new Date();
         const due = new Date(now.getTime());
         due.setHours(hour, minute, 0, 0);
