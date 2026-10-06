@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "packages": [
+    {
+      "id": "community.starter",
+      "name": "Starter templates",
+      "description": "Emails, meetings, support replies, people and engineering notes, with blanks to fill in.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "templates/starter.json",
+      "sha256": "affcf81ede5eb11895c0ef0e5a4d80207227edaffd5978c1991e1dc843c49fe2",
+      "capabilities": [
+        "25 templates",
+        "5 categories"
+      ],
+      "tags": [
+        "email",
+        "meetings",
+        "support",
+        "work"
+      ]
+    }
+  ]
+}

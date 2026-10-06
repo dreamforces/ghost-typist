@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "community.starter",
+  "name": "Starter templates",
+  "version": "1.0.0",
+  "author": "Ghost Typist",
+  "description": "Emails, meetings, support replies, people and engineering notes, with blanks to fill in.",
+  "tags": [
+    "email",
+    "meetings",
+    "support",
+    "work"
+  ],
+  "categories": [
+    "Email",
+    "Meetings",
+    "Support",
+    "People",
+    "Engineering"
+  ],
+  "templates": [
+    {
+      "trigger": "follow-up",
+      "title": "Follow up",
+      "text": "Hi ${1:name},\n\nJust following up on ${2:our last conversation}. ${3|Any update on your side?,Could you confirm by Friday?,No rush on this.|}\n\nThanks,\n$0",
+      "category": "Email"
+    },
+    {
+      "trigger": "intro",
+      "title": "Introduce yourself",
+      "text": "Hi ${1:name},\n\nI'm ${2:your name} from ${3:company}. ${4:I'd love to find a time to talk.}\n\nBest,\n$0",
+      "category": "Email"
+    },
+    {
+      "trigger": "thanks",
+      "title": "Thank you",
+      "text": "Thank you, ${1:name}, for ${2:your help with this}. I really appreciate it${3|.,!|}",
+      "category": "Email"
+    },
+    {
+      "trigger": "ooo",
+      "title": "Out of office",
+      "text": "Thanks for your email. I'm out of the office until ${1:date} with limited access to email. For anything urgent, please contact ${2:a colleague}.",
+      "category": "Email"
+    },
+    {
+      "trigger": "decline",
+      "title": "Politely decline",
+      "text": "Thanks for thinking of me. Unfortunately I can't take this on right now, but I hope it goes well.",
+      "category": "Email"
+    },
+    {
+      "trigger": "agenda",
+      "title": "Meeting agenda",
+      "text": "Agenda: ${1:meeting name}\nDate: ${2:date}\nGoal: ${3:what we need to decide}\n\n1. ${4:First topic}\n2. \n3. Open questions\n",
+      "category": "Meetings"
+    },
+    {
+      "trigger": "notes",
+      "title": "Meeting notes",
+      "text": "Meeting notes: ${1:topic} (${2:date})\nAttendees: ${3:names}\n\nDecisions\n- $4\n\nAction items\n- ${5:owner}: ${6:task} by ${7:date}\n",
+      "category": "Meetings"
+    },
+    {
+      "trigger": "reschedule",
+      "title": "Reschedule",
+      "text": "Hi ${1:name}, could we move ${2:our meeting} to ${3|tomorrow,later this week,next week|}? Happy to work around your schedule.",
+      "category": "Meetings"
+    },
+    {
+      "trigger": "running-late",
+      "title": "Running late",
+      "text": "Sorry, I'm running about ${1:5} minutes late and will join as soon as I can.",
+      "category": "Meetings"
+    },
+    {
+      "trigger": "wrap-up",
+      "title": "Wrap up",
+      "text": "Thanks, everyone. I'll send notes and next steps after this.",
+      "category": "Meetings"
+    },
+    {
+      "trigger": "sorry",
+      "title": "Apologise",
+      "text": "Hi ${1:name},\n\nI'm sorry about ${2:the trouble you ran into}. ${3:We're looking into it now} and I'll update you by ${4:tomorrow}.\n",
+      "category": "Support"
+    },
+    {
+      "trigger": "need-info",
+      "title": "Ask for details",
+      "text": "Thanks for reaching out. To look into this, could you share a few details?\n\n- ${1:The steps that lead to it}\n- ${2:What you expected to happen}\n- ${3:A screenshot, if you can}\n",
+      "category": "Support"
+    },
+    {
+      "trigger": "fixed",
+      "title": "Issue resolved",
+      "text": "Hi ${1:name}, this is now fixed: ${2:what changed}. Please let me know if you still see ${3|the problem,any errors,anything odd|}.",
+      "category": "Support"
+    },
+    {
+      "trigger": "refund",
+      "title": "Refund issued",
+      "text": "Your refund has been issued and should reach your account within 5 to 10 business days.",
+      "category": "Support"
+    },
+    {
+      "trigger": "escalate",
+      "title": "Passed to specialists",
+      "text": "I've passed this to our specialist team, who will follow up with you directly. You don't need to do anything in the meantime.",
+      "category": "Support"
+    },
+    {
+      "trigger": "interview",
+      "title": "Interview invite",
+      "text": "Hi ${1:name},\n\nThanks for applying for ${2:the role}. We'd like to invite you to a ${3|30-minute,45-minute,60-minute|} interview. Does ${4:a day and time} work for you?\n",
+      "category": "People"
+    },
+    {
+      "trigger": "reject",
+      "title": "Decline a candidate",
+      "text": "Hi ${1:name}, thank you for interviewing for ${2:the role}. We've decided to ${3|move forward with another candidate,pause the search|}. We enjoyed meeting you and wish you the best.",
+      "category": "People"
+    },
+    {
+      "trigger": "feedback",
+      "title": "Give feedback",
+      "text": "What went well: ${1:strength}\nWhat to work on: ${2:growth area}\nNext step: ${3:agreed action}\n",
+      "category": "People"
+    },
+    {
+      "trigger": "welcome",
+      "title": "Welcome to the team",
+      "text": "Welcome to the team! We're glad you're here. Your first week is about meeting people and getting set up, so ask us anything.",
+      "category": "People"
+    },
+    {
+      "trigger": "referral",
+      "title": "Thank a referral",
+      "text": "Thank you for the referral. We really value it, and we'll keep you posted on how it goes.",
+      "category": "People"
+    },
+    {
+      "trigger": "pr",
+      "title": "Pull request",
+      "text": "## What\n${1:Describe the change}\n\n## Why\n${2:The context}\n\n## Testing\n${3:How you checked it}\n",
+      "category": "Engineering"
+    },
+    {
+      "trigger": "bug",
+      "title": "Bug report",
+      "text": "**Summary**\n${1:What went wrong}\n\n**Steps**\n1. ${2:Do this}\n\n**Expected**\n${3:What should happen}\n\n**Actual**\n${4:What happens}\n",
+      "category": "Engineering"
+    },
+    {
+      "trigger": "standup",
+      "title": "Standup",
+      "text": "Yesterday: ${1:what I finished}\nToday: ${2:what I'm doing}\nBlockers: ${3:none}\n",
+      "category": "Engineering"
+    },
+    {
+      "trigger": "incident",
+      "title": "Incident update",
+      "text": "**${1|Investigating,Identified,Monitoring,Resolved|}**: ${2:what users see}. Next update in ${3:30} minutes.",
+      "category": "Engineering"
+    },
+    {
+      "trigger": "lgtm",
+      "title": "Approve a review",
+      "text": "Looks good to me. Ready to merge once CI passes.",
+      "category": "Engineering"
+    }
+  ]
+}
