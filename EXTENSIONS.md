@@ -827,7 +827,7 @@ The library keeps one extension per command. The name after `/` is an option, so
 | `/latin` | Latin Letters |
 | `/lorem` | Placeholder. `/lorem` writes a paragraph; add a topic, or `1s` for one sentence and `3p` for three |
 | `//note` | Compose. The second slash is the name; Options can make it `/write` |
-| `/~` and a trigger | Text Expander. The rows are set in Options |
+| `/~` and a trigger | Built into the app: Templates |
 | `:)` then Tab | Emoji. Typed as itself, not listed after `/~` |
 
 Also in the library, and not slash commands: Spelling & Grammar (underlines), Rewrite Actions (seven ⌃⌘/ rewrites), and Translate (one ⌃⌘/ action, on its translation model).
