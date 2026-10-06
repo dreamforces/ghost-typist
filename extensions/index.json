@@ -421,6 +421,22 @@
       ]
     },
     {
+      "id": "community.url",
+      "name": "Short URL",
+      "description": "Type /url https://example.com/long/address, then Tab, for a short link. Options pick the service.",
+      "author": "Ghost Typist",
+      "version": "1.0.0",
+      "path": "extensions/url.js",
+      "sha256": "d4b0423ebd60f1a64fc10a23f5736f3d1cdfed12b8c4e95276e36665833009d2",
+      "capabilities": [
+        "1 command",
+        "network"
+      ],
+      "tags": [
+        "commands"
+      ]
+    },
+    {
       "id": "community.uuid",
       "name": "UUID",
       "description": "Type /uuid, then Tab, for a random UUID. Options set the version, the letter case, the hyphens and braces.",

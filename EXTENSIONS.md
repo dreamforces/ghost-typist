@@ -810,6 +810,7 @@ The library keeps one extension per command. The name after `/` is an option, so
 | `/=` | Calculator |
 | `/unit` | Unit Conversion |
 | `/money` | Currency. Needs the network, allowed per extension |
+| `/url` | Short URL. Needs the network, allowed per extension |
 | `/random` | Random Number |
 | `/uuid` | UUID |
 | `/dice` | Dice |
