@@ -133,22 +133,6 @@
       "icon": "die.face.5"
     },
     {
-      "id": "community.emoji",
-      "name": "Emoji",
-      "description": "Type :) or :crying, then Tab. These are the emojis people send most. Hands use the skin tone in Options.",
-      "author": "Ghost Typist",
-      "version": "1.1.1",
-      "path": "extensions/emoji.js",
-      "sha256": "b7b0dc026400d6f79c6a2b8a0fd11235c5f8e81b73306ea69771800f2f5aa90b",
-      "capabilities": [
-        "abbreviations"
-      ],
-      "tags": [
-        "abbreviations"
-      ],
-      "icon": "face.smiling"
-    },
-    {
       "id": "community.encode",
       "name": "HTML Encode",
       "description": "Type /encode and some text, then Tab, to turn &, < and > into HTML entities. Options choose whether quotes and non-ASCII letters are encoded too.",
