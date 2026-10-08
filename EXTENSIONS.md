@@ -296,7 +296,7 @@ settings: [
 expansionsFrom: "abbreviations"
 ```
 
-`typedExpansions: true` expands the trigger as it is typed, such as `:)` or `:wave`, and those rows are not listed after `/~`. `{skin}` in the replacement becomes the skin-tone modifier from a `choice` setting whose id is `skin`, when that choice is an emoji of the tone. It becomes nothing when the emoji has no tone.
+`typedExpansions: true` expands the trigger as it is typed, such as `+1` or `<3`, and those rows are not listed after `/~`. `{skin}` in the replacement becomes the skin-tone modifier from a `choice` setting whose id is `skin`, when that choice is an emoji of the tone. It becomes nothing when the emoji has no tone.
 
 ```js
 settings: [
@@ -828,7 +828,7 @@ The library keeps one extension per command. The name after `/` is an option, so
 | `/lorem` | Placeholder. `/lorem` writes a paragraph; add a topic, or `1s` for one sentence and `3p` for three |
 | `//prompt` | Prompt: an instruction or question for the model. The second slash is the name; Options can make it `/write` |
 | `/~` and a trigger | Built into the app: Templates |
-| `:)` then Tab | Emoji. Typed as itself, not listed after `/~` |
+| `:wave` then Tab (`::wave` if Keyboard settings ask for two colons) | Built into the app: Emoji |
 
 Also in the library, and not slash commands: Spelling & Grammar (underlines), Text Transformations (seven ⌃⌘/ actions), and Translate (one ⌃⌘/ action, on its translation model).
 
